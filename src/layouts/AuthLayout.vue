@@ -1,12 +1,12 @@
 <template>
-    <div id="app">
+    <div>
         <router-view/>
     </div>
 </template>
 
 <script>
     export default {
-        name: 'App',
-        components: {}
+        name: 'LoginLayout',
+        components: {},
     }
 </script>

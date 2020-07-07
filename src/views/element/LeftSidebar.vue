@@ -27,15 +27,21 @@
             <ul class="list">
                 <li class="header">MAIN NAVIGATION</li>
                 <li>
-                    <router-link to="/">
-                        <i class="material-icons col-green">home</i>
+                    <router-link :to="{name: 'home'}">
+                        <i class="material-icons">home</i>
                         <span>Home</span>
                     </router-link>
                 </li>
                 <li>
-                    <router-link to="/about">
-                        <i class="material-icons col-light-blue">donut_large</i>
+                    <router-link :to="{name: 'about'}">
+                        <i class="material-icons">donut_large</i>
                         <span>About</span>
+                    </router-link>
+                </li>
+                <li>
+                    <router-link :to="{name: 'login'}">
+                        <i class="material-icons">donut_large</i>
+                        <span>Login</span>
                     </router-link>
                 </li>
             </ul>

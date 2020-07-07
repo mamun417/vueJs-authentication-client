@@ -12,7 +12,7 @@
                     <li>
                         <a href="javascript:void(0);"><b>Logout</b></a>
                     </li>
-                    <li class="pull-right"><a href="javascript:void(0);" class="js-right-sidebar" data-close="true"><i class="material-icons">more_vert</i></a></li>
+                    <!--<li class="pull-right"><a href="javascript:void(0);" class="js-right-sidebar" data-close="true"><i class="material-icons">more_vert</i></a></li>-->
                 </ul>
             </div>
         </div>
