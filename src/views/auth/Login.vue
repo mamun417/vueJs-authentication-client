@@ -51,13 +51,25 @@
 
 <script>
     import $ from "jquery";
-
+    
     export default {
         name: 'Login',
         components: {},
 
         mounted() {
             $('body').removeClass().addClass('login-page');
+            
+           this.$store.dispatch('auth/login', {
+               inputs: {
+                   email: 'test@gmail.com',
+                   password: '11111111'
+               }
+           }).then(res => {
+               //console.log(res);
+           })
+            .catch(err => {
+            
+            })
         }
     }
 </script>
