@@ -5,6 +5,7 @@ export function login(context, payload) {
                 let userInfo = res.data;
                 console.log(res)
                 context.commit('storeUser', userInfo);
+                resolve(res)
             })
             .catch(err => {
                 reject(err)

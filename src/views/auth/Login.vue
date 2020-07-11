@@ -7,7 +7,7 @@
             </div>
             <div class="card">
                 <div class="body">
-                    <form id="sign_in" method="POST">
+                    <div id="sign_in">
                         <div class="msg">Sign in to start your session</div>
                         <div class="input-group">
                         <span class="input-group-addon">
@@ -31,7 +31,7 @@
                                 <label for="rememberme">Remember Me</label>
                             </div>
                             <div class="col-xs-4">
-                                <button class="btn btn-block bg-pink waves-effect" type="submit">SIGN IN</button>
+                                <button class="btn btn-block bg-pink waves-effect" @click="login">SIGN IN</button>
                             </div>
                         </div>
                         <div class="row m-t-15 m-b--20">
@@ -42,7 +42,7 @@
                                 <router-link :to="{name: 'email'}">Forgot Password?</router-link>
                             </div>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -54,22 +54,34 @@
     
     export default {
         name: 'Login',
+        data(){
+            return {
+                formData   : {},
+                formErrors : ''
+            }
+        },
+        
         components: {},
 
         mounted() {
             $('body').removeClass().addClass('login-page');
-            
-           this.$store.dispatch('auth/login', {
-               inputs: {
-                   email: 'test@gmail.com',
-                   password: '11111111'
-               }
-           }).then(res => {
-               //console.log(res);
-           })
-            .catch(err => {
-            
-            })
+        },
+        
+        methods: {
+            login(){
+                this.$store.dispatch('auth/login', {
+                    inputs: {
+                        email: 'test@gmail.com',
+                        password: '11111111'
+                    }
+                })
+                    .then(res => {
+                        //console.log(res);
+                    })
+                    .catch(err => {
+
+                    })
+            }
         }
     }
 </script>

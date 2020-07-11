@@ -33,9 +33,9 @@
                     </router-link>
                 </li>
                 <li>
-                    <router-link :to="{name: 'about'}">
+                    <router-link :to="{name: 'product'}">
                         <i class="material-icons">donut_large</i>
-                        <span>About</span>
+                        <span>Products</span>
                     </router-link>
                 </li>
                 <li>
