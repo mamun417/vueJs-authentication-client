@@ -14,9 +14,9 @@
 <script>
     import $ from 'jquery'
     
-    import TopBar from '../views/element/TopBar.vue'
-    import LeftSidebar from '../views/element/LeftSidebar.vue'
-    import RightSidebar from '../views/element/RightSidebar.vue'
+    import TopBar from '../element/TopBar.vue'
+    import LeftSidebar from '../element/LeftSidebar.vue'
+    import RightSidebar from '../element/RightSidebar.vue'
 
     export default {
         name: 'MainLayout',

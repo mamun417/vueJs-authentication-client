@@ -1,7 +1,7 @@
 const routes = [
     {
         path: '/',
-        component: () => import('../layouts/MainLayout'),
+        component: () => import('../views/layouts/MainLayout'),
         children: [
             {
                 path: '',
@@ -22,7 +22,7 @@ const routes = [
     /*Auth routes*/
     {
         path: '/',
-        component: () => import('../layouts/AuthLayout'),
+        component: () => import('../views/layouts/AuthLayout'),
         children: [
             {
                 path: 'login',

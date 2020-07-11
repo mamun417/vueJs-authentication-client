@@ -14,16 +14,26 @@
                             <i class="material-icons">person</i>
                         </span>
                             <div class="form-line">
-                                <input type="text" class="form-control" name="username" placeholder="Username" required autofocus>
+                                <input type="text" class="form-control"
+                                   v-model="formData.email"
+                                   placeholder="Email Address" autofocus
+                                   @input="formErrors.email = ''"
+                                >
                             </div>
+                            <label id="username-error" class="error">{{ formErrors.email }}</label>
                         </div>
                         <div class="input-group">
                         <span class="input-group-addon">
                             <i class="material-icons">lock</i>
                         </span>
                             <div class="form-line">
-                                <input type="password" class="form-control" name="password" placeholder="Password" required>
+                                <input type="password"
+                                   class="form-control"
+                                   v-model="formData.password"
+                                   placeholder="Password"
+                                   @input="formErrors.password = ''">
                             </div>
+                            <label id="password-error" class="error">{{ formErrors.password }}</label>
                         </div>
                         <div class="row">
                             <div class="col-xs-8 p-t-5">
@@ -56,8 +66,11 @@
         name: 'Login',
         data(){
             return {
-                formData   : {},
-                formErrors : ''
+                formData : {
+                    email : '',
+                    password : ''
+                },
+                formErrors : {}
             }
         },
         
@@ -70,16 +83,18 @@
         methods: {
             login(){
                 this.$store.dispatch('auth/login', {
-                    inputs: {
-                        email: 'test@gmail.com',
-                        password: '11111111'
-                    }
+                    inputs: this.formData
                 })
                     .then(res => {
-                        //console.log(res);
+                        console.log('login successful');
+                        this.$router.push({name: 'home'});
                     })
                     .catch(err => {
-
+                        if (err.response.data.errors){
+                            this.formErrors = err.response.data.errors;
+                        }else {
+                            console.log(err.response.data.message);
+                        }
                     })
             }
         }
