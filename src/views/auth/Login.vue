@@ -94,6 +94,11 @@
                             this.formErrors = err.response.data.errors;
                         }else {
                             console.log(err.response.data.message);
+
+                            toast.fire({
+                                icon: 'error',
+                                title: err.response.data.message
+                            })
                         }
                     })
             }

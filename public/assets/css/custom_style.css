@@ -1,3 +1,6 @@
-﻿.router-link-exact-active, .router-link-exact-active span {
+﻿html{
+    font-size: 14px!important;
+}
+.router-link-exact-active, .router-link-exact-active span {
     color: red!important;
 }
