@@ -10,7 +10,7 @@
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="javascript:void(0);"><b>Logout</b></a>
+                        <a class="navbar-brand" style="cursor: pointer" @click="logout"><b>Logout</b></a>
                     </li>
                     <!--<li class="pull-right"><a href="javascript:void(0);" class="js-right-sidebar" data-close="true"><i class="material-icons">more_vert</i></a></li>-->
                 </ul>
@@ -23,5 +23,18 @@
 <script>
     export default {
         name: 'TopBar',
+        
+        methods: {
+            logout(){
+                this.$store.dispatch('auth/logout')
+                
+                toast.fire({
+                    icon: 'success',
+                    title: 'Successfully logout'
+                });
+                
+                this.$router.push({name: 'login'})
+            }
+        }
     }
 </script>

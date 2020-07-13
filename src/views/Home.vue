@@ -3,7 +3,7 @@
         <section class="content">
             <div class="container-fluid">
                 <div class="block-header">
-                    <h2>DASHBOARD</h2>
+                    <h2 @click="test">DASHBOARD</h2>
                 </div>
                 <!-- Widgets -->
                 <div class="row clearfix">
@@ -14,7 +14,8 @@
                             </div>
                             <div class="content">
                                 <div class="text">NEW TASKS</div>
-                                <div class="number count-to" data-from="0" data-to="125" data-speed="15" data-fresh-interval="20"></div>
+                                <div class="number count-to" data-from="0" data-to="125" data-speed="15"
+                                     data-fresh-interval="20"></div>
                             </div>
                         </div>
                     </div>
@@ -25,7 +26,8 @@
                             </div>
                             <div class="content">
                                 <div class="text">NEW TICKETS</div>
-                                <div class="number count-to" data-from="0" data-to="257" data-speed="1000" data-fresh-interval="20"></div>
+                                <div class="number count-to" data-from="0" data-to="257" data-speed="1000"
+                                     data-fresh-interval="20"></div>
                             </div>
                         </div>
                     </div>
@@ -36,7 +38,8 @@
                             </div>
                             <div class="content">
                                 <div class="text">NEW COMMENTS</div>
-                                <div class="number count-to" data-from="0" data-to="243" data-speed="1000" data-fresh-interval="20"></div>
+                                <div class="number count-to" data-from="0" data-to="243" data-speed="1000"
+                                     data-fresh-interval="20"></div>
                             </div>
                         </div>
                     </div>
@@ -47,7 +50,8 @@
                             </div>
                             <div class="content">
                                 <div class="text">NEW VISITORS</div>
-                                <div class="number count-to" data-from="0" data-to="1225" data-speed="1000" data-fresh-interval="20"></div>
+                                <div class="number count-to" data-from="0" data-to="1225" data-speed="1000"
+                                     data-fresh-interval="20"></div>
                             </div>
                         </div>
                     </div>
@@ -58,9 +62,12 @@
                     <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                         <div class="card">
                             <div class="body bg-pink">
-                                <div class="sparkline" data-type="line" data-spot-Radius="4" data-highlight-Spot-Color="rgb(233, 30, 99)" data-highlight-Line-Color="#fff"
-                                     data-min-Spot-Color="rgb(255,255,255)" data-max-Spot-Color="rgb(255,255,255)" data-spot-Color="rgb(255,255,255)"
-                                     data-offset="90" data-width="100%" data-height="92px" data-line-Width="2" data-line-Color="rgba(255,255,255,0.7)"
+                                <div class="sparkline" data-type="line" data-spot-Radius="4"
+                                     data-highlight-Spot-Color="rgb(233, 30, 99)" data-highlight-Line-Color="#fff"
+                                     data-min-Spot-Color="rgb(255,255,255)" data-max-Spot-Color="rgb(255,255,255)"
+                                     data-spot-Color="rgb(255,255,255)"
+                                     data-offset="90" data-width="100%" data-height="92px" data-line-Width="2"
+                                     data-line-Color="rgba(255,255,255,0.7)"
                                      data-fill-Color="rgba(0, 188, 212, 0)">
                                     12,10,9,6,5,6,10,5,7,5,12,13,7,12,11
                                 </div>
@@ -166,7 +173,8 @@
                                 <h2>TASK INFOS</h2>
                                 <ul class="header-dropdown m-r--5">
                                     <li class="dropdown">
-                                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown"
+                                           role="button" aria-haspopup="true" aria-expanded="false">
                                             <i class="material-icons">more_vert</i>
                                         </a>
                                         <ul class="dropdown-menu pull-right">
@@ -197,7 +205,9 @@
                                             <td>John Doe</td>
                                             <td>
                                                 <div class="progress">
-                                                    <div class="progress-bar bg-green" role="progressbar" aria-valuenow="62" aria-valuemin="0" aria-valuemax="100" style="width: 62%"></div>
+                                                    <div class="progress-bar bg-green" role="progressbar"
+                                                         aria-valuenow="62" aria-valuemin="0" aria-valuemax="100"
+                                                         style="width: 62%"></div>
                                                 </div>
                                             </td>
                                         </tr>
@@ -208,7 +218,9 @@
                                             <td>John Doe</td>
                                             <td>
                                                 <div class="progress">
-                                                    <div class="progress-bar bg-blue" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%"></div>
+                                                    <div class="progress-bar bg-blue" role="progressbar"
+                                                         aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"
+                                                         style="width: 40%"></div>
                                                 </div>
                                             </td>
                                         </tr>
@@ -219,7 +231,9 @@
                                             <td>John Doe</td>
                                             <td>
                                                 <div class="progress">
-                                                    <div class="progress-bar bg-light-blue" role="progressbar" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100" style="width: 72%"></div>
+                                                    <div class="progress-bar bg-light-blue" role="progressbar"
+                                                         aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"
+                                                         style="width: 72%"></div>
                                                 </div>
                                             </td>
                                         </tr>
@@ -230,7 +244,9 @@
                                             <td>John Doe</td>
                                             <td>
                                                 <div class="progress">
-                                                    <div class="progress-bar bg-orange" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="width: 95%"></div>
+                                                    <div class="progress-bar bg-orange" role="progressbar"
+                                                         aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"
+                                                         style="width: 95%"></div>
                                                 </div>
                                             </td>
                                         </tr>
@@ -243,7 +259,9 @@
                                             <td>John Doe</td>
                                             <td>
                                                 <div class="progress">
-                                                    <div class="progress-bar bg-red" role="progressbar" aria-valuenow="87" aria-valuemin="0" aria-valuemax="100" style="width: 87%"></div>
+                                                    <div class="progress-bar bg-red" role="progressbar"
+                                                         aria-valuenow="87" aria-valuemin="0" aria-valuemax="100"
+                                                         style="width: 87%"></div>
                                                 </div>
                                             </td>
                                         </tr>
@@ -261,7 +279,25 @@
 </template>
 
 <script>
-export default {
-  name: 'Home'
-}
+    import $ from "jquery";
+
+    export default {
+        name: 'Home',
+        
+        created() {
+            //$('body').removeClass().addClass('swal2-toast-shown swal2-shown theme-red');
+        },
+
+        mounted() {
+        },
+
+        methods: {
+            test(){
+                toast.fire({
+                    icon: 'success',
+                    title: 'Login successful'
+                })
+            }
+        }
+    }
 </script>

@@ -67,8 +67,8 @@
         data(){
             return {
                 formData : {
-                    email : '',
-                    password : ''
+                    email : 'test@gmail.com',
+                    password : '11111111'
                 },
                 formErrors : {}
             }
@@ -86,15 +86,17 @@
                     inputs: this.formData
                 })
                     .then(res => {
-                        console.log('login successful');
-                        this.$router.push({name: 'home'});
+                        toast.fire({
+                            icon: 'success',
+                            title: 'Successfully login'
+                        });
+                        
+                        this.$router.push({name: 'home'})
                     })
                     .catch(err => {
                         if (err.response.data.errors){
-                            this.formErrors = err.response.data.errors;
+                            this.formErrors = err.response.data.errors
                         }else {
-                            console.log(err.response.data.message);
-
                             toast.fire({
                                 icon: 'error',
                                 title: err.response.data.message

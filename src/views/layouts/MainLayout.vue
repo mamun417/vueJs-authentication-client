@@ -27,7 +27,7 @@
         },
         
         mounted() {
-            $('body').removeClass().addClass('theme-red');
+            $('body').removeClass().addClass('swal2-toast-shown swal2-shown theme-red');
         }
     }
 </script>
