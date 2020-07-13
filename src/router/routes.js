@@ -1,6 +1,7 @@
 const routes = [
     {
         path: '/',
+        meta: { requiresAuth: true },
         component: () => import('../views/layouts/MainLayout'),
         children: [
             {
@@ -22,6 +23,7 @@ const routes = [
     /*Auth routes*/
     {
         path: '/',
+        meta: { requiresAuth: false },
         component: () => import('../views/layouts/AuthLayout'),
         children: [
             {

@@ -4,7 +4,9 @@
             <div class="error-code col-red">404</div>
             <div class="error-message">This page doesn't exist</div>
             <div class="button-place">
-                <a href="../../index.html" class="btn btn-success btn-lg waves-effect">GO TO HOMEPAGE</a>
+                <router-link :to="{name: 'home'}" class="btn btn-success btn-lg waves-effect">
+                    GO TO HOMEPAGE
+                </router-link>
             </div>
         </div>
     </div>
