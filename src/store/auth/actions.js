@@ -1,3 +1,17 @@
+export function register(context, payload) {
+    return new Promise((resolve, reject) => {
+        axios.post('register', payload.inputs)
+            .then(res => {
+                let userInfo = res.data;
+                context.commit('authSuccess', userInfo);
+                resolve(res)
+            })
+            .catch(err => {
+                reject(err)
+            })
+    })
+}
+
 export function login(context, payload) {
     return new Promise((resolve, reject) => {
         axios.post('auth/login', payload.inputs)

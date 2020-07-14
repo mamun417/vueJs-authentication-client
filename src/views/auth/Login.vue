@@ -20,7 +20,7 @@
                                    @input="formErrors.email = ''"
                                 >
                             </div>
-                            <label id="username-error" class="error">{{ formErrors.email }}</label>
+                            <label v-if="formErrors.email" id="username-error" class="error">{{ formErrors.email }}</label>
                         </div>
                         <div class="input-group">
                         <span class="input-group-addon">
@@ -33,7 +33,7 @@
                                    placeholder="Password"
                                    @input="formErrors.password = ''">
                             </div>
-                            <label id="password-error" class="error">{{ formErrors.password }}</label>
+                            <label v-if="formErrors.password" id="password-error" class="error">{{ formErrors.password }}</label>
                         </div>
                         <div class="row">
                             <div class="col-xs-8 p-t-5">
