@@ -36,15 +36,19 @@
                         </div>
                         <label v-if="formErrors.email" class="error">{{ formErrors.email }}</label>
                     </div>
-                    
+    
                     <div class="input-group">
                         <span class="input-group-addon">
-                            <i class="material-icons">lock</i>
+                            <i class="material-icons">person</i>
                         </span>
                         <div class="form-line">
-                            <input type="password" class="form-control" name="password" minlength="6"
-                                   placeholder="Password" required>
+                            <input type="text" class="form-control"
+                                placeholder="Full Address" autofocus
+                                v-model="formData.address"
+                                @input="formErrors.address=''"
+                            >
                         </div>
+                        <label v-if="formErrors.address" class="error">{{ formErrors.address }}</label>
                     </div>
                     
                     <div class="input-group">
@@ -52,17 +56,39 @@
                             <i class="material-icons">lock</i>
                         </span>
                         <div class="form-line">
-                            <input type="password" class="form-control" name="confirm" minlength="6"
-                                   placeholder="Confirm Password" required>
+                            <input type="password" class="form-control"
+                               v-model="formData.password"
+                               placeholder="Password"
+                            >
                         </div>
+                        <label v-if="formErrors.password" class="error">{{ formErrors.password }}</label>
                     </div>
+                    
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="material-icons">lock</i>
+                        </span>
+                        <div class="form-line">
+                            <input type="password" class="form-control"
+                               v-model="formData.password_confirmation"
+                               placeholder="Confirm Password"
+                            >
+                        </div>
+                        <label v-if="formErrors.password_confirmation" class="error">{{ formErrors.password_confirmation }}</label>
+                    </div>
+                    
                     <div class="form-group">
-                        <input type="checkbox" name="terms" id="terms" class="filled-in chk-col-pink">
-                        <label for="terms">I read and agree to the <a href="javascript:void(0);">terms of
-                            usage</a>.</label>
+                        <input @click="formData.agree = !formData.agree"
+                           type="checkbox" name="terms"
+                           id="terms" class="filled-in chk-col-pink"
+                        >
+                        <label for="terms">
+                            I read and agree to the
+                            <a href="javascript:void(0);">terms of usage</a>.
+                        </label>
                     </div>
                     
-                    <button @click="register" class="btn btn-block btn-lg bg-pink waves-effect">SIGN UP</button>
+                    <button @click="register" :disabled="!formData.agree" class="btn btn-block btn-lg bg-pink waves-effect">SIGN UP</button>
                     
                     <div class="m-t-25 m-b--5 align-center">
                         <router-link :to="{name: 'login'}">You already have a membership?</router-link>
@@ -83,8 +109,10 @@
                 formData: {
                     name: '',
                     email: '',
+                    address: '',
                     password: '',
-                    confirm_password: ''
+                    password_confirmation: '',
+                    agree: false
                 },
                 formErrors: {}
             }
