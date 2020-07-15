@@ -18,7 +18,8 @@ router.beforeEach((to, from, next) => {
         return
     }
 
-    let login = store.getters['auth/isLoggedIn'];
+    //let login = store.getters['auth/isLoggedIn'];
+    let login = localStorage.getItem('token');
 
     if (to.matched.some(record => record.meta.requiresAuth)) {
 
