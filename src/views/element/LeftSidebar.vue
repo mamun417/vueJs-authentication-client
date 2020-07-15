@@ -7,8 +7,8 @@
                 <img src="assets/images/user.png" width="48" height="48" alt="User" />
             </div>
             <div class="info-container">
-                <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">John Doe</div>
-                <div class="email">john.doe@example.com</div>
+                <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ userInfo.name }}</div>
+                <div class="email">{{ userInfo.email }}</div>
                 <div class="btn-group user-helper-dropdown">
                     <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
                     <ul class="dropdown-menu pull-right">
@@ -50,3 +50,18 @@
     </aside>
     <!-- #END# Left Sidebar -->
 </template>
+
+
+<script>
+    import {mapGetters} from "vuex";
+
+    export default {
+        name: 'LeftSideBar',
+        
+        computed: {
+            ...mapGetters({
+                userInfo : 'auth/user'
+            })
+        }
+    }
+</script>
