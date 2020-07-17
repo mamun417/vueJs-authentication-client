@@ -20,16 +20,16 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                <tr v-for="(product, key) in products">
-                                    <td>{{ product.name }}</td>
-                                    <td>{{ product.description }}</td>
-                                    <td>{{ product.price }} TK</td>
-                                    <td>
-                                        <!--<img :src="product.image_url" height="60px" width="60px" alt="image not found">-->
-                                    </td>
-                                    <td>{{ $dateFormat(product.created_at) }}</td>
-                                    <td></td>
-                                </tr>
+                                    <tr v-for="(product, key) in products">
+                                        <td>{{ product.name }}</td>
+                                        <td>{{ $_.upperFirst(product.description) }}</td>
+                                        <td>{{ product.price }} TK</td>
+                                        <td>
+                                            <!--<img :src="product.image_url" height="60px" width="60px" alt="image not found">-->
+                                        </td>
+                                        <td>{{ $dateFormat(product.created_at) }}</td>
+                                        <td></td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>

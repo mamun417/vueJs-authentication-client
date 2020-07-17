@@ -130,6 +130,7 @@
                     inputs: this.formData
                 })
                     .then(res => {
+                        
                         toast.fire({
                             icon: 'success',
                             title: 'register Successful!'

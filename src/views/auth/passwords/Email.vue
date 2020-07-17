@@ -7,12 +7,14 @@
         <div class="card">
             <div class="body">
                 <div id="forgot_password">
+    
+                    <loader v-if="loader"/>
+                    
                     <div class="msg">
                         Enter your email address that you used to register. We'll send you an email with your username
                         and a
                         link to reset your password.
                     </div>
-                    <h4 v-if="loader">Loading...</h4>
                     
                     <div class="input-group">
                         <span class="input-group-addon">
@@ -43,10 +45,13 @@
 
 <script>
     import $ from "jquery";
+    import Loader from '../../../components/ui/loader'
 
     export default {
         name: 'Login',
-        components: {},
+        components: {
+            Loader
+        },
 
         data(){
             return {

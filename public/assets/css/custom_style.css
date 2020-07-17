@@ -4,3 +4,10 @@
 .router-link-exact-active, .router-link-exact-active span {
     color: red!important;
 }
+.page-loader-wrapper {
+    position: absolute;
+    opacity: 0.75;
+}
+.page-loader-wrapper p {
+    color: #000!important;
+}

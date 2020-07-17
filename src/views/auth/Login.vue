@@ -1,5 +1,5 @@
 <template>
-    <div class="login-page">
+    <div class="login-page" style="position: relative">
         <div class="login-box">
             <div class="logo">
                 <a href="javascript:void(0);">Admin<b>BSB</b></a>
@@ -8,6 +8,9 @@
             <div class="card">
                 <div class="body">
                     <div id="sign_in">
+    
+                        <loader v-if="loader"/>
+                        
                         <div class="msg">Sign in to start your session</div>
                         
                         <div class="input-group">
@@ -64,31 +67,39 @@
 
 <script>
     import $ from "jquery";
+    import Loader from '../../components/ui/loader'
     
     export default {
         name: 'Login',
+        components: {
+            Loader
+        },
+        
         data(){
             return {
                 formData : {
                     email : 'test@gmail.com',
                     password : '11111111'
                 },
-                formErrors : {}
+                formErrors : {},
+                loader: false
             }
         },
         
-        components: {},
-
         mounted() {
             $('body').removeClass().addClass('login-page');
         },
         
         methods: {
             login(){
+                this.loader = true
+                
                 this.$store.dispatch('auth/login', {
                     inputs: this.formData
                 })
                     .then(res => {
+                        this.loader = false
+                        
                         toast.fire({
                             icon: 'success',
                             title: 'login Successful!'
@@ -97,6 +108,9 @@
                         this.$router.push({name: 'home'})
                     })
                     .catch(err => {
+
+                        /*this.loader = false
+
                         if (err.response.data.errors){
                             this.formErrors = err.response.data.errors
                         }else {
@@ -104,7 +118,23 @@
                                 icon: 'error',
                                 title: err.response.data.message
                             })
-                        }
+                        }*/
+                        
+                        let self = this;
+                        
+                        setTimeout(function () {
+                            self.loader = false
+
+                            if (err.response.data.errors){
+                                self.formErrors = err.response.data.errors
+                            }else {
+                                toast.fire({
+                                    icon: 'error',
+                                    title: err.response.data.message
+                                })
+                            }
+                            
+                        }, 3000)
                     })
             }
         }

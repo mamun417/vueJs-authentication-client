@@ -15,9 +15,9 @@
                         </span>
                         <div class="form-line">
                             <input type="text" class="form-control"
-                               v-model="formData.email"
-                               placeholder="Email Address" autofocus
-                               @input="formErrors.email = ''"
+                                   v-model="formData.email"
+                                   placeholder="Email Address" autofocus
+                                   @input="formErrors.email = ''"
                             >
                         </div>
                         <label v-if="formErrors.email" id="username-error" class="error">{{ formErrors.email }}</label>
@@ -29,10 +29,10 @@
                             </span>
                         <div class="form-line">
                             <input type="password"
-                               class="form-control"
-                               v-model="formData.password"
-                               placeholder="Password"
-                               @input="formErrors.password = ''">
+                                   class="form-control"
+                                   v-model="formData.password"
+                                   placeholder="Password"
+                                   @input="formErrors.password = ''">
                         </div>
                         <label v-if="formErrors.password" id="password-error" class="error">{{ formErrors.password
                             }}</label>
@@ -44,8 +44,8 @@
                         </span>
                         <div class="form-line">
                             <input type="password" class="form-control"
-                               v-model="formData.password_confirmation"
-                               placeholder="Confirm Password"
+                                   v-model="formData.password_confirmation"
+                                   placeholder="Confirm Password"
                             >
                         </div>
                         <label v-if="formErrors.password_confirmation" class="error">
@@ -95,6 +95,7 @@
                     inputs: this.formData
                 })
                     .then(res => {
+
                         toast.fire({
                             icon: 'success',
                             title: 'Password reset Successful!'
