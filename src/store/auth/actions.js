@@ -44,3 +44,15 @@ export function sendPasswordResetEmail(context, payload) {
             })
     })
 }
+
+export function resetPassword(context, payload) {
+    return new Promise((resolve, reject) => {
+        axios.patch('password/reset', payload.inputs)
+            .then(res => {
+                resolve(res)
+            })
+            .catch(err => {
+                reject(err)
+            })
+    })
+}

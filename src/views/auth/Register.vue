@@ -132,7 +132,7 @@
                     .then(res => {
                         toast.fire({
                             icon: 'success',
-                            title: 'register Successful'
+                            title: 'register Successful!'
                         });
 
                         this.$router.push({name: 'home'})

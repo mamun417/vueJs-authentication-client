@@ -9,6 +9,7 @@
                 <div class="body">
                     <div id="sign_in">
                         <div class="msg">Sign in to start your session</div>
+                        
                         <div class="input-group">
                         <span class="input-group-addon">
                             <i class="material-icons">person</i>
@@ -22,10 +23,11 @@
                             </div>
                             <label v-if="formErrors.email" id="username-error" class="error">{{ formErrors.email }}</label>
                         </div>
+                        
                         <div class="input-group">
-                        <span class="input-group-addon">
-                            <i class="material-icons">lock</i>
-                        </span>
+                            <span class="input-group-addon">
+                                <i class="material-icons">lock</i>
+                            </span>
                             <div class="form-line">
                                 <input type="password"
                                    class="form-control"
@@ -35,6 +37,7 @@
                             </div>
                             <label v-if="formErrors.password" id="password-error" class="error">{{ formErrors.password }}</label>
                         </div>
+                        
                         <div class="row">
                             <div class="col-xs-8 p-t-5">
                                 <input type="checkbox" name="rememberme" id="rememberme" class="filled-in chk-col-pink">
@@ -49,7 +52,7 @@
                                 <router-link :to="{name: 'register'}">Register Now!</router-link>
                             </div>
                             <div class="col-xs-6 align-right">
-                                <router-link :to="{name: 'email'}">Forgot Password?</router-link>
+                                <router-link :to="{name: 'password.email'}">Forgot Password?</router-link>
                             </div>
                         </div>
                     </div>
@@ -88,7 +91,7 @@
                     .then(res => {
                         toast.fire({
                             icon: 'success',
-                            title: 'login Successful'
+                            title: 'login Successful!'
                         });
                         
                         this.$router.push({name: 'home'})

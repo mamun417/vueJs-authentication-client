@@ -27,19 +27,24 @@ const routes = [
         component: () => import('../views/layouts/AuthLayout'),
         children: [
             {
+                path: 'register',
+                name: 'register',
+                component: () => import('../views/auth/Register')
+            },
+            {
                 path: 'login',
                 name: 'login',
                 component: () => import('../views/auth/Login')
             },
             {
-                path: 'reset/password',
-                name: 'email',
+                path: 'password/forgot',
+                name: 'password.email',
                 component: () => import('../views/auth/passwords/Email')
             },
             {
-                path: 'register',
-                name: 'register',
-                component: () => import('../views/auth/Register')
+                path: 'password/reset/:token',
+                name: 'password.reset',
+                component: () => import('../views/auth/passwords/Reset')
             },
         ]
     },

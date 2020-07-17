@@ -13,6 +13,7 @@
                         link to reset your password.
                     </div>
                     <h4 v-if="loader">Loading...</h4>
+                    
                     <div class="input-group">
                         <span class="input-group-addon">
                             <i class="material-icons">email</i>
@@ -28,7 +29,7 @@
                     </div>
                     
                     <button @click="resetPassword" class="btn btn-block btn-lg bg-pink waves-effect">
-                        RESET MY PASSWORD
+                        SEND EMAIL
                     </button>
                     
                     <div class="row m-t-20 m-b--5 align-center">
