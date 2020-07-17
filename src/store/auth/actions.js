@@ -32,3 +32,15 @@ export function logout(context) {
         resolve(true)
     })
 }
+
+export function sendPasswordResetEmail(context, payload) {
+    return new Promise((resolve, reject) => {
+        axios.post('password/email', payload.inputs)
+            .then(res => {
+                resolve(res)
+            })
+            .catch(err => {
+                reject(err)
+            })
+    })
+}

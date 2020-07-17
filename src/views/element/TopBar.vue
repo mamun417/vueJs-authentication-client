@@ -30,7 +30,7 @@
                 
                 toast.fire({
                     icon: 'success',
-                    title: 'Successfully logout'
+                    title: 'logout Successful'
                 });
                 
                 this.$router.push({name: 'login'})

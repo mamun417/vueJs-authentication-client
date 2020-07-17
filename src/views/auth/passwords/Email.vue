@@ -6,26 +6,35 @@
         </div>
         <div class="card">
             <div class="body">
-                <form id="forgot_password" method="POST">
+                <div id="forgot_password">
                     <div class="msg">
-                        Enter your email address that you used to register. We'll send you an email with your username and a
+                        Enter your email address that you used to register. We'll send you an email with your username
+                        and a
                         link to reset your password.
                     </div>
+                    <h4 v-if="loader">Loading...</h4>
                     <div class="input-group">
                         <span class="input-group-addon">
                             <i class="material-icons">email</i>
                         </span>
                         <div class="form-line">
-                            <input type="email" class="form-control" name="email" placeholder="Email" required autofocus>
+                            <input type="text" class="form-control"
+                               v-model="formData.email"
+                               placeholder="Email Address" autofocus
+                               @input="formErrors.email = ''"
+                            >
                         </div>
+                        <label v-if="formErrors.email" id="username-error" class="error">{{ formErrors.email }}</label>
                     </div>
                     
-                    <button class="btn btn-block btn-lg bg-pink waves-effect" type="submit">RESET MY PASSWORD</button>
+                    <button @click="resetPassword" class="btn btn-block btn-lg bg-pink waves-effect">
+                        RESET MY PASSWORD
+                    </button>
                     
                     <div class="row m-t-20 m-b--5 align-center">
                         <router-link :to="{name: 'login'}">Sign In!</router-link>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
     </div>
@@ -38,8 +47,51 @@
         name: 'Login',
         components: {},
 
+        data(){
+            return {
+                formData : {
+                    email : '',
+                    url: this.$resetPasswordUrl
+                },
+                formErrors : {},
+                loader: false
+            }
+        },
+
         mounted() {
             $('body').removeClass().addClass('fp-page');
+        },
+
+        methods: {
+            resetPassword() {
+                this.loader = true
+                
+                this.$store.dispatch('auth/sendPasswordResetEmail', {
+                    inputs: this.formData
+                })
+                    .then(res => {
+                        this.loader = false
+                        
+                        toast.fire({
+                            icon: 'success',
+                            title: 'We have e-mailed your password reset link!'
+                        });
+                        
+                        this.formData.email = ''
+                    })
+                    .catch(err => {
+                        this.loader = false
+                        
+                        if (err.response.data.errors) {
+                            this.formErrors = err.response.data.errors
+                        } else {
+                            toast.fire({
+                                icon: 'error',
+                                title: err.response.data.message
+                            })
+                        }
+                    })
+            }
         }
     }
 </script>

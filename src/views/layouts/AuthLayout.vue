@@ -12,11 +12,17 @@
         components: {},
 
         updated() {
-            console.log('fffffffff')
+            this.addBodyClass()
         },
 
         mounted() {
-            $('body').addClass('swal2-toast-shown swal2-shown');
+            this.addBodyClass()
+        },
+    
+        methods: {
+            addBodyClass() {
+                $('body').addClass('swal2-toast-shown swal2-shown');
+            }
         }
     }
 </script>
