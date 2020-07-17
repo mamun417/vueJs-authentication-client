@@ -25,7 +25,7 @@
                                     <td>{{ product.description }}</td>
                                     <td>{{ product.price }} TK</td>
                                     <td>
-                                        <img :src="product.image_url" height="60px" width="60px" alt="image not found">
+                                        <!--<img :src="product.image_url" height="60px" width="60px" alt="image not found">-->
                                     </td>
                                     <td>{{ $dateFormat(product.created_at) }}</td>
                                     <td></td>
@@ -55,7 +55,6 @@
         
         methods: {
             getProducts(){
-                //console.log(moment(parseInt("2020-06-15T17:38:11.000000Z")).format('DD MM YYYY'))
                 this.$store.dispatch('product/getProducts')
                     .then(res => {
                         this.products = res.data.products;

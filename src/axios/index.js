@@ -1,5 +1,6 @@
 import axios from 'axios'
 import router from '../router'
+import store from '../store'
 
 axios.defaults.baseURL = 'http://127.0.0.1:8000/api';
 axios.defaults.withCredentials = false;
@@ -27,9 +28,12 @@ axios.interceptors.response.use(
         return res
     },
     err => {
-        if(err.response.status === 401){
-            localStorage.clear(); // its important to clear localstorage cause login check by this localstorage token
-            return router.push('login');
+        if (err.response.status === 401) {
+            console.log('forbidden')
+            store.dispatch('auth/logout')
+                .then(() => {
+                    return router.push('login');
+                })
         }
 
         return Promise.reject(err)

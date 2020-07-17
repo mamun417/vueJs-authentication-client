@@ -1,5 +1,5 @@
 export function isLoggedIn(state) {
-    return state.token
+    return !!state.token
 }
 
 export function token(state) {

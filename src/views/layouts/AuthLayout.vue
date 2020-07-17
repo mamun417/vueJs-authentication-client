@@ -11,6 +11,10 @@
         name: 'LoginLayout',
         components: {},
 
+        updated() {
+            console.log('fffffffff')
+        },
+
         mounted() {
             $('body').addClass('swal2-toast-shown swal2-shown');
         }

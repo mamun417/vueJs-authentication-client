@@ -7,8 +7,7 @@ export function authSuccess(state, userInfo) {
 }
 
 export function authOut(state) {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
+    localStorage.clear();
 
     state.token = '';
     state.user = {};
