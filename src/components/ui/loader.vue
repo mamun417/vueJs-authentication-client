@@ -11,7 +11,6 @@
                     </div>
                 </div>
             </div>
-            <p>Please wait...</p>
         </div>
     </div>
 </template>

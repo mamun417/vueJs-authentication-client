@@ -102,7 +102,7 @@
                         
                         toast.fire({
                             icon: 'success',
-                            title: 'login Successful!'
+                            title: 'Login Successful!'
                         });
                         
                         this.$router.push({name: 'home'})

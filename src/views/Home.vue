@@ -3,7 +3,7 @@
         <section class="content">
             <div class="container-fluid">
                 <div class="block-header">
-                    <h2 @click="test">DASHBOARD</h2>
+                    <h2>DASHBOARD</h2>
                 </div>
                 <!-- Widgets -->
                 <div class="row clearfix">
@@ -279,25 +279,11 @@
 </template>
 
 <script>
-    import $ from "jquery";
-
     export default {
         name: 'Home',
-        
-        created() {
-            //$('body').removeClass().addClass('swal2-toast-shown swal2-shown theme-red');
-        },
-
         mounted() {
         },
 
-        methods: {
-            test(){
-                toast.fire({
-                    icon: 'success',
-                    title: 'Login successful'
-                })
-            }
-        }
+        methods: {}
     }
 </script>

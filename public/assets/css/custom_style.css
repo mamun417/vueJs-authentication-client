@@ -6,8 +6,11 @@
 }
 .page-loader-wrapper {
     position: absolute;
-    opacity: 0.75;
+    opacity: 0.60;
 }
-.page-loader-wrapper p {
-    color: #000!important;
+.dropdown-menu {
+    min-width: 175px;
+}
+.position-relative {
+    position: relative;
 }
