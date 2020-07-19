@@ -5,6 +5,9 @@
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
                         <div class="header">
+                            <button type="button" class="btn btn-xs btn-success waves-effect pull-right">
+                                <i class="material-icons">add</i><span>CREATE</span>
+                            </button>
                             <h2>Products</h2>
                         </div>
                         <div class="body table-responsive">
@@ -12,23 +15,52 @@
                                 <thead>
                                     <tr>
                                         <th>NAME</th>
-                                        <th>DESCRIPTION</th>
-                                        <th>PRICE</th>
-                                        <th>IMAGE</th>
-                                        <th>CREATE AT</th>
-                                        <th>ACTION</th>
+                                        <th style="width: 35%">DESCRIPTION</th>
+                                        <th class="text-center">PRICE</th>
+                                        <th class="text-center">IMAGE</th>
+                                        <th class="text-center">CREATE AT</th>
+                                        <th class="text-center">ACTION</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr v-for="(product, key) in products">
                                         <td>{{ product.name }}</td>
-                                        <td>{{ $_.upperFirst(product.description) }}</td>
-                                        <td>{{ product.price }} TK</td>
                                         <td>
+                                            {{ $_.upperFirst(product.description).substring(0, 80) }}
+                                            
+                                            <div class="collapse" :id="'collapseExample'+key">
+                                                {{ product.description.substring(85) }}
+                                            </div>
+                                            
+                                            <button data-parent="#accordion_1"
+                                                v-if="product.description.length > 80"
+                                                class="btn btn-info waves-effect" type="button"
+                                                data-toggle="collapse"
+                                                :data-target="'#collapseExample'+key"
+                                                aria-expanded="false"
+                                                aria-controls="collapseExample"
+                                                style="padding: 0 6px"
+                                            >
+                                                MORE
+                                            </button>
+                                        </td>
+                                        
+                                        <td class="text-center">{{ product.price }} TK</td>
+                                        
+                                        <td class="text-center">
                                             <!--<img :src="product.image_url" height="60px" width="60px" alt="image not found">-->
                                         </td>
-                                        <td>{{ $dateFormat(product.created_at) }}</td>
-                                        <td></td>
+                                        
+                                        <td class="text-center">{{ $dateFormat(product.created_at) }}</td>
+                                        
+                                        <td class="text-center">
+                                            <button type="button" class="btn btn-xs btn-primary waves-effect m-r-5">
+                                                <i class="material-icons">edit</i><span>EDIT</span>
+                                            </button>
+                                            <button type="button" class="btn btn-xs btn-danger waves-effect">
+                                                <i class="material-icons">delete</i><span>DELETE</span>
+                                            </button>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>

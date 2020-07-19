@@ -15,3 +15,9 @@
 .position-relative {
     position: relative;
 }
+.btn {
+    padding: 2px 10px;
+}
+table > tbody > tr > td {
+    vertical-align: middle!important;
+}
