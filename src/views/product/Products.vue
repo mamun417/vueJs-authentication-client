@@ -3,6 +3,9 @@
         <div class="container-fluid">
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    
+                    <loader v-if="loader"/>
+                    
                     <div class="card">
                         <div class="header">
                             <button type="button" class="btn btn-xs btn-success waves-effect pull-right">
@@ -78,6 +81,7 @@
         data(){
             return {
                 products: {},
+                loader: false
             }
         },
         
@@ -87,9 +91,12 @@
         
         methods: {
             getProducts(){
+                this.loader = true
+                
                 this.$store.dispatch('product/getProducts')
                     .then(res => {
-                        this.products = res.data.products;
+                        this.loader = false
+                        this.products = res.data.products
                     })
                     .catch(err => {
                         //handle error

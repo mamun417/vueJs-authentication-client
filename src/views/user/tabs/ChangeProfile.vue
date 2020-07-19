@@ -58,7 +58,7 @@
                 <div class="col-sm-10">
                     <div class="form-line">
                         <input type="text" class="form-control" id="InputSkills"
-                           name="InputSkills" placeholder="Skills">
+                           name="InputSkills" placeholder="Skills" autocomplete="off">
                     </div>
                    <!-- <label v-if="formErrors.skills" class="error">
                         {{ formErrors.skills }}
