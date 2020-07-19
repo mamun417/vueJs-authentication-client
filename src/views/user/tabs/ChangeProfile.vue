@@ -64,14 +64,9 @@
 </template>
 
 <script>
-    import Loader from '@/components/ui/loader'
 
     export default {
         name: 'Change-Profile',
-        components: {
-            Loader
-        },
-
         data() {
             return {
                 loader: false,

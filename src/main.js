@@ -4,15 +4,17 @@ import router from './router'
 import store from './store'
 import toaster from './plugins/toaster'
 import axios from './axios'
-import helper from './helper'
+import './helper'
 
 window.axios = axios;
 window.toast = toaster;
 
 Vue.config.productionTip = false
 
+Vue.component('Loader', () => import('./components/ui/loader'))
+
 new Vue({
-  router,
-  store,
-  render: h => h(App)
+    router,
+    store,
+    render: h => h(App)
 }).$mount('#app')

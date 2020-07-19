@@ -72,14 +72,12 @@
 </template>
 
 <script>
-    import Loader from '@/components/ui/loader'
     import ChangePassword from "./tabs/ChangePassword";
     import ChangeProfile from "./tabs/ChangeProfile";
     
     export default {
         name: 'Profile',
         components: {
-            Loader,
             ChangePassword,
             ChangeProfile
         },

@@ -67,14 +67,9 @@
 
 <script>
     import $ from "jquery";
-    import Loader from '../../components/ui/loader'
     
     export default {
         name: 'Login',
-        components: {
-            Loader
-        },
-        
         data(){
             return {
                 formData : {
