@@ -10,7 +10,7 @@
                                 <img src="/assets/images/user-lg.jpg" alt="AdminBSB - Profile Image"/>
                             </div>
                             <div class="content-area">
-                                <h3>Marc K. Hammond</h3>
+                                <h4>{{ userInfo.name }}</h4>
                                 <p>Web Software Developer</p>
                                 <p>Administrator</p>
                             </div>
@@ -20,10 +20,6 @@
                                 <li>
                                     <span>Followers</span>
                                     <span>1.234</span>
-                                </li>
-                                <li>
-                                    <span>Following</span>
-                                    <span>1.201</span>
                                 </li>
                                 <li>
                                     <span>Friends</span>
@@ -72,6 +68,7 @@
 </template>
 
 <script>
+    import {mapGetters} from "vuex";
     import ChangePassword from "./tabs/ChangePassword";
     import ChangeProfile from "./tabs/ChangeProfile";
     
@@ -81,18 +78,11 @@
             ChangePassword,
             ChangeProfile
         },
-        
-        data() {
-            return {
-                showCheckPasswordForm: true,
-                formData: {},
-                formErrors: {},
-                loader: false
-            }
+
+        computed: {
+            ...mapGetters({
+                userInfo: 'user/userInfo'
+            })
         },
-        
-        methods: {
-        
-        }
     }
 </script>

@@ -57,11 +57,20 @@
 
     export default {
         name: 'LeftSideBar',
+        mounted() {
+            this.getProfileInfo()
+        },
         
         computed: {
             ...mapGetters({
-                userInfo : 'auth/user'
+                userInfo : 'user/userInfo'
             })
+        },
+        
+        methods: {
+            getProfileInfo() {
+                this.$store.dispatch('user/getProfile')
+            }
         }
     }
 </script>
