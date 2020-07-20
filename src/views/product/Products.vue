@@ -99,38 +99,23 @@
                         this.products = res.data.products
                     })
                     .catch(err => {
-                        //handle error
+                        this.loader = false
+                        this.$errorToast(err.response.data.message)
                     })
             },
-            
+
             deleteProduct(product) {
-                Swal.fire({
-                    title: 'Are you sure?',
-                    text: "You won't be able to revert this!",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes, delete it!'
-                }).then((result) => {
+                this.$showConfirmMessage().then(result => {
                     if (result.value) {
-                        
                         this.$store.dispatch('product/deleteProduct', {
                             id: product.id
                         })
                             .then(res => {
                                 this.getProducts()
-                                
-                                toast.fire({
-                                    icon: 'success',
-                                    title: 'Product has been deleted Successful!'
-                                })
+                                this.$successToast('Product has been deleted Successful!');
                             })
                             .catch(err => {
-                                toast.fire({
-                                    icon: 'error',
-                                    title: err.response.data.message
-                                })
+                                this.$errorToast(err.response.data.message)
                             })
                     }
                 })
