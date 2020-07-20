@@ -8,7 +8,7 @@
                     
                     <div class="card">
                         <div class="header">
-                            <button type="button" class="btn btn-xs btn-success waves-effect pull-right">
+                            <button type="button" class="btn btn-sm btn-success waves-effect pull-right" style="top: -8px">
                                 <i class="material-icons">add</i><span>CREATE</span>
                             </button>
                             <h2>Products</h2>
@@ -60,7 +60,7 @@
                                             <button type="button" class="btn btn-xs btn-primary waves-effect m-r-5">
                                                 <i class="material-icons">edit</i><span>EDIT</span>
                                             </button>
-                                            <button type="button" class="btn btn-xs btn-danger waves-effect">
+                                            <button @click="deleteProduct(product)" type="button" class="btn btn-xs btn-danger waves-effect">
                                                 <i class="material-icons">delete</i><span>DELETE</span>
                                             </button>
                                         </td>
@@ -101,6 +101,39 @@
                     .catch(err => {
                         //handle error
                     })
+            },
+            
+            deleteProduct(product) {
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.value) {
+                        
+                        this.$store.dispatch('product/deleteProduct', {
+                            id: product.id
+                        })
+                            .then(res => {
+                                this.getProducts()
+                                
+                                toast.fire({
+                                    icon: 'success',
+                                    title: 'Product has been deleted Successful!'
+                                })
+                            })
+                            .catch(err => {
+                                toast.fire({
+                                    icon: 'error',
+                                    title: err.response.data.message
+                                })
+                            })
+                    }
+                })
             }
         }
     }

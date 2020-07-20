@@ -2,7 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import toaster from './plugins/toaster'
+import toaster from './plugins/swal'
 import axios from './axios'
 import './helper'
 
