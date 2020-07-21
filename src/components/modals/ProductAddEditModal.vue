@@ -1,0 +1,101 @@
+<template>
+    <div class="modal fade" id="defaultModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="defaultModalLabel">{{ updateForm ? 'Update' : 'Create' }} product</h4>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <div class="form-group">
+                            <div class="form-line">
+                                <input type="text" class="form-control"
+                                   v-model="formData.name" autofocus
+                                   @input="formErrors.name = ''"
+                                   placeholder="Name">
+                            </div>
+                            <label v-if="formErrors.name" class="error">{{ formErrors.name }}</label>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="form-line">
+                                <input type="text" class="form-control"
+                                   v-model="formData.description" autofocus
+                                   @input="formErrors.description = ''"
+                                   placeholder="Description">
+                            </div>
+                            <label v-if="formErrors.description" class="error">{{ formErrors.description }}</label>
+                        </div>
+    
+                        <div class="form-group">
+                            <div class="form-line">
+                                <input type="text" class="form-control"
+                                   v-model="formData.price" autofocus
+                                   @input="formErrors.price = ''"
+                                   placeholder="Price">
+                            </div>
+                            <label v-if="formErrors.price" class="error">{{ formErrors.price }}</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">CLOSE</button>
+                    <button @click="addProduct" type="button" class="btn btn-success waves-effect">
+                        {{ updateForm ? 'Update' : 'Submit' }}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script>
+    export default {
+        name: 'Product-Add-Edit-Modal',
+        props: {
+            updateForm: {
+                type: Boolean,
+                default: false
+            }
+        },
+        
+        data() {
+            return {
+                formData: {},
+                formErrors: {},
+            }
+        },
+        
+        methods: {
+            resetModal() {
+                this.formData = this.formErrors = {}
+            },
+            
+            addProduct() {
+                this.$store.dispatch('product/createProduct', {
+                    inputs: this.formData
+                })
+                    .then(res => {
+                        toast.fire({
+                            icon: 'success',
+                            title: 'Product has been created Successful!'
+                        });
+                        
+                        this.$emit('modalClose')
+                        $('#defaultModal').modal('hide')
+                        this.resetModal()
+                    })
+                    .catch(err => {
+                        if (err.response.data.errors){
+                            this.formErrors = err.response.data.errors
+                        }else {
+                            toast.fire({
+                                icon: 'error',
+                                title: err.response.data.message
+                            })
+                        }
+                    })
+            }
+        }
+    }
+</script>
