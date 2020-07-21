@@ -48,7 +48,7 @@
                                         </a>
                                     </li>
                                     <li role="presentation">
-                                        <a href="#change_password_settings" aria-controls="settings" role="tab" data-toggle="tab">
+                                        <a @click="showCheckPasswordForm=true" href="#change_password_settings" aria-controls="settings" role="tab" data-toggle="tab">
                                             Change Password
                                         </a>
                                     </li>
@@ -62,7 +62,9 @@
                                         <h4>Image upload</h4>
                                     </div>
                                     
-                                    <change-password/>
+                                    <change-password
+                                        :show-check-password-form.sync="showCheckPasswordForm"
+                                    />
                                     
                                 </div>
                             </div>
@@ -81,6 +83,12 @@
     
     export default {
         name: 'Profile',
+        data() {
+            return {
+                showCheckPasswordForm: true
+            }
+        },
+        
         components: {
             ChangePassword,
             ChangeProfile

@@ -3,7 +3,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="defaultModalLabel">{{ updateForm ? 'Update' : 'Create' }} product</h4>
+                    <h4 class="modal-title" id="defaultModalLabel">{{ updateModal ? 'Update '+formData.name : 'Create' }} product</h4>
                 </div>
                 <div class="modal-body">
                     <div>
@@ -19,10 +19,12 @@
                         
                         <div class="form-group">
                             <div class="form-line">
-                                <input type="text" class="form-control"
-                                   v-model="formData.description" autofocus
+                                <textarea class="form-control" id="InputExperience"
+                                   v-model="formData.description"
                                    @input="formErrors.description = ''"
-                                   placeholder="Description">
+                                   rows="3" placeholder="Description"
+                                >
+                                </textarea>
                             </div>
                             <label v-if="formErrors.description" class="error">{{ formErrors.description }}</label>
                         </div>
@@ -40,8 +42,8 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">CLOSE</button>
-                    <button @click="addProduct" type="button" class="btn btn-success waves-effect">
-                        {{ updateForm ? 'Update' : 'Submit' }}
+                    <button @click="updateModal ? updateProduct() : addProduct()" type="button" class="btn btn-success waves-effect">
+                        {{ updateModal ? 'Update' : 'Submit' }}
                     </button>
                 </div>
     
@@ -56,7 +58,11 @@
     export default {
         name: 'Product-Add-Edit-Modal',
         props: {
-            updateForm: {
+            editData: {
+                type: Object,
+                default: () => ({})
+            },
+            updateModal: {
                 type: Boolean,
                 default: false
             },
@@ -98,23 +104,58 @@
                         this.resetModal()
                     })
                     .catch(err => {
+                        this.handleError()
+                    })
+            },
+
+            updateProduct() {
+                this.loader = true
+
+                this.$store.dispatch('product/updateProduct', {
+                    inputs: this.formData
+                })
+                    .then(res => {
                         this.loader = false
 
-                        if (err.response.data.errors) {
-                            this.formErrors = err.response.data.errors
-                        } else {
-                            this.$errorToast(err.response.data.message)
-                        }
+                        this.$successToast('Product has been updated Successful!')
+
+                        $('#defaultModal').modal('hide')
+
+                        this.$emit('modalClose')
+
+                        this.resetModal()
                     })
+                    .catch(err => {
+                        this.handleError()
+                    })
+            },
+
+            handleError(err) {
+                this.loader = false
+
+                if (err.response.data.errors) {
+                    this.formErrors = err.response.data.errors
+                } else {
+                    this.$errorToast(err.response.data.message)
+                }
             }
         },
 
         watch  : {
             countResetModal: {
                 handler() {
-                   this.resetModal()
+                    this.resetModal()
+                    
+                    if (this.updateModal){
+                        this.formData = this.$_.cloneDeep(this.editData)
+                        
+                        // let tempFormData = this.$_.cloneDeep(this.editData)
+                        // this.$set(this.formData, 'name', tempFormData.name);
+                        // this.$set(this.formData, 'description', tempFormData.description);
+                        // this.$set(this.formData, 'price', tempFormData.price);
+                    }
                 },
-                deep     : true,
+                deep: true,
                 immediate: true
             }
         }

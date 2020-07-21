@@ -68,7 +68,7 @@
             
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
-                    <button @click="changeProfile" class="btn btn-danger">SUBMIT</button>
+                    <button @click="changeProfile" class="btn btn-success">SUBMIT</button>
                 </div>
             </div>
         </div>
@@ -87,7 +87,6 @@
                     name: '',
                     email: '',
                     address: '',
-                    //agree: false
                 },
                 formErrors: {}
             }
@@ -115,8 +114,6 @@
                 Object.keys(this.formData).forEach(field => {
                     this.formData[field] = this.userInfo[field]
                 })
-                
-                //this.formData.agree = false
             },
             
             changeProfile() {
@@ -127,11 +124,7 @@
                 })
                     .then(res => {
                         this.loader = false
-
-                        toast.fire({
-                            icon: 'success',
-                            title: 'Profile has been changed Successful!'
-                        })
+                        this.$successToast('Profile has been changed Successful!')
                     })
                     .catch(err => {
                         this.loader = false
@@ -139,10 +132,7 @@
                         if (err.response.data.errors) {
                             this.formErrors = err.response.data.errors
                         } else {
-                            toast.fire({
-                                icon: 'error',
-                                title: err.response.data.message
-                            })
+                            this.$errorToast(err.response.data.message)
                         }
                     })
             }

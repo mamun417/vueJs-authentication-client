@@ -25,7 +25,7 @@
             
             <div class="form-group">
                 <div class="col-sm-offset-3 col-sm-9">
-                    <button @click="checkPassword" class="btn btn-danger">CHECK</button>
+                    <button @click="checkPassword" class="btn btn-success">CHECK</button>
                 </div>
             </div>
         </div>
@@ -71,7 +71,7 @@
             
             <div class="form-group">
                 <div class="col-sm-offset-3 col-sm-9">
-                    <button @click="changePassword" class="btn btn-danger">CHANGE</button>
+                    <button @click="changePassword" class="btn btn-success">CHANGE</button>
                 </div>
             </div>
         </div>
@@ -81,10 +81,16 @@
 <script>
     export default {
         name: 'Change-Password',
+        props: {
+            showCheckPasswordForm: {
+                type: Boolean,
+                default: true
+            }
+        },
+        
         data() {
             return {
                 loader: false,
-                showCheckPasswordForm: true,
                 formData: {},
                 formErrors: {}
             }
@@ -100,7 +106,7 @@
                     .then(res => {
                         this.loader = false
                         this.formData = {}
-                        this.showCheckPasswordForm = false
+                        this.$emit('update:showCheckPasswordForm', false)
                     })
                     .catch(err => {
                         this.handleError(err)
@@ -115,13 +121,8 @@
                 })
                     .then(res => {
                         this.loader = false
-
-                        toast.fire({
-                            icon: 'success',
-                            title: 'Password has been changed Successful!'
-                        })
-
-                        this.showCheckPasswordForm = true
+                        this.$successToast('Password has been changed Successful!')
+                        this.$emit('update:showCheckPasswordForm', false)
                     })
                     .catch(err => {
                         this.handleError(err)
@@ -134,10 +135,7 @@
                 if (err.response.data.errors) {
                     this.formErrors = err.response.data.errors
                 } else {
-                    toast.fire({
-                        icon: 'error',
-                        title: err.response.data.message
-                    })
+                  this.$errorToast(err.response.data.message)
                 }
             }
         }

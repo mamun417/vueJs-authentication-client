@@ -8,7 +8,7 @@
                     
                     <div class="card">
                         <div class="header">
-                            <button @click="handleAddModal" type="button"
+                            <button @click="handleCreateButtonClick" type="button"
                                 data-toggle="modal" data-target="#defaultModal"
                                 class="btn btn-sm btn-success waves-effect pull-right"
                                 style="top: -8px">
@@ -24,7 +24,7 @@
                                         <th style="width: 35%">DESCRIPTION</th>
                                         <th class="text-center">PRICE</th>
                                         <th class="text-center">IMAGE</th>
-                                        <th class="text-center">CREATE AT</th>
+                                        <th class="text-center">CREATED AT</th>
                                         <th class="text-center">ACTION</th>
                                     </tr>
                                 </thead>
@@ -60,7 +60,9 @@
                                         <td class="text-center">{{ $dateFormat(product.created_at) }}</td>
                                         
                                         <td class="text-center">
-                                            <button type="button" class="btn btn-xs btn-primary waves-effect m-r-5">
+                                            <button @click="handleEditButtonClick(product)"
+                                                data-toggle="modal" data-target="#defaultModal"
+                                                type="button" class="btn btn-xs btn-primary waves-effect m-r-5">
                                                 <i class="material-icons">edit</i><span>EDIT</span>
                                             </button>
                                             <button @click="deleteProduct(product)" type="button" class="btn btn-xs btn-danger waves-effect">
@@ -76,6 +78,8 @@
                 
                 <product-add-edit-modal
                     :count-reset-modal.sync="countResetModal"
+                    :edit-data="selectedForEdit"
+                    :update-modal="updateModal"
                     @modalClose="getProducts"
                 />
                 
@@ -85,7 +89,6 @@
 </template>
 
 <script>
-    import $ from 'jquery'
     import ProductAddEditModal from "../../components/modals/ProductAddEditModal";
     
     export default {
@@ -96,8 +99,10 @@
         data(){
             return {
                 products: {},
-                loader: false,
-                countResetModal: 1
+                selectedForEdit: {},
+                updateModal: false,
+                countResetModal: 1,
+                loader: false
             }
         },
         
@@ -106,8 +111,19 @@
         },
         
         methods: {
-            handleAddModal() {
+            handleResetModal() {
                 this.countResetModal++
+            },
+
+            handleCreateButtonClick() {
+                this.updateModal = false
+                this.handleResetModal()
+            },
+            
+            handleEditButtonClick(data) {
+                this.selectedForEdit = data
+                this.updateModal = true
+                this.handleResetModal()
             },
             
             getProducts(){
