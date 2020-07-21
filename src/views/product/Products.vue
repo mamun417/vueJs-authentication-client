@@ -75,6 +75,7 @@
                 </div>
                 
                 <product-add-edit-modal
+                    :count-reset-modal.sync="countResetModal"
                     @modalClose="getProducts"
                 />
                 
@@ -96,6 +97,7 @@
             return {
                 products: {},
                 loader: false,
+                countResetModal: 1
             }
         },
         
@@ -105,7 +107,7 @@
         
         methods: {
             handleAddModal() {
-            
+                this.countResetModal++
             },
             
             getProducts(){

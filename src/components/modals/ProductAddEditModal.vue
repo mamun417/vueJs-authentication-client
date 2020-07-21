@@ -44,6 +44,9 @@
                         {{ updateForm ? 'Update' : 'Submit' }}
                     </button>
                 </div>
+    
+                <loader v-if="loader"/>
+
             </div>
         </div>
     </div>
@@ -56,6 +59,10 @@
             updateForm: {
                 type: Boolean,
                 default: false
+            },
+            countResetModal: {
+                type: Number,
+                default: 1
             }
         },
         
@@ -63,38 +70,52 @@
             return {
                 formData: {},
                 formErrors: {},
+                loader: false
             }
         },
         
         methods: {
             resetModal() {
-                this.formData = this.formErrors = {}
+                this.formData = {}
+                this.formErrors = {}
             },
             
             addProduct() {
+                this.loader = true
+
                 this.$store.dispatch('product/createProduct', {
                     inputs: this.formData
                 })
                     .then(res => {
-                        toast.fire({
-                            icon: 'success',
-                            title: 'Product has been created Successful!'
-                        });
+                        this.loader = false
+                        
+                        this.$successToast('Product has been created Successful!')
+                        
+                        $('#defaultModal').modal('hide')
                         
                         this.$emit('modalClose')
-                        $('#defaultModal').modal('hide')
+                        
                         this.resetModal()
                     })
                     .catch(err => {
-                        if (err.response.data.errors){
+                        this.loader = false
+
+                        if (err.response.data.errors) {
                             this.formErrors = err.response.data.errors
-                        }else {
-                            toast.fire({
-                                icon: 'error',
-                                title: err.response.data.message
-                            })
+                        } else {
+                            this.$errorToast(err.response.data.message)
                         }
                     })
+            }
+        },
+
+        watch  : {
+            countResetModal: {
+                handler() {
+                   this.resetModal()
+                },
+                deep     : true,
+                immediate: true
             }
         }
     }
