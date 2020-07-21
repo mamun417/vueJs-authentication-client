@@ -21,3 +21,6 @@ td > .btn {
 table > tbody > tr > td {
     vertical-align: middle!important;
 }
+.modal-dialog {
+    width: 400px!important;
+}

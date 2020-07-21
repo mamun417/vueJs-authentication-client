@@ -8,7 +8,10 @@
                     
                     <div class="card">
                         <div class="header">
-                            <button type="button" class="btn btn-sm btn-success waves-effect pull-right" style="top: -8px">
+                            <button @click="handleAddModal" type="button"
+                                data-toggle="modal" data-target="#defaultModal"
+                                class="btn btn-sm btn-success waves-effect pull-right"
+                                style="top: -8px">
                                 <i class="material-icons">add</i><span>CREATE</span>
                             </button>
                             <h2>Products</h2>
@@ -70,18 +73,29 @@
                         </div>
                     </div>
                 </div>
+                
+                <product-add-edit-modal
+                    @modalClose="getProducts"
+                />
+                
             </div>
         </div>
     </section>
 </template>
 
 <script>
+    import $ from 'jquery'
+    import ProductAddEditModal from "../../components/modals/ProductAddEditModal";
+    
     export default {
         name: 'Product',
+        components: {
+            ProductAddEditModal
+        },
         data(){
             return {
                 products: {},
-                loader: false
+                loader: false,
             }
         },
         
@@ -90,6 +104,10 @@
         },
         
         methods: {
+            handleAddModal() {
+            
+            },
+            
             getProducts(){
                 this.loader = true
                 

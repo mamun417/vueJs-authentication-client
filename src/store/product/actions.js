@@ -1,3 +1,15 @@
+export function createProduct(context, payload) {
+    return new Promise((resolve, reject) => {
+        axios.post('products', payload.inputs)
+            .then(res => {
+                resolve(res)
+            })
+            .catch(err => {
+                reject(err)
+            })
+    })
+}
+
 export function getProducts() {
     return new Promise((resolve, reject) => {
         axios.get('products')

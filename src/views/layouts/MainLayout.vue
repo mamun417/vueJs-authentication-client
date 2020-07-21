@@ -12,7 +12,6 @@
 </template>
 
 <script>
-    import $ from 'jquery'
     
     import TopBar from '../element/TopBar.vue'
     import LeftSidebar from '../element/LeftSidebar.vue'
