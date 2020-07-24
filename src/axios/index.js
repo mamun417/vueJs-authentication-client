@@ -10,6 +10,7 @@ axios.interceptors.request.use(
     req => {
         const token = localStorage.getItem('token');
 
+        console.log('p h')
         if (token) {
             req.headers['Authorization'] = 'Bearer ' + token
         }
@@ -21,7 +22,6 @@ axios.interceptors.request.use(
     }
 )
 
-
 // handle before res is send to client
 axios.interceptors.response.use(
     res => {
@@ -29,14 +29,43 @@ axios.interceptors.response.use(
     },
     err => {
         if (err.response.status === 401) {
-            console.log('forbidden')
             store.dispatch('auth/logout')
                 .then(() => {
                     return router.push('login');
                 })
         }
 
-        return Promise.reject(err)
+       /* let errorCode = err.response.status
+
+        if (errorCode === 401) {
+            console.log('bbbbbbb')
+            store.dispatch('auth/refreshToken')
+                .then(res => {
+
+                    console.log('401')
+
+                    toast.fire({
+                        icon: 'success',
+                        title: 'Token has been updated Successful!'
+                    })
+
+                    let token = res.data.access_token
+                    //axios.defaults.headers.common['Authorization'] = 'Bearer ' + token
+                    console.log('2')
+                    return axios(err.config).then(res => {
+                        console.log(res)
+                    })
+                })
+                .catch(err => {
+                    //
+                })
+        } else if (errorCode === 422) { // Refresh token is expired or Invalid token
+            store.dispatch('auth/logout').then(() => {
+                return router.push('login');
+            })
+        } else {
+            return Promise.reject(err)
+        }*/
     }
 )
 

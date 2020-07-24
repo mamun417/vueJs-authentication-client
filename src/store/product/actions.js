@@ -1,3 +1,16 @@
+export function getProducts() {
+    console.log('getProducts')
+    return new Promise((resolve, reject) => {
+        axios.get('products')
+            .then(res => {
+                resolve(res)
+            })
+            .catch(err => {
+                reject(err)
+            })
+    })
+}
+
 export function createProduct(context, payload) {
     return new Promise((resolve, reject) => {
         axios.post('products', payload.inputs)
@@ -13,18 +26,6 @@ export function createProduct(context, payload) {
 export function updateProduct(context, payload) {
     return new Promise((resolve, reject) => {
         axios.patch('products/'+payload.inputs.id, payload.inputs)
-            .then(res => {
-                resolve(res)
-            })
-            .catch(err => {
-                reject(err)
-            })
-    })
-}
-
-export function getProducts() {
-    return new Promise((resolve, reject) => {
-        axios.get('products')
             .then(res => {
                 resolve(res)
             })

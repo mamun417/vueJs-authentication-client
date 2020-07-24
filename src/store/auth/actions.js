@@ -26,6 +26,19 @@ export function login(context, payload) {
     })
 }
 
+export function refreshToken(context, payload) {
+    return new Promise((resolve, reject) => {
+        axios.post('auth/refresh')
+            .then(res => {
+                context.commit('updateToken', res.data.access_token)
+                resolve(res)
+            })
+            .catch(err => {
+                reject(err)
+            })
+    })
+}
+
 export function logout(context) {
     return new Promise((resolve) => {
         context.commit('authOut');

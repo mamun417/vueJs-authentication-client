@@ -6,6 +6,11 @@ export function authSuccess(state, userInfo) {
     //state.user = userInfo.user;
 }
 
+export function updateToken(state, token) {
+    localStorage.setItem('token', token)
+    state.token = token
+}
+
 export function authOut(state) {
     localStorage.clear();
     state.token = '';

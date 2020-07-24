@@ -74,7 +74,7 @@
             return {
                 formData : {
                     email : 'test@gmail.com',
-                    password : '11111111'
+                    password : '111111'
                 },
                 formErrors : {},
                 loader: false

@@ -136,7 +136,6 @@
                     })
                     .catch(err => {
                         this.loader = false
-                        this.$errorToast(err.response.data.message)
                     })
             },
 
