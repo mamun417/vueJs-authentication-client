@@ -16,3 +16,7 @@ export function authOut(state) {
     state.token = '';
     //state.user = {};
 }
+
+export function updateTokenRefreshing(state, payload) {
+    state.tokenRefreshing = payload.status
+}

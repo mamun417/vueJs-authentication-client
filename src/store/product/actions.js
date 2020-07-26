@@ -1,5 +1,4 @@
 export function getProducts() {
-    console.log('getProducts')
     return new Promise((resolve, reject) => {
         axios.get('products')
             .then(res => {

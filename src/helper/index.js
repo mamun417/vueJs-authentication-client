@@ -7,7 +7,7 @@ Vue.prototype.$moment = moment;
 Vue.prototype.$_ = lodash;
 
 Vue.prototype.$dateFormat = function (date, format= 'DD-MM-YYYY') {
-    return moment(parseInt(date)).format(format)
+    return moment(date).format(format)
 }
 
 Vue.prototype.$successToast = function (title) {

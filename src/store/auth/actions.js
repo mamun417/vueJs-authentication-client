@@ -69,3 +69,10 @@ export function resetPassword(context, payload) {
             })
     })
 }
+
+export function updateTokenRefreshing(context, payload) {
+    return new Promise((resolve) => {
+        context.commit('updateTokenRefreshing', payload);
+        resolve(true)
+    })
+}

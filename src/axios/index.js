@@ -10,7 +10,6 @@ axios.interceptors.request.use(
     req => {
         const token = localStorage.getItem('token');
 
-        console.log('p h')
         if (token) {
             req.headers['Authorization'] = 'Bearer ' + token
         }
@@ -28,45 +27,46 @@ axios.interceptors.response.use(
         return res
     },
     err => {
-        if (err.response.status === 401) {
-            store.dispatch('auth/logout')
-                .then(() => {
-                    return router.push('login');
-                })
-        }
+        let errorCode = err.response.status,
+            tokenRefreshing = store.getters['auth/tokenRefreshing']
 
-       /* let errorCode = err.response.status
+        if (errorCode === 401 && !tokenRefreshing) {
+            store.dispatch('auth/updateTokenRefreshing', {status: true})
 
-        if (errorCode === 401) {
-            console.log('bbbbbbb')
+            console.log('hit refresh')
+
             store.dispatch('auth/refreshToken')
                 .then(res => {
-
-                    console.log('401')
-
                     toast.fire({
                         icon: 'success',
                         title: 'Token has been updated Successful!'
                     })
 
-                    let token = res.data.access_token
-                    //axios.defaults.headers.common['Authorization'] = 'Bearer ' + token
-                    console.log('2')
-                    return axios(err.config).then(res => {
-                        console.log(res)
-                    })
+                    store.dispatch('auth/updateTokenRefreshing', {status: false}) // although tokenRefreshing define false after page reload
+                        .then(res => {
+                            window.location.reload(true)
+                        })
                 })
                 .catch(err => {
-                    //
+                    dispatchLogout()
                 })
-        } else if (errorCode === 422) { // Refresh token is expired or Invalid token
-            store.dispatch('auth/logout').then(() => {
-                return router.push('login');
-            })
+        } else if (errorCode === 422 &&
+            (
+                err.response.data.message === 'Expired refresh token' ||
+                err.response.data.message === 'Token could not be parsed from the request.'
+            )
+        ) {
+            dispatchLogout()
         } else {
             return Promise.reject(err)
-        }*/
+        }
     }
 )
+
+function dispatchLogout() {
+    store.dispatch('auth/logout').then(() => {
+        return router.push('login');
+    })
+}
 
 export default axios;

@@ -9,3 +9,7 @@ export function token(state) {
 export function user(state) {
     return state.user;
 }
+
+export function tokenRefreshing(state) {
+    return state.tokenRefreshing;
+}

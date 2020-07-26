@@ -104,7 +104,7 @@
                         this.resetModal()
                     })
                     .catch(err => {
-                        this.handleError()
+                        this.handleError(err)
                     })
             },
 
@@ -126,7 +126,7 @@
                         this.resetModal()
                     })
                     .catch(err => {
-                        this.handleError()
+                        this.handleError(err)
                     })
             },
 

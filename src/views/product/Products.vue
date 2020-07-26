@@ -56,7 +56,6 @@
                                         <td class="text-center">
                                             <!--<img :src="product.image_url" height="60px" width="60px" alt="image not found">-->
                                         </td>
-                                        
                                         <td class="text-center">{{ $dateFormat(product.created_at) }}</td>
                                         
                                         <td class="text-center">
@@ -150,7 +149,7 @@
                                 this.$successToast('Product has been deleted Successful!');
                             })
                             .catch(err => {
-                                this.$errorToast(err.response.data.message)
+                                //
                             })
                     }
                 })
