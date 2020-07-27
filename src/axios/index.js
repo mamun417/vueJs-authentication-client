@@ -31,42 +31,25 @@ axios.interceptors.response.use(
             tokenRefreshing = store.getters['auth/tokenRefreshing']
 
         if (errorCode === 401 && !tokenRefreshing) {
-            store.dispatch('auth/updateTokenRefreshing', {status: true})
+            store.commit('auth/updateTokenRefreshing', {status: true})
 
-            console.log('hit refresh')
-
-            store.dispatch('auth/refreshToken')
-                .then(res => {
-                    toast.fire({
-                        icon: 'success',
-                        title: 'Token has been updated Successful!'
-                    })
-
-                    store.dispatch('auth/updateTokenRefreshing', {status: false}) // although tokenRefreshing define false after page reload
-                        .then(res => {
-                            window.location.reload(true)
-                        })
-                })
-                .catch(err => {
-                    dispatchLogout()
-                })
+            store.dispatch('auth/refreshToken').then(res => {
+                window.location.reload(true)
+            })
         } else if (errorCode === 422 &&
             (
                 err.response.data.message === 'Expired refresh token' ||
                 err.response.data.message === 'Token could not be parsed from the request.'
             )
         ) {
-            dispatchLogout()
+            store.dispatch('auth/logout').then(() => {
+                store.commit('auth/updateTokenRefreshing', {status: false})
+                return router.push('login');
+            })
         } else {
             return Promise.reject(err)
         }
     }
 )
-
-function dispatchLogout() {
-    store.dispatch('auth/logout').then(() => {
-        return router.push('login');
-    })
-}
 
 export default axios;

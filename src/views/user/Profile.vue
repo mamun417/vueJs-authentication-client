@@ -7,7 +7,7 @@
                         <div class="profile-header">&nbsp;</div>
                         <div class="profile-body">
                             <div class="image-area">
-                                <img src="/assets/images/user-lg.jpg" alt="AdminBSB - Profile Image"/>
+                                <img :src="userInfo.image_url || '/assets/images/user-lg.jpg'" height="128px" width="128px" alt="AdminBSB - Profile Image"/>
                             </div>
                             <div class="content-area">
                                 <h4>{{ userInfo.name }}</h4>
@@ -55,12 +55,9 @@
                                 </ul>
                                 
                                 <div class="tab-content">
-                                    
                                     <change-profile/>
                                     
-                                    <div role="tabpanel" class="tab-pane fade in" id="profile_image">
-                                        <h4>Image upload</h4>
-                                    </div>
+                                    <change-image/>
                                     
                                     <change-password
                                         :show-check-password-form.sync="showCheckPasswordForm"
@@ -80,6 +77,7 @@
     import {mapGetters} from "vuex";
     import ChangePassword from "./tabs/ChangePassword";
     import ChangeProfile from "./tabs/ChangeProfile";
+    import ChangeImage from "./tabs/ChangeImage";
     
     export default {
         name: 'Profile',
@@ -90,6 +88,7 @@
         },
         
         components: {
+            ChangeImage,
             ChangePassword,
             ChangeProfile
         },

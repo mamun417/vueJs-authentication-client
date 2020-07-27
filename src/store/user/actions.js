@@ -24,6 +24,19 @@ export function changeProfile(context, payload) {
     })
 }
 
+export function changeImage(context, payload) {
+    return new Promise((resolve, reject) => {
+        axios.post('change/image', payload.inputs)
+            .then(res => {
+                context.commit('updateProfile', res.data.user)
+                resolve(res)
+            })
+            .catch(err => {
+                reject(err)
+            })
+    })
+}
+
 export function checkPassword(context, payload) {
     return new Promise((resolve, reject) => {
         axios.post('password/check', payload.inputs)
