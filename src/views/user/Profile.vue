@@ -7,7 +7,7 @@
                         <div class="profile-header">&nbsp;</div>
                         <div class="profile-body">
                             <div class="image-area">
-                                <img :src="userInfo.image_url || '/assets/images/user-lg.jpg'" height="128px" width="128px" alt="AdminBSB - Profile Image"/>
+                                <img v-lazy="userInfo.image_url || '/assets/images/user-lg.jpg'" height="128px" width="128px" alt="AdminBSB - Profile Image"/>
                             </div>
                             <div class="content-area">
                                 <h4>{{ userInfo.name }}</h4>
@@ -55,7 +55,7 @@
                                 </ul>
                                 
                                 <div class="tab-content">
-                                    <change-profile/>
+                                    <change-profile :user-info="userInfo"/>
                                     
                                     <change-image/>
                                     

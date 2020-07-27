@@ -141,7 +141,7 @@
             }
         },
 
-        watch  : {
+        watch : {
             countResetModal: {
                 handler() {
                     this.resetModal()

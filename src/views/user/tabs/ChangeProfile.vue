@@ -80,6 +80,13 @@
 
     export default {
         name: 'Change-Profile',
+        props: {
+            userInfo: {
+                type: Object,
+                default: () => ({})
+            }
+        },
+        
         data() {
             return {
                 loader: false,
@@ -92,30 +99,7 @@
             }
         },
 
-        mounted() {
-            this.getProfileInfo()
-        },
-
-        computed: {
-            ...mapGetters({
-                userInfo: 'user/userInfo'
-            })
-        },
-        
         methods: {
-            getProfileInfo() {
-                this.$store.dispatch('user/getProfile')
-                    .then(res => {
-                        this.setProfileInfo()
-                    })
-            },
-            
-            setProfileInfo() {
-                Object.keys(this.formData).forEach(field => {
-                    this.formData[field] = this.userInfo[field]
-                })
-            },
-            
             changeProfile() {
                 this.loader = true
 
@@ -135,6 +119,18 @@
                             this.$errorToast(err.response.data.message)
                         }
                     })
+            }
+        },
+
+        watch : {
+            userInfo: {
+                handler() {
+                    Object.keys(this.formData).forEach(field => {
+                        this.formData[field] = this.userInfo[field]
+                    })
+                },
+                deep: true,
+                immediate: true
             }
         }
     }
