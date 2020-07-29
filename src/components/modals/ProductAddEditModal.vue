@@ -118,7 +118,7 @@
                         
                         $('#defaultModal').modal('hide')
                         
-                        this.$emit('modalClose')
+                        this.$emit('addProduct')
                         
                         this.resetModal()
                     })
@@ -139,8 +139,8 @@
                         this.$successToast('Product has been updated Successful!')
 
                         $('#defaultModal').modal('hide')
-
-                        this.$emit('modalClose')
+                        
+                        this.$emit('updateProduct', res.data.product)
 
                         this.resetModal()
                     })

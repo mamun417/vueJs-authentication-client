@@ -79,7 +79,8 @@
                     :count-reset-modal.sync="countResetModal"
                     :edit-data="selectedForEdit"
                     :update-modal="updateModal"
-                    @modalClose="getProducts"
+                    @addProduct="getProducts"
+                    @updateProduct="handleProductUpdate"
                 />
                 
             </div>
@@ -125,6 +126,16 @@
                 this.updateModal = true
                 this.handleResetModal()
             },
+
+            handleProductUpdate(updatedData) {
+                this.products.map(product => {
+                    if (product.id === updatedData.id) {
+                        Object.keys(product).forEach(key => {
+                            product[key] = updatedData[key]
+                        })
+                    }
+                })
+            },
             
             getProducts(){
                 this.loader = true
@@ -146,7 +157,8 @@
                             id: product.id
                         })
                             .then(res => {
-                                this.getProducts()
+                                //this.getProducts()
+                                this.products.splice(this.products.indexOf(product), 1)
                                 this.$successToast('Product has been deleted Successful!');
                             })
                             .catch(err => {
