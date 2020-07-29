@@ -38,6 +38,15 @@
                             </div>
                             <label v-if="formErrors.price" class="error">{{ formErrors.price }}</label>
                         </div>
+                        
+                        <div class="form-group">
+                            <div class="form-line">
+                                <input @change="onLoadProfileImage" type="file" ref="image" class="form-control">
+                            </div>
+                            <label v-if="formErrors.image" class="error">
+                                {{ formErrors.image }}
+                            </label>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -76,21 +85,31 @@
             return {
                 formData: {},
                 formErrors: {},
+                image: '',
                 loader: false
             }
         },
         
         methods: {
+            onLoadProfileImage(e) {
+                this.formErrors.image = ''
+                this.image = e.target.files[0];
+            },
+            
             resetModal() {
                 this.formData = {}
                 this.formErrors = {}
+
+                if (this.$refs.image) {
+                    this.$refs.image.value = null
+                }
             },
             
             addProduct() {
                 this.loader = true
-
+                
                 this.$store.dispatch('product/createProduct', {
-                    inputs: this.formData
+                    inputs: this.appendImage()
                 })
                     .then(res => {
                         this.loader = false
@@ -110,9 +129,9 @@
 
             updateProduct() {
                 this.loader = true
-
+                
                 this.$store.dispatch('product/updateProduct', {
-                    inputs: this.formData
+                    inputs: this.appendImage(false)
                 })
                     .then(res => {
                         this.loader = false
@@ -128,6 +147,22 @@
                     .catch(err => {
                         this.handleError(err)
                     })
+            },
+            
+            appendImage(postMethod = true) {
+                let fd = new FormData()
+
+                if (!postMethod) {
+                    fd.append('_method', 'put')
+                }
+                
+                fd.append('image', this.image)
+                
+                for(let key in this.formData) {
+                    fd.append(key, this.formData[key]);
+                }
+                
+                return fd
             },
 
             handleError(err) {

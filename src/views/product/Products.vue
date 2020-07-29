@@ -32,14 +32,14 @@
                                     <tr v-for="(product, key) in products">
                                         <td>{{ product.name }}</td>
                                         <td>
-                                            {{ $_.upperFirst(product.description).substring(0, 80) }}
+                                            {{ $_.upperFirst(product.description).substring(0, descriptionLength) }}
                                             
                                             <div class="collapse" :id="'collapseExample'+key">
-                                                {{ product.description.substring(85) }}
+                                                {{ product.description.substring(descriptionLength) }}
                                             </div>
                                             
                                             <button data-parent="#accordion_1"
-                                                v-if="product.description.length > 80"
+                                                v-if="product.description.length > descriptionLength"
                                                 class="btn btn-info waves-effect" type="button"
                                                 data-toggle="collapse"
                                                 :data-target="'#collapseExample'+key"
@@ -54,7 +54,7 @@
                                         <td class="text-center">{{ product.price }} TK</td>
                                         
                                         <td class="text-center">
-                                            <!--<img :src="product.image_url" height="60px" width="60px" alt="image not found">-->
+                                            <img v-if="product.image" :src="product.image_url" height="60px" width="60px" alt="image not found">
                                         </td>
                                         <td class="text-center">{{ $dateFormat(product.created_at) }}</td>
                                         
@@ -101,7 +101,8 @@
                 selectedForEdit: {},
                 updateModal: false,
                 countResetModal: 1,
-                loader: false
+                loader: false,
+                descriptionLength: 80
             }
         },
         

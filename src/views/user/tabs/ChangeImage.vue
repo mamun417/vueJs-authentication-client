@@ -7,7 +7,7 @@
             <div class="form-group">
                 <div class="col-sm-10">
                     <div class="form-line">
-                        <input @change="loadProfileImage" type="file" ref="mamun" class="form-control">
+                        <input @change="onLoadProfileImage" type="file" ref="profileImage" class="form-control">
                     </div>
                     <label v-if="formErrors.image" class="error">
                         {{ formErrors.image }}
@@ -36,9 +36,18 @@
         },
 
         methods: {
-            loadProfileImage(e) {
+            onLoadProfileImage(e) {
                 this.formErrors = {}
-                this.image = e.target.files[0];
+                this.image = e.target.files[0]
+                
+                /* base_64 imag upload
+                let file = e.target.files[0];
+                let reader = new FileReader();
+
+                reader.readAsDataURL(file);
+                reader.onloadend = (file) => {
+                    this.image = reader.result;
+                }*/
             },
 
             updateProfile() {
@@ -52,7 +61,7 @@
                 })
                     .then(res => {
                         this.loader = false
-                        this.$refs.mamun.value = null
+                        this.$refs.profileImage.value = null
                         this.image = ''
                         this.$successToast('Image has been changed Successful!')
                     })
