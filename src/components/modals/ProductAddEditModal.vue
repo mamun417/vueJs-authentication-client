@@ -103,7 +103,10 @@ export default {
             this.formData = {}
             this.formErrors = {}
             this.image = ''
-            this.$refs.image.value = ''
+
+            if (this.$refs.image){
+                this.$refs.image.value = ''
+            }
         },
 
         addProduct() {

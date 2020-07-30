@@ -45,3 +45,15 @@ export function deleteProduct(context, payload) {
             })
     })
 }
+
+export function changeStatus(context, payload) {
+    return new Promise((resolve, reject) => {
+        axios.patch('products/change-status/'+payload.inputs.id)
+            .then(res => {
+                resolve(res)
+            })
+            .catch(err => {
+                reject(err)
+            })
+    })
+}

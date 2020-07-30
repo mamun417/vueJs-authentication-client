@@ -3,9 +3,9 @@
         <div class="container-fluid">
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-    
+
                     <loader v-if="loader"/>
-                    
+
                     <div class="card">
                         <div class="header">
                             <button @click="handleCreateButtonClick" type="button"
@@ -21,23 +21,24 @@
                                 <thead>
                                     <tr>
                                         <th>NAME</th>
-                                        <th style="width: 35%">DESCRIPTION</th>
+                                        <th style="width: 25%">DESCRIPTION</th>
                                         <th class="text-center">PRICE</th>
                                         <th class="text-center">IMAGE</th>
                                         <th class="text-center">CREATED AT</th>
+                                        <th class="text-center" style="width: 10%">STATUS</th>
                                         <th class="text-center">ACTION</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr v-for="(product, key) in products">
                                         <td>{{ product.name }}</td>
-                                        <td>
+                                        <td v-if="product.description">
                                             {{ $_.upperFirst(product.description).substring(0, descriptionLength) }}
-                                            
+
                                             <div class="collapse" :id="'collapseExample'+key">
                                                 {{ product.description.substring(descriptionLength) }}
                                             </div>
-                                            
+
                                             <button data-parent="#accordion_1"
                                                 v-if="product.description.length > descriptionLength"
                                                 class="btn btn-info waves-effect" type="button"
@@ -50,14 +51,24 @@
                                                 MORE
                                             </button>
                                         </td>
-                                        
+                                        <td v-else></td>
+
                                         <td class="text-center">{{ product.price }} TK</td>
-                                        
+
                                         <td class="text-center">
                                             <img v-if="product.image" :src="product.image_url" height="60px" width="60px" alt="image not found">
                                         </td>
+
                                         <td class="text-center">{{ $dateFormat(product.created_at) }}</td>
-                                        
+
+                                        <td class="text-center">
+                                            <div class="demo-switch">
+                                                <div class="switch" style="min-width: auto">
+                                                    <label><input @change="changeStatus(product)" type="checkbox" :checked="product.status"><span class="lever"></span></label>
+                                                </div>
+                                            </div>
+                                        </td>
+
                                         <td class="text-center">
                                             <button @click="handleEditButtonClick(product)"
                                                 data-toggle="modal" data-target="#defaultModal"
@@ -74,7 +85,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <product-add-edit-modal
                     :count-reset-modal.sync="countResetModal"
                     :edit-data="selectedForEdit"
@@ -82,7 +93,7 @@
                     @addProduct="getProducts"
                     @updateProduct="handleProductUpdate"
                 />
-                
+
             </div>
         </div>
     </section>
@@ -90,7 +101,7 @@
 
 <script>
     import ProductAddEditModal from "../../components/modals/ProductAddEditModal";
-    
+
     export default {
         name: 'Product',
         components: {
@@ -106,11 +117,11 @@
                 descriptionLength: 80
             }
         },
-        
+
         mounted() {
             this.getProducts();
         },
-        
+
         methods: {
             handleResetModal() {
                 this.countResetModal++
@@ -120,7 +131,7 @@
                 this.updateModal = false
                 this.handleResetModal()
             },
-            
+
             handleEditButtonClick(data) {
                 this.selectedForEdit = data
                 this.updateModal = true
@@ -136,10 +147,10 @@
                     }
                 })
             },
-            
+
             getProducts(){
                 this.loader = true
-                
+
                 this.$store.dispatch('product/getProducts')
                     .then(res => {
                         this.loader = false
@@ -166,6 +177,18 @@
                             })
                     }
                 })
+            },
+
+            changeStatus(product) {
+                this.$store.dispatch('product/changeStatus', {
+                    inputs: product
+                })
+                    .then(res => {
+                        this.$successToast('Product status has been changed Successful!')
+                    })
+                    .catch(err => {
+                        this.$errorToast(err.response.data.message)
+                    })
             }
         }
     }
