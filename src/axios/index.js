@@ -39,7 +39,8 @@ axios.interceptors.response.use(
         } else if (errorCode === 422 &&
             (
                 err.response.data.message === 'Expired refresh token' ||
-                err.response.data.message === 'Token could not be parsed from the request.'
+                err.response.data.message === 'Token could not be parsed from the request.' ||
+                err.response.data.message === 'Token Signature could not be verified.'
             )
         ) {
             store.dispatch('auth/logout').then(() => {
@@ -47,6 +48,7 @@ axios.interceptors.response.use(
                 return router.push('login');
             })
         } else {
+            store.commit('auth/updateTokenRefreshing', {status: false})
             return Promise.reject(err)
         }
     }
