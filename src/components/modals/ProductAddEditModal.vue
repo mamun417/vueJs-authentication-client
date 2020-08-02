@@ -187,10 +187,18 @@ export default {
                 this.resetModal()
 
                 if (this.updateModal) {
-                    this.formData = this.$_.cloneDeep(this.editData)
+                    let tempData = this.$_.cloneDeep(this.editData)
+
+                    Object.keys(tempData).forEach(key => {
+                        if (tempData[key]){
+                            this.formData[key] = tempData[key]
+                        }
+                    })
+
                     delete this.formData.image
 
                     // let tempFormData = this.$_.cloneDeep(this.editData)
+                    // this.$set(this.formData, 'id', tempFormData.id);
                     // this.$set(this.formData, 'name', tempFormData.name);
                     // this.$set(this.formData, 'description', tempFormData.description);
                     // this.$set(this.formData, 'price', tempFormData.price);
