@@ -16,6 +16,34 @@
                             </button>
                             <h2>Products</h2>
                         </div>
+
+                        <div class="header m-b--20" style="border-bottom: none!important;">
+                            <div class="row clearfix">
+                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control">
+                                            <label class="form-label">Type here...</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                                <select class="form-control show-tick">
+                                                    <option>All</option>
+                                                    <option>Active</option>
+                                                    <option>Inactive</option>
+                                                </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                    <button type="button" class="btn btn-info btn-lg m-l-15 waves-effect">SEARCH</button>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="body table-responsive">
                             <table class="table table-bordered">
                                 <thead>
@@ -82,6 +110,16 @@
                                     </tr>
                                 </tbody>
                             </table>
+
+                            <paginate
+                                :click-handler="handlePagination"
+                                :page-count="paginationMeta.last_page"
+                                :prev-text="'Prev'"
+                                :next-text="'Next'"
+                                :container-class="'pagination'"
+                                style="margin: 0"
+                            />
+
                         </div>
                     </div>
                 </div>
@@ -93,7 +131,6 @@
                     @addProduct="getProducts"
                     @updateProduct="handleProductUpdate"
                 />
-
             </div>
         </div>
     </section>
@@ -114,7 +151,10 @@
                 updateModal: false,
                 countResetModal: 1,
                 loader: false,
-                descriptionLength: 80
+                descriptionLength: 80,
+                paginationMeta: {
+                    last_page: 1
+                }
             }
         },
 
@@ -148,13 +188,15 @@
                 })
             },
 
-            getProducts(){
+            getProducts(page = 1){
                 this.loader = true
 
-                this.$store.dispatch('product/getProducts')
+                this.$store.dispatch('product/getProducts', {page})
                     .then(res => {
                         this.loader = false
-                        this.products = res.data.products
+                        this.products = res.data.products.data
+                        delete res.data.products.data
+                        this.paginationMeta = res.data.products
                     })
                     .catch(err => {
                         this.loader = false
@@ -189,6 +231,10 @@
                     .catch(err => {
                         this.$errorToast(err.response.data.message)
                     })
+            },
+
+            handlePagination(page) {
+                this.getProducts(page)
             }
         }
     }

@@ -1,6 +1,6 @@
-export function getProducts() {
+export function getProducts(context, payload) {
     return new Promise((resolve, reject) => {
-        axios.get('products')
+        axios.get(`products?page=${payload.page}`)
             .then(res => {
                 resolve(res)
             })

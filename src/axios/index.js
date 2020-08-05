@@ -33,6 +33,8 @@ axios.interceptors.response.use(
         if (errorCode === 401 && !tokenRefreshing) {
             store.commit('auth/updateTokenRefreshing', {status: true})
 
+            console.log('refresh token')
+
             store.dispatch('auth/refreshToken').then(res => {
                 window.location.reload(true)
             })
