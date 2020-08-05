@@ -30,10 +30,10 @@
                                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                                     <div class="form-group form-float">
                                         <div class="form-line">
-                                                <select class="form-control show-tick">
-                                                    <option>All</option>
-                                                    <option>Active</option>
-                                                    <option>Inactive</option>
+                                                <select @change="handlePipeline" class="form-control show-tick">
+                                                    <option value="">All</option>
+                                                    <option value="active">Active</option>
+                                                    <option value="inactive">Inactive</option>
                                                 </select>
                                         </div>
                                     </div>
@@ -44,7 +44,7 @@
                             </div>
                         </div>
 
-                        <div class="body table-responsive">
+                        <div v-if="products.length" class="body table-responsive">
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
@@ -111,15 +111,27 @@
                                 </tbody>
                             </table>
 
-                            <paginate
-                                :click-handler="handlePagination"
-                                :page-count="paginationMeta.last_page"
-                                :prev-text="'Prev'"
-                                :next-text="'Next'"
-                                :container-class="'pagination'"
-                                style="margin: 0"
-                            />
+                            <div style="display: flex;align-items: center">
+                                <div class="m-r-30">
+                                    Showing {{ paginationMeta.from }} to {{ paginationMeta.to }} of {{ paginationMeta.total }} entries
+                                </div>
+                                <paginate
+                                    v-model="paginationMeta.current_page"
+                                    :click-handler="handlePagination"
+                                    :page-count="paginationMeta.last_page"
+                                    :prev-text="'Prev'"
+                                    :next-text="'Next'"
+                                    :container-class="'pagination'"
+                                    style="margin: 0"
+                                />
+                            </div>
 
+                        </div>
+
+                        <div v-else class="body">
+                            <div class="alert alert-warning">
+                                <strong>Warning!</strong> No products found.
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -137,9 +149,9 @@
 </template>
 
 <script>
-    import ProductAddEditModal from "../../components/modals/ProductAddEditModal";
+import ProductAddEditModal from "../../components/modals/ProductAddEditModal";
 
-    export default {
+export default {
         name: 'Product',
         components: {
             ProductAddEditModal
@@ -152,8 +164,13 @@
                 countResetModal: 1,
                 loader: false,
                 descriptionLength: 80,
+                pipeline: {
+                    search: '',
+                    filter: ''
+                },
                 paginationMeta: {
-                    last_page: 1
+                    last_page: 1,
+                    current_page: 1
                 }
             }
         },
@@ -188,10 +205,13 @@
                 })
             },
 
-            getProducts(page = 1){
+            getProducts(){
                 this.loader = true
 
-                this.$store.dispatch('product/getProducts', {page})
+                this.$store.dispatch('product/getProducts', {
+                    paginationMeta: this.paginationMeta,
+                    pipeline: this.pipeline
+                })
                     .then(res => {
                         this.loader = false
                         this.products = res.data.products.data
@@ -210,8 +230,8 @@
                             id: product.id
                         })
                             .then(res => {
-                                //this.getProducts()
-                                this.products.splice(this.products.indexOf(product), 1)
+                                this.getProducts()
+                                // this.products.splice(this.products.indexOf(product), 1)
                                 this.$successToast('Product has been deleted Successful!');
                             })
                             .catch(err => {
@@ -233,8 +253,14 @@
                     })
             },
 
+            handlePipeline(e) {
+                this.pipeline.filter = e.target.value
+                this.getProducts()
+            },
+
             handlePagination(page) {
-                this.getProducts(page)
+                this.paginationMeta.current_page = page
+                this.getProducts()
             }
         }
     }

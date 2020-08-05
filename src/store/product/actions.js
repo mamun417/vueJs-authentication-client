@@ -1,6 +1,11 @@
 export function getProducts(context, payload) {
     return new Promise((resolve, reject) => {
-        axios.get(`products?page=${payload.page}`)
+        axios.get('products', {
+            params: {
+                page: payload.paginationMeta.current_page,
+                filter: payload.pipeline.filter
+            }
+        })
             .then(res => {
                 resolve(res)
             })
