@@ -90,32 +90,13 @@
                 <strong>Warning!</strong> No products found.
             </div>
         </div>
-
-        <product-add-edit-modal
-            :count-reset-modal="countResetModal"
-            :edit-data="selectedForEdit"
-            :update-modal="updateModal"
-            @addProduct="getProducts"
-            @updateProduct="handleProductUpdate"
-        />
     </div>
 </template>
 
 <script>
-import ProductAddEditModal from "@/components/modals/ProductAddEditModal";
-
     export default {
         name: 'ProductList',
-        components: {ProductAddEditModal},
         props: {
-            countResetModal: {
-                type: Number,
-                default: 1
-            },
-            updateModal: {
-                type: Boolean,
-                default: false
-            },
             pipeline: {
                 type: Object,
                 default: () => ({})
@@ -125,7 +106,6 @@ import ProductAddEditModal from "@/components/modals/ProductAddEditModal";
         data(){
             return {
                 products: {},
-                selectedForEdit: {},
                 descriptionLength: 80,
                 paginationMeta: {
                     last_page: 1,
@@ -198,9 +178,7 @@ import ProductAddEditModal from "@/components/modals/ProductAddEditModal";
             },
 
             handleEditButtonClick(data) {
-                this.selectedForEdit = data
-                this.$emit('update:updateModal', true)
-                this.$emit('update:countResetModal', this.countResetModal+1)
+                this.$emit('editButtonClick', data)
             },
 
             handlePagination(page) {
