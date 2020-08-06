@@ -72,15 +72,9 @@
                     Showing {{ paginationMeta.from }} to {{ paginationMeta.to }} of {{ paginationMeta.total }} entries
                 </div>
 
-                <paginate
-                    v-if="paginationMeta.last_page > 1"
-                    v-model="paginationMeta.current_page"
-                    :click-handler="handlePagination"
-                    :page-count="paginationMeta.last_page"
-                    :prev-text="'Prev'"
-                    :next-text="'Next'"
-                    :container-class="'pagination'"
-                    style="margin: 0"
+                <pagination
+                    :pagination-meta="paginationMeta"
+                    @handlePagination="handlePagination"
                 />
             </div>
         </div>
