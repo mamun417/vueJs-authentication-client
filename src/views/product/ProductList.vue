@@ -1,5 +1,7 @@
 <template>
     <div>
+        <loader v-if="loader"/>
+
         <div v-if="products.length" class="body table-responsive">
             <table class="table table-bordered">
                 <thead>
@@ -79,11 +81,7 @@
             </div>
         </div>
 
-        <div v-else class="body">
-            <div class="alert alert-warning">
-                <strong>Warning!</strong> No products found.
-            </div>
-        </div>
+        <div v-else class="text-center p-b-25">No products found.</div>
     </div>
 </template>
 
@@ -99,6 +97,7 @@
 
         data(){
             return {
+                loader: false,
                 products: {},
                 descriptionLength: 80,
                 paginationMeta: {
