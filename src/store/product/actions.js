@@ -3,6 +3,7 @@ export function getProducts(context, payload) {
         axios.get('products', {
             params: {
                 page: payload.paginationMeta.current_page,
+                search: payload.pipeline.search,
                 filter: payload.pipeline.filter
             }
         })
