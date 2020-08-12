@@ -54,6 +54,7 @@
             </div>
 
             <v-select
+                :loading="skillLoader"
                 multiple
                 v-model="formData.skills"
                 :options="skillList"
@@ -90,6 +91,7 @@ export default {
         return {
             skillList: [],
             loader: false,
+            skillLoader: false,
             formData: {
                 name: '',
                 email: '',
@@ -100,12 +102,10 @@ export default {
         }
     },
 
-    mounted() {
-        //console.log(this.formData)
-    },
-
     methods: {
         getSkillsList(val) {
+            this.skillLoader = true
+
             this.$store.dispatch('user/getSkillList', {
                 inputs: {keyword: val}
             })
@@ -120,7 +120,12 @@ export default {
                         })
                     })
 
-                    this.skillList = tempSkillList
+                    let self = this
+
+                    setTimeout(function (){
+                        self.skillList = tempSkillList
+                        self.skillLoader = false
+                    }, 200)
                 })
                 .catch(err => {
                     //

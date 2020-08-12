@@ -39,3 +39,18 @@ table > tbody > tr > td {
 section.content {
     margin: 100px 15px 0 265px;
 }
+
+.vs__selected {
+    background-color: #00b0e4 !important;
+    border-color: #00b0e4 !important;
+    color: #fff!important;
+    font-weight: bold;
+    font-size: 12px;
+}
+.vs__deselect {
+    fill: #fff!important;
+}
+.vs__spinner, .vs__spinner:after {
+    width: 4em!important;
+    height: 4em!important;
+}
