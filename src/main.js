@@ -3,6 +3,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import toaster from './plugins/swal'
+import vSelect from 'vue-select'
 import './plugins/vue-lazyload'
 import axios from './axios'
 import './helper'
@@ -14,6 +15,8 @@ Vue.config.productionTip = false
 
 Vue.component('Loader', () => import('./components/ui/loader'))
 Vue.component('Pagination', () => import('./components/pagination/Pagination'))
+Vue.component('v-select', vSelect)
+import 'vue-select/dist/vue-select.css';
 
 new Vue({
     router,

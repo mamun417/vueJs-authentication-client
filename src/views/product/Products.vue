@@ -19,11 +19,26 @@
                                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                                     <div class="form-group form-float">
                                         <div class="form-line">
+                                            <select @change="handlePipeline({filter:$event.target.value})"
+                                                    class="form-control show-tick">
+                                                <option value="">2</option>
+                                                <option value="active">5</option>
+                                                <option value="inactive">10</option>
+                                                <option value="inactive">20</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
                                             <input @input="handlePipeline({search:$event.target.value})" type="text"
                                                    class="form-control" placeholder="Type here...">
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                                     <div class="form-group form-float">
                                         <div class="form-line">
@@ -36,7 +51,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                                     <button type="button" class="btn btn-info btn-lg m-l-15 waves-effect">SEARCH
                                     </button>
                                 </div>

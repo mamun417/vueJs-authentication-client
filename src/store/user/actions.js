@@ -11,6 +11,20 @@ export function getProfile(context, payload) {
     })
 }
 
+export function getSkillList(context, payload) {
+    return new Promise((resolve, reject) => {
+        axios.get('skill-list', {
+            params: payload.inputs
+        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch(err => {
+                reject(err)
+            })
+    })
+}
+
 export function changeProfile(context, payload) {
     return new Promise((resolve, reject) => {
         axios.patch('profile/update', payload.inputs)
