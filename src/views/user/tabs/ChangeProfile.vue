@@ -101,7 +101,7 @@ export default {
     },
 
     mounted() {
-        console.log(this.formData)
+        //console.log(this.formData)
     },
 
     methods: {
@@ -110,9 +110,17 @@ export default {
                 inputs: {keyword: val}
             })
                 .then(res => {
-                    this.skillList = res.data
-                    console.log(res.data)
-                    console.log(this.skillList.length)
+                    let tempSkillList = res.data
+
+                    this.formData.skills.filter(skill => {
+                        tempSkillList.forEach((item, key) => {
+                            if (skill.code === item.code) {
+                                tempSkillList.splice(key, 1);
+                            }
+                        })
+                    })
+
+                    this.skillList = tempSkillList
                 })
                 .catch(err => {
                     //
