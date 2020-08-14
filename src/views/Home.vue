@@ -307,7 +307,6 @@
         name: 'Home',
         data() {
             return {
-                loader: false,
                 productsCountInfo: {}
             }
         },
@@ -318,15 +317,12 @@
 
         methods: {
             getProductsInfo() {
-                this.loader = true
-
                 this.$store.dispatch('product/getProductsCountInfo')
                     .then(res => {
-                        this.loader = false
                         this.productsCountInfo = res.data.count_info
                     })
                     .catch(err => {
-                        this.loader = false
+                        //
                     })
             }
         }

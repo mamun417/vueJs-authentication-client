@@ -13,4 +13,5 @@ const Toast = Swal.mixin({
     }
 });
 
-export default Toast;
+window.toast = Toast;
+
