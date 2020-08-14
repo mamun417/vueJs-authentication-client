@@ -15,6 +15,10 @@ Vue.config.productionTip = false
 
 Vue.component('Loader', () => import('./components/ui/loader'))
 Vue.component('Pagination', () => import('./components/pagination/Pagination'))
+
+import VueNumber from 'vue-number-animation'
+Vue.use(VueNumber)
+
 Vue.component('v-select', vSelect)
 import 'vue-select/dist/vue-select.css';
 

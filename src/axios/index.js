@@ -2,6 +2,8 @@ import axios from 'axios'
 import router from '../router'
 import store from '../store'
 
+let tokenRefreshing = false
+
 axios.defaults.baseURL = 'http://127.0.0.1:8000/api';
 axios.defaults.withCredentials = false;
 
@@ -27,11 +29,10 @@ axios.interceptors.response.use(
         return res
     },
     err => {
-        let errorCode = err.response.status,
-            tokenRefreshing = store.getters['auth/tokenRefreshing']
+        let errorCode = err.response.status
 
         if (errorCode === 401 && !tokenRefreshing) {
-            store.commit('auth/updateTokenRefreshing', {status: true})
+            tokenRefreshing = true
 
             console.log('refresh token')
 
@@ -46,11 +47,11 @@ axios.interceptors.response.use(
             )
         ) {
             store.dispatch('auth/logout').then(() => {
-                store.commit('auth/updateTokenRefreshing', {status: false})
+                tokenRefreshing = false
                 return router.push('login');
             })
         } else {
-            store.commit('auth/updateTokenRefreshing', {status: false})
+            tokenRefreshing = false
             return Promise.reject(err)
         }
     }

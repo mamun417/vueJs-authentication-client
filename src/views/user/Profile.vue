@@ -30,12 +30,12 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="col-xs-12 col-sm-9">
                     <div class="card">
                         <div class="body">
                             <div>
-                                
+
                                 <ul class="nav nav-tabs" role="tablist">
                                     <li role="presentation" class="active">
                                         <a href="#profile_settings" aria-controls="settings" role="tab" data-toggle="tab">
@@ -53,16 +53,16 @@
                                         </a>
                                     </li>
                                 </ul>
-                                
+
                                 <div class="tab-content">
                                     <change-profile :user-info="userInfo"/>
-                                    
+
                                     <change-image/>
-                                    
+
                                     <change-password
                                         :show-check-password-form.sync="showCheckPasswordForm"
                                     />
-                                    
+
                                 </div>
                             </div>
                         </div>
@@ -78,7 +78,7 @@
     import ChangePassword from "./tabs/ChangePassword";
     import ChangeProfile from "./tabs/ChangeProfile";
     import ChangeImage from "./tabs/ChangeImage";
-    
+
     export default {
         name: 'Profile',
         data() {
@@ -86,7 +86,7 @@
                 showCheckPasswordForm: true
             }
         },
-        
+
         components: {
             ChangeImage,
             ChangePassword,

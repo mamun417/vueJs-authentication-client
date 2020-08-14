@@ -8,49 +8,73 @@
                 <!-- Widgets -->
                 <div class="row clearfix">
                     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                        <div class="info-box bg-pink hover-expand-effect">
+                        <div class="info-box bg-green hover-expand-effect cursor_pointer">
+                            <div class="icon">
+                                <i class="material-icons">playlist_add_check</i>
+                            </div>
+                            <div class="content">
+                                <div class="text">TOTAL PRODUCTS</div>
+                                <div class="number count-to">
+                                    <number
+                                        :from="0"
+                                        :to="productsCountInfo.total"
+                                        :duration=".5"
+                                        :delay="1"
+                                        easing="Power1.easeOut"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <div class="info-box bg-cyan hover-expand-effect cursor_pointer">
+                            <div class="icon">
+                                <i class="material-icons">help</i>
+                            </div>
+                            <div class="content">
+                                <div class="text">ACTIVE PRODUCTS</div>
+                                <div class="number count-to">
+                                    <number
+                                        :from="0"
+                                        :to="productsCountInfo.active"
+                                        :duration=".5"
+                                        :delay="1"
+                                        easing="Power1.easeOut"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <div class="info-box bg-orange hover-expand-effect cursor_pointer">
+                            <div class="icon">
+                                <i class="material-icons">person_add</i>
+                            </div>
+                            <div class="content">
+                                <div class="text">INACTIVE PRODUCTS</div>
+                                <div class="number count-to">
+                                    <number
+                                        :from="0"
+                                        :to="productsCountInfo.total"
+                                        :duration=".5"
+                                        :delay="1"
+                                        easing="Power1.easeOut"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <div class="info-box bg-pink hover-expand-effect cursor_pointer">
                             <div class="icon">
                                 <i class="material-icons">playlist_add_check</i>
                             </div>
                             <div class="content">
                                 <div class="text">NEW TASKS</div>
                                 <div class="number count-to" data-from="0" data-to="125" data-speed="15"
-                                     data-fresh-interval="20"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                        <div class="info-box bg-cyan hover-expand-effect">
-                            <div class="icon">
-                                <i class="material-icons">help</i>
-                            </div>
-                            <div class="content">
-                                <div class="text">NEW TICKETS</div>
-                                <div class="number count-to" data-from="0" data-to="257" data-speed="1000"
-                                     data-fresh-interval="20"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                        <div class="info-box bg-light-green hover-expand-effect">
-                            <div class="icon">
-                                <i class="material-icons">forum</i>
-                            </div>
-                            <div class="content">
-                                <div class="text">NEW COMMENTS</div>
-                                <div class="number count-to" data-from="0" data-to="243" data-speed="1000"
-                                     data-fresh-interval="20"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                        <div class="info-box bg-orange hover-expand-effect">
-                            <div class="icon">
-                                <i class="material-icons">person_add</i>
-                            </div>
-                            <div class="content">
-                                <div class="text">NEW VISITORS</div>
-                                <div class="number count-to" data-from="0" data-to="1225" data-speed="1000"
                                      data-fresh-interval="20"></div>
                             </div>
                         </div>
@@ -281,9 +305,30 @@
 <script>
     export default {
         name: 'Home',
-        mounted() {
+        data() {
+            return {
+                loader: false,
+                productsCountInfo: {}
+            }
         },
 
-        methods: {}
+        mounted() {
+            this.getProductsInfo()
+        },
+
+        methods: {
+            getProductsInfo() {
+                this.loader = true
+
+                this.$store.dispatch('product/getProductsCountInfo')
+                    .then(res => {
+                        this.loader = false
+                        this.productsCountInfo = res.data.count_info
+                    })
+                    .catch(err => {
+                        this.loader = false
+                    })
+            }
+        }
     }
 </script>

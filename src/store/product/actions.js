@@ -16,6 +16,18 @@ export function getProducts(context, payload) {
     })
 }
 
+export function getProductsCountInfo(context, payload) {
+    return new Promise((resolve, reject) => {
+        axios.get('products/count-info')
+            .then(res => {
+                resolve(res)
+            })
+            .catch(err => {
+                reject(err)
+            })
+    })
+}
+
 export function createProduct(context, payload) {
     return new Promise((resolve, reject) => {
         axios.post('products', payload.inputs)

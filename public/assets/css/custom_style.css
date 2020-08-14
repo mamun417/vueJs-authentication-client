@@ -43,14 +43,20 @@ section.content {
 .vs__selected {
     background-color: #00b0e4 !important;
     border-color: #00b0e4 !important;
-    color: #fff!important;
+    color: #fff !important;
     font-weight: bold;
     font-size: 12px;
 }
+
 .vs__deselect {
-    fill: #fff!important;
+    fill: #fff !important;
 }
+
 .vs__spinner, .vs__spinner:after {
-    width: 4em!important;
-    height: 4em!important;
+    width: 4em !important;
+    height: 4em !important;
+}
+
+.cursor_pointer {
+    cursor: pointer;
 }

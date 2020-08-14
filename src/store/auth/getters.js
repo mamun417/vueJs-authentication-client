@@ -5,11 +5,3 @@ export function isLoggedIn(state) {
 export function token(state) {
     return state.token;
 }
-
-export function user(state) {
-    return state.user;
-}
-
-export function tokenRefreshing(state) {
-    return state.tokenRefreshing;
-}
