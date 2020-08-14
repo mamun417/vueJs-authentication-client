@@ -19,12 +19,9 @@
                                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                                     <div class="form-group form-float">
                                         <div class="form-line">
-                                            <select @change="handlePipeline({filter:$event.target.value})"
+                                            <select @change="handlePipeline({per_page:$event.target.value})"
                                                     class="form-control show-tick">
-                                                <option value="">2</option>
-                                                <option value="active">5</option>
-                                                <option value="inactive">10</option>
-                                                <option value="inactive">20</option>
+                                                <option :value="n" v-for="n in [2, 5, 10, 20]">{{n}}</option>
                                             </select>
                                         </div>
                                     </div>
@@ -96,6 +93,7 @@ export default {
             updateModal: false,
             selectedForEdit: {},
             pipeline: {
+                per_page: '',
                 search: '',
                 filter: ''
             }
