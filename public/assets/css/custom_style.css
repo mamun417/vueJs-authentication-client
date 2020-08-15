@@ -21,7 +21,7 @@
 }
 
 td > .btn {
-    padding: 2px 10px;
+    padding: 1px 5px;
 }
 
 table > tbody > tr > td {
@@ -59,4 +59,14 @@ section.content {
 
 .cursor_pointer {
     cursor: pointer;
+}
+
+.table > thead > tr > th {
+    vertical-align: middle;
+}
+.demo-checkbox label, .demo-radio-button label {
+    min-width: auto!important;
+}
+table th {
+    font-size: 12px;
 }

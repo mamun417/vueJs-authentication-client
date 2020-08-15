@@ -3,21 +3,47 @@
         <loader v-if="loader"/>
 
         <div v-if="products.length" class="body table-responsive">
+
+            <button v-if="checkedProducts.length"
+                class="btn btn-danger btn-sm waves-effect m-b-10"
+                @click="deleteProduct(checkedProducts)"
+                type="button"
+            >
+                Delete Selected Product
+            </button>
+
             <table class="table table-bordered">
                 <thead>
                 <tr>
+                    <th class="text-center">
+                        <div class="demo-checkbox">
+                            <input @input="checkAllProducts" v-model="checkedAllProducts" type="checkbox"
+                                   id="basic_checkbox"/>
+                            <label for="basic_checkbox"></label>
+                        </div>
+                    </th>
                     <th>NAME</th>
-                    <th style="width: 25%">DESCRIPTION</th>
+                    <th style="width: 20%;" class="text-center">DESCRIPTION</th>
                     <th class="text-center">PRICE</th>
                     <th class="text-center">IMAGE</th>
                     <th class="text-center">CREATED AT</th>
-                    <th class="text-center" style="width: 10%">STATUS</th>
+                    <th class="text-center" style="width: 5%">STATUS</th>
                     <th class="text-center">ACTION</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr v-for="(product, key) in products">
+
+                    <td class="text-center">
+                        <div class="demo-checkbox">
+                            <input v-model="checkedProducts" :value="product.id" type="checkbox"
+                                   :id="'basic_checkbox_'+key"/>
+                            <label :for="'basic_checkbox_'+key"></label>
+                        </div>
+                    </td>
+
                     <td>{{ product.name }}</td>
+
                     <td v-if="product.description">
                         {{ $_.upperFirst(product.description).substring(0, descriptionLength) }}
 
@@ -41,12 +67,14 @@
                             </button>
                         </div>
                     </td>
+
                     <td v-else></td>
 
                     <td class="text-center">{{ product.price }} TK</td>
 
                     <td class="text-center">
-                        <img v-if="product.image" :src="product.image_url" height="60px" width="60px" alt="image not found">
+                        <img v-if="product.image" :src="product.image_url" style="border-radius: 10px" height="60px"
+                             width="60px" alt="image not found">
                     </td>
 
                     <td class="text-center">{{ $dateFormat(product.created_at) }}</td>
@@ -54,21 +82,24 @@
                     <td class="text-center">
                         <div class="demo-switch">
                             <div class="switch" style="min-width: auto">
-                                <label><input @change="changeStatus(product)" type="checkbox" :checked="product.status"><span class="lever"></span></label>
+                                <label><input @change="changeStatus(product)" type="checkbox" :checked="product.status"><span
+                                    class="lever"></span></label>
                             </div>
                         </div>
                     </td>
 
-                    <td class="text-center">
+                    <td>
                         <button @click="handleEditButtonClick(product)"
-                                data-toggle="modal" data-target="#defaultModal"
-                                type="button" class="btn btn-xs btn-primary waves-effect m-r-5">
+                            data-toggle="modal" data-target="#defaultModal"
+                            type="button" class="btn btn-xs btn-primary waves-effect m-r-5">
                             <i class="material-icons">edit</i><span>EDIT</span>
                         </button>
-                        <button @click="deleteProduct(product)" type="button" class="btn btn-xs btn-danger waves-effect">
+                        <button @click="deleteProduct([product.id])" type="button"
+                                class="btn btn-xs btn-danger waves-effect">
                             <i class="material-icons">delete</i><span>DELETE</span>
                         </button>
                     </td>
+
                 </tr>
                 </tbody>
             </table>
@@ -90,98 +121,123 @@
 </template>
 
 <script>
-    export default {
-        name: 'ProductList',
-        props: {
-            pipeline: {
-                type: Object,
-                default: () => ({})
-            }
-        },
+export default {
+    name: 'ProductList',
+    props: {
+        pipeline: {
+            type: Object,
+            default: () => ({})
+        }
+    },
 
-        data(){
-            return {
-                loader: false,
-                products: {},
-                descriptionLength: 95,
-                paginationMeta: {
-                    last_page: 1,
-                    current_page: 1
-                }
-            }
-        },
-
-        mounted() {
-            this.getProducts();
-        },
-
-        methods: {
-            getProducts(){
-                this.loader = true
-
-                this.$store.dispatch('product/getProducts', {
-                    paginationMeta: this.paginationMeta,
-                    pipeline: this.pipeline
-                })
-                    .then(res => {
-                        this.loader = false
-                        this.products = res.data.products.data
-                        delete res.data.products.data
-                        this.paginationMeta = res.data.products
-                    })
-                    .catch(err => {
-                        this.loader = false
-                    })
-            },
-
-            handleProductUpdate(updatedData) {
-                this.products.map(product => {
-                    if (product.id === updatedData.id) {
-                        Object.keys(product).forEach(key => {
-                            product[key] = updatedData[key]
-                        })
-                    }
-                })
-            },
-
-            deleteProduct(product) {
-                this.$showConfirmMessage().then(result => {
-                    if (result.value) {
-                        this.$store.dispatch('product/deleteProduct', {
-                            id: product.id
-                        })
-                            .then(res => {
-                                this.getProducts()
-                                // this.products.splice(this.products.indexOf(product), 1)
-                                this.$successToast('Product has been deleted Successful!');
-                            })
-                            .catch(err => {
-                                //
-                            })
-                    }
-                })
-            },
-
-            changeStatus(product) {
-                this.$store.dispatch('product/changeStatus', {
-                    inputs: product
-                })
-                    .then(res => {
-                        this.$successToast('Product status has been changed Successful!')
-                    })
-                    .catch(err => {
-                        this.$errorToast(err.response.data.message)
-                    })
-            },
-
-            handleEditButtonClick(data) {
-                this.$emit('editButtonClick', data)
-            },
-
-            handlePagination(page) {
-                this.paginationMeta.current_page = page
-                this.getProducts()
+    data() {
+        return {
+            loader: false,
+            checkedAllProducts: true,
+            checkedProducts: [],
+            products: {},
+            descriptionLength: 26,
+            paginationMeta: {
+                last_page: 1,
+                current_page: 1
             }
         }
+    },
+
+    mounted() {
+        this.getProducts();
+    },
+
+    methods: {
+        getProducts() {
+            this.loader = true
+
+            this.$store.dispatch('product/getProducts', {
+                paginationMeta: this.paginationMeta,
+                pipeline: this.pipeline
+            })
+                .then(res => {
+                    this.loader = false
+                    this.products = res.data.products.data
+                    delete res.data.products.data
+                    this.paginationMeta = res.data.products
+                })
+                .catch(err => {
+                    this.loader = false
+                })
+        },
+
+        handleProductUpdate(updatedData) {
+            this.products.map(product => {
+                if (product.id === updatedData.id) {
+                    Object.keys(product).forEach(key => {
+                        product[key] = updatedData[key]
+                    })
+                }
+            })
+        },
+
+        checkAllProducts() {
+            this.checkedAllProducts = !this.checkedAllProducts
+
+            if (!this.checkedAllProducts) {
+                this.checkedProducts = []
+                return
+            }
+
+            this.checkedProducts = this.products.map(product => {
+                return product.id
+            })
+        },
+
+        deleteProduct(ids) {
+            this.$showConfirmMessage().then(result => {
+                if (result.value) {
+                    this.$store.dispatch('product/deleteProduct', {
+                        ids: ids
+                    })
+                        .then(res => {
+                            this.getProducts()
+                            // this.products.splice(this.products.indexOf(product), 1)
+                            this.$successToast('Product has been deleted Successful!');
+                        })
+                        .catch(err => {
+                            //
+                        })
+                }
+            })
+        },
+
+        changeStatus(product) {
+            this.$store.dispatch('product/changeStatus', {
+                inputs: product
+            })
+                .then(res => {
+                    this.$successToast('Product status has been changed Successful!')
+                })
+                .catch(err => {
+                    this.$errorToast(err.response.data.message)
+                })
+        },
+
+        handleEditButtonClick(data) {
+            this.$emit('editButtonClick', data)
+        },
+
+        handlePagination(page) {
+            this.paginationMeta.current_page = page
+            this.getProducts()
+        }
+    },
+
+    watch: {
+        checkedProducts: {
+            handler() {
+                this.checkedAllProducts = this.checkedProducts.length === this.products.length;
+            },
+            deep: true,
+            immediate: true
+        }
     }
+}
 </script>

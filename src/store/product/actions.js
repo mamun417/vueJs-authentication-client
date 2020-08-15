@@ -55,7 +55,11 @@ export function updateProduct(context, payload) {
 
 export function deleteProduct(context, payload) {
     return new Promise((resolve, reject) => {
-        axios.delete('products/'+payload.id)
+        axios.delete('products/delete', {
+            data: {
+                ids: payload.ids
+            }
+        })
             .then(res => {
                 resolve(res)
             })

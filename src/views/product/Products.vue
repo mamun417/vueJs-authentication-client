@@ -49,7 +49,8 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                                    <button type="button" class="btn btn-info btn-lg m-l-15 waves-effect">SEARCH
+                                    <button type="button" class="btn btn-info btn-lg m-l-15 waves-effect">
+                                        SEARCH
                                     </button>
                                 </div>
                             </div>
