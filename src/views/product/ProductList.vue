@@ -25,7 +25,10 @@
                             {{ product.description.substring(descriptionLength) }}
                         </div>
 
-                        <button data-parent="#accordion_1"
+                        <div class="text-center m-t-5">
+                            <button
+                                @click="$event.target.innerText = $event.target.innerText === 'MORE' ? 'LESS':'MORE'"
+                                data-parent="#accordion_1"
                                 v-if="product.description.length > descriptionLength"
                                 class="btn btn-info waves-effect" type="button"
                                 data-toggle="collapse"
@@ -33,9 +36,10 @@
                                 aria-expanded="false"
                                 aria-controls="collapseExample"
                                 style="padding: 0 6px"
-                        >
-                            MORE
-                        </button>
+                            >
+                                MORE
+                            </button>
+                        </div>
                     </td>
                     <td v-else></td>
 
@@ -99,7 +103,7 @@
             return {
                 loader: false,
                 products: {},
-                descriptionLength: 80,
+                descriptionLength: 95,
                 paginationMeta: {
                     last_page: 1,
                     current_page: 1
