@@ -31,14 +31,25 @@ axios.interceptors.response.use(
     err => {
         let errorCode = err.response.status
 
-        if (errorCode === 401 && !tokenRefreshing) {
-            tokenRefreshing = true
+        if (errorCode === 401) {
 
-            console.log('refresh token')
+            if (!tokenRefreshing) {
+                tokenRefreshing = true
 
-            store.dispatch('auth/refreshToken').then(res => {
-                window.location.reload(true)
-            })
+                return store.dispatch('auth/refreshToken').then(() => {
+                    tokenRefreshing = false
+                    return axios(err.config)
+                })
+            } else {
+                return new Promise((resolve) => {
+                    let interval = setInterval(() => {
+                        if (!tokenRefreshing) {
+                            clearInterval(interval);
+                            resolve(axios(err.config))
+                        }
+                    }, 300);
+                })
+            }
         } else if (errorCode === 422 &&
             (
                 err.response.data.message === 'Expired refresh token' ||

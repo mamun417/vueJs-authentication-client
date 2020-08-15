@@ -61,6 +61,9 @@
                             @editButtonClick="handleEditButtonClick"
                         />
 
+                        <pre>{{profileInfo}}</pre>
+                        <pre>{{productCountInfo}}</pre>
+
                         <product-add-edit-modal
                             :count-reset-modal="countResetModal"
                             :edit-data="selectedForEdit"
@@ -96,8 +99,23 @@ export default {
                 per_page: '',
                 search: '',
                 filter: ''
-            }
+            },
+
+            profileInfo: {},
+            productCountInfo: {}
         }
+    },
+
+    mounted() {
+        this.$store.dispatch('user/getProfile')
+        .then(res => {
+            this.profileInfo = res.data.user
+        })
+
+        this.$store.dispatch('product/getProductsCountInfo')
+        .then(res => {
+            this.productCountInfo = res.data.count_info
+        })
     },
 
     methods: {
