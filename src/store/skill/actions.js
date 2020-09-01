@@ -9,3 +9,15 @@ export function getSkills(context, payload) {
             })
     })
 }
+
+export function createSkill(context, payload) {
+    return new Promise((resolve, reject) => {
+        axios.post('skills', payload.inputs)
+            .then(res => {
+                resolve(res)
+            })
+            .catch(err => {
+                reject(err)
+            })
+    })
+}

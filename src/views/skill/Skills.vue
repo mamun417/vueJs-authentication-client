@@ -1,11 +1,11 @@
 <template>
     <section class="content">
-
-        <loader v-if="loader"/>
-
         <div class="container-fluid">
             <!-- Body Copy -->
             <div class="row clearfix">
+
+                <loader v-if="loader"/>
+
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
                         <div class="header">
@@ -31,7 +31,7 @@
                                         </div>
 
                                         <div class="input-group m-t-25">
-                                            <button @click="clickSkillSubmit" class="btn btn-success">SUBMIT</button>
+                                            <button @click="createSkills" class="btn btn-success">SUBMIT</button>
                                         </div>
                                     </div>
                                 </div>
@@ -112,11 +112,29 @@ export default {
             this.newSkills.splice(index, 1);
         },
 
-        clickSkillSubmit() {
+        createSkills() {
+            this.loader = true
+
             this.formData.name = this.skillName
             this.submittedData = this.formData
 
+            this.$store.dispatch('skill/createSkill', {
+                inputs: this.formData
+            })
+                .then(res => {
+                    this.loader = false
+                    this.resetForm()
+                    this.getSkills()
+                    this.$successToast('Skill has been created Successful!')
+                })
+                .catch(err => {
+                    // error handle
+                })
+        },
 
+        resetForm() {
+            // reset form
+            //this.newSkills = {}
         }
     }
 }
