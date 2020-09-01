@@ -39,6 +39,12 @@
                     </router-link>
                 </li>
                 <li>
+                    <router-link :to="{name: 'skills'}">
+                        <i class="material-icons">list</i>
+                        <span>Skills</span>
+                    </router-link>
+                </li>
+                <li>
                     <router-link :to="{name: 'login'}">
                         <i class="material-icons">donut_large</i>
                         <span>Login</span>
@@ -60,13 +66,13 @@
         mounted() {
             this.getProfileInfo()
         },
-        
+
         computed: {
             ...mapGetters({
                 userInfo : 'user/userInfo'
             })
         },
-        
+
         methods: {
             getProfileInfo() {
                 this.$store.dispatch('user/getProfile')

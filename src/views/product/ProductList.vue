@@ -88,7 +88,7 @@
                         </div>
                     </td>
 
-                    <td>
+                    <td class="text-center">
                         <button @click="handleEditButtonClick(product)"
                             data-toggle="modal" data-target="#defaultModal"
                             type="button" class="btn btn-xs btn-primary waves-effect m-r-5">
@@ -133,7 +133,7 @@ export default {
     data() {
         return {
             loader: false,
-            checkedAllProducts: true,
+            checkedAllProducts: false,
             checkedProducts: [],
             products: {},
             descriptionLength: 26,
@@ -200,6 +200,7 @@ export default {
                             this.getProducts()
                             // this.products.splice(this.products.indexOf(product), 1)
                             this.$successToast('Product has been deleted Successful!');
+                            this.checkAllProducts()
                         })
                         .catch(err => {
                             //
