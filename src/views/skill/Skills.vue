@@ -22,9 +22,15 @@
                                                 <input v-model="skill.name" type="text" class="form-control"
                                                        placeholder="Skill Name">
                                             </div>
+
+                                            <label v-if="formErrors['name.'+index]" class="error">
+                                                {{ formErrors['name.' + index] }}
+                                            </label>
+
                                             <span @click="addMoreSkill" v-if="index === 0" class="input-group-addon">
                                                 <button class="btn btn-sm btn-info">More</button>
                                             </span>
+
                                             <span @click="removeSkill(index)" v-else class="input-group-addon">
                                                 <button class="btn btn-sm btn-danger">Remove</button>
                                             </span>
@@ -33,6 +39,9 @@
                                         <div class="input-group m-t-25">
                                             <button @click="createSkills" class="btn btn-success">SUBMIT</button>
                                         </div>
+
+                                        <pre>{{ formErrors }}</pre>
+
                                     </div>
                                 </div>
                                 <div class="col-sm-8">
@@ -70,6 +79,7 @@ export default {
             loader: false,
             skills: {},
             formData: {},
+            formErrors: {},
             newSkills: [
                 {
                     name: ''
@@ -128,13 +138,19 @@ export default {
                     this.$successToast('Skill has been created Successful!')
                 })
                 .catch(err => {
-                    // error handle
+                    this.loader = false
+
+                    if (err.response.data.errors) {
+                        this.formErrors = err.response.data.errors
+                    } else {
+                        this.$errorToast(err.response.data.message)
+                    }
                 })
         },
 
         resetForm() {
-            // reset form
-            //this.newSkills = {}
+            this.formData = {}
+            this.formErrors = {}
         }
     }
 }
