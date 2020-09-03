@@ -50,12 +50,19 @@
                                         <tr>
                                             <th>NAME</th>
                                             <th class="text-center">CREATED AT</th>
+                                            <th class="text-center">ACTION</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         <tr v-for="(skill, key) in skills">
                                             <td>{{ skill.name }}</td>
                                             <td class="text-center">{{ $dateFormat(skill.created_at) }}</td>
+                                            <td class="text-center">
+                                                <button @click="deleteSkill(skill.id)" type="button"
+                                                        class="btn btn-xs btn-danger waves-effect">
+                                                    <i class="material-icons">delete</i><span>DELETE</span>
+                                                </button>
+                                            </td>
                                         </tr>
                                         </tbody>
                                     </table>
@@ -145,6 +152,22 @@ export default {
                     } else {
                         this.$errorToast(err.response.data.message)
                     }
+                })
+        },
+
+        deleteSkill(id) {
+            this.loader = true
+
+            this.$store.dispatch('skill/deleteSkill', {
+                id: id
+            })
+                .then(res => {
+                    this.loader = false
+                    this.getSkills()
+                    this.$successToast('Skill has been deleted Successful!')
+                })
+                .catch(err => {
+                   //
                 })
         },
 

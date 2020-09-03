@@ -21,3 +21,15 @@ export function createSkill(context, payload) {
             })
     })
 }
+
+export function deleteSkill(context, payload) {
+    return new Promise((resolve, reject) => {
+        axios.delete('skills/' + payload.id)
+            .then(res => {
+                resolve(res)
+            })
+            .catch(err => {
+                reject(err)
+            })
+    })
+}
