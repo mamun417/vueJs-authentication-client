@@ -15,12 +15,14 @@
                         </div>
                         <div class="body">
                             <div class="row">
-                                <div class="col-sm-4">
+                                <div class="col-sm-6">
                                     <div class="form-horizontal">
                                         <div v-for="(skill, index) in newSkills" class="input-group">
+
                                             <div class="form-line">
                                                 <input v-model="skill.name" type="text" class="form-control"
-                                                       placeholder="Skill Name">
+                                                       placeholder="Skill Name"
+                                                       @input="formErrors['name.'+index] = ''">
                                             </div>
 
                                             <label v-if="formErrors['name.'+index]" class="error">
@@ -31,7 +33,7 @@
                                                 <button class="btn btn-sm btn-info">More</button>
                                             </span>
 
-                                            <span @click="removeSkill(index)" v-else class="input-group-addon">
+                                            <span @click="removeSkill('name', index)" v-else class="input-group-addon">
                                                 <button class="btn btn-sm btn-danger">Remove</button>
                                             </span>
                                         </div>
@@ -40,11 +42,16 @@
                                             <button @click="createSkills" class="btn btn-success">SUBMIT</button>
                                         </div>
 
-                                        <pre>{{ formErrors }}</pre>
+                                        <div class="col-sm-6">
+                                            <pre>{{ formErrors }}</pre>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <pre>{{ newSkills }}</pre>
 
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-sm-8">
+                                <div class="col-sm-6">
                                     <table class="table table-bordered">
                                         <thead>
                                         <tr>
@@ -125,8 +132,9 @@ export default {
             this.newSkills.push({name: ''});
         },
 
-        removeSkill(index) {
+        removeSkill(field, index) {
             this.newSkills.splice(index, 1);
+            delete this.formErrors[field + '.' + index]
         },
 
         createSkills() {
@@ -167,12 +175,12 @@ export default {
                     this.$successToast('Skill has been deleted Successful!')
                 })
                 .catch(err => {
-                   //
+                    //
                 })
         },
 
         resetForm() {
-            this.formData = {}
+            this.newSkills = [{name: ''}]
             this.formErrors = {}
         }
     }
