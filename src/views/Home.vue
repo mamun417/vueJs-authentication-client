@@ -8,7 +8,7 @@
                 <!-- Widgets -->
                 <div class="row clearfix">
                     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                        <div class="info-box bg-green hover-expand-effect cursor_pointer">
+                        <div @click="handleProductRedirect({filter:''})" class="info-box bg-green hover-expand-effect cursor_pointer">
                             <div class="icon">
                                 <i class="material-icons">playlist_add_check</i>
                             </div>
@@ -28,7 +28,8 @@
                     </div>
 
                     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                        <div class="info-box bg-cyan hover-expand-effect cursor_pointer">
+                        <div @click="handleProductRedirect({filter:'active'})"
+                             class="info-box bg-cyan hover-expand-effect cursor_pointer">
                             <div class="icon">
                                 <i class="material-icons">help</i>
                             </div>
@@ -48,7 +49,7 @@
                     </div>
 
                     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                        <div class="info-box bg-orange hover-expand-effect cursor_pointer">
+                        <div @click="handleProductRedirect({filter:'inactive'})" class="info-box bg-orange hover-expand-effect cursor_pointer">
                             <div class="icon">
                                 <i class="material-icons">person_add</i>
                             </div>
@@ -303,28 +304,32 @@
 </template>
 
 <script>
-    export default {
-        name: 'Home',
-        data() {
-            return {
-                productsCountInfo: {}
-            }
+export default {
+    name: 'Home',
+    data() {
+        return {
+            productsCountInfo: {}
+        }
+    },
+
+    mounted() {
+        this.getProductsInfo()
+    },
+
+    methods: {
+        getProductsInfo() {
+            this.$store.dispatch('product/getProductsCountInfo')
+                .then(res => {
+                    this.productsCountInfo = res.data.count_info
+                })
+                .catch(err => {
+                    //
+                })
         },
 
-        mounted() {
-            this.getProductsInfo()
-        },
-
-        methods: {
-            getProductsInfo() {
-                this.$store.dispatch('product/getProductsCountInfo')
-                    .then(res => {
-                        this.productsCountInfo = res.data.count_info
-                    })
-                    .catch(err => {
-                        //
-                    })
-            }
+        handleProductRedirect(pipeline) {
+            this.$router.push({name: 'product', params: {pipeline: pipeline}})
         }
     }
+}
 </script>

@@ -21,7 +21,7 @@
                                         <div class="form-line">
                                             <select @change="handlePipeline({per_page:$event.target.value})"
                                                     class="form-control show-tick">
-                                                <option :value="n" v-for="n in [2, 5, 10, 20]">{{n}}</option>
+                                                <option :value="n" v-for="n in [2, 5, 10, 20]">{{ n }}</option>
                                             </select>
                                         </div>
                                     </div>
@@ -41,9 +41,9 @@
                                         <div class="form-line">
                                             <select @change="handlePipeline({filter:$event.target.value})"
                                                     class="form-control show-tick">
-                                                <option value="">All</option>
-                                                <option value="active">Active</option>
-                                                <option value="inactive">Inactive</option>
+                                                <option :selected="handleFilterSelect('')" value="">All</option>
+                                                <option :selected="handleFilterSelect('active')" value="active">Active</option>
+                                                <option :selected="handleFilterSelect('inactive')" value="inactive">Inactive</option>
                                             </select>
                                         </div>
                                     </div>
@@ -62,8 +62,8 @@
                             @editButtonClick="handleEditButtonClick"
                         />
 
-                        <pre>{{profileInfo}}</pre>
-                        <pre>{{productCountInfo}}</pre>
+                        <pre>{{ profileInfo }}</pre>
+                        <pre>{{ productCountInfo }}</pre>
 
                         <product-add-edit-modal
                             :count-reset-modal="countResetModal"
@@ -109,14 +109,18 @@ export default {
 
     mounted() {
         this.$store.dispatch('user/getProfile')
-        .then(res => {
-            this.profileInfo = res.data.user
-        })
+            .then(res => {
+                this.profileInfo = res.data.user
+            })
 
         this.$store.dispatch('product/getProductsCountInfo')
-        .then(res => {
-            this.productCountInfo = res.data.count_info
-        })
+            .then(res => {
+                this.productCountInfo = res.data.count_info
+            })
+
+        if (this.$route.params.pipeline) {
+            this.handlePipeline(this.$route.params.pipeline)
+        }
     },
 
     methods: {
@@ -152,6 +156,10 @@ export default {
             })
 
             this.$refs.productList.getProducts()
+        },
+
+        handleFilterSelect(value) {
+            return this.pipeline.filter === value
         }
     }
 }

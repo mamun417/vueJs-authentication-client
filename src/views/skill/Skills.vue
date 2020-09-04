@@ -41,14 +41,6 @@
                                         <div class="input-group m-t-25">
                                             <button @click="createSkills" class="btn btn-success">SUBMIT</button>
                                         </div>
-
-                                        <div class="col-sm-6">
-                                            <pre>{{ formErrors }}</pre>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <pre>{{ newSkills }}</pre>
-
-                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
