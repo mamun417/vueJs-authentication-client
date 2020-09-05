@@ -4,11 +4,14 @@
             <div class="container-fluid">
                 <div class="block-header">
                     <h2>DASHBOARD</h2>
+                    <button class="btn btn-success" @click="handlePdf(false)">Preview Pdf</button>
+                    <button class="btn btn-info m-l-10" @click="handlePdf(true)">Download Pdf</button>
                 </div>
                 <!-- Widgets -->
                 <div class="row clearfix">
                     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                        <div @click="handleProductRedirect({filter:''})" class="info-box bg-green hover-expand-effect cursor_pointer">
+                        <div @click="handleProductRedirect({filter:''})"
+                             class="info-box bg-green hover-expand-effect cursor_pointer">
                             <div class="icon">
                                 <i class="material-icons">playlist_add_check</i>
                             </div>
@@ -49,7 +52,8 @@
                     </div>
 
                     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                        <div @click="handleProductRedirect({filter:'inactive'})" class="info-box bg-orange hover-expand-effect cursor_pointer">
+                        <div @click="handleProductRedirect({filter:'inactive'})"
+                             class="info-box bg-orange hover-expand-effect cursor_pointer">
                             <div class="icon">
                                 <i class="material-icons">person_add</i>
                             </div>
@@ -329,6 +333,25 @@ export default {
 
         handleProductRedirect(pipeline) {
             this.$router.push({name: 'product', params: {pipeline: pipeline}})
+        },
+
+        handlePdf(isDownload = false) {
+            axios.get('pdf', {
+                responseType: 'blob'
+            }).then(res => {
+                const url = window.URL.createObjectURL(new Blob([res.data], {type: 'application/pdf'}));
+
+                if (isDownload) {
+                    const link = document.createElement('a');
+                    link.href = url;
+                    link.setAttribute('download', 'file.pdf');
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                } else {
+                    window.open(url);
+                }
+            })
         }
     }
 }
