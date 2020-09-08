@@ -45,6 +45,12 @@
                     </router-link>
                 </li>
                 <li>
+                    <router-link :to="{name: 'cart'}">
+                        <i class="material-icons">shop</i>
+                        <span>Ecommerce</span>
+                    </router-link>
+                </li>
+                <li>
                     <router-link :to="{name: 'login'}">
                         <i class="material-icons">donut_large</i>
                         <span>Login</span>

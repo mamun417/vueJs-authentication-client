@@ -70,3 +70,25 @@ section.content {
 table th {
     font-size: 12px;
 }
+.sidebar .menu {
+    height: calc(100vh - 200px)!important;
+}
+
+.customizer {
+    background: #fff;
+    position: fixed;
+    height: 100%;
+    width: 280px;
+    top: 120px;
+    right: -280px;
+    z-index: 100;
+}
+
+.test{
+    background: #fa5838;
+    padding: 12px 20px;
+    color: #fff;
+    position: absolute;
+    top: 30%;
+    left: -60px;
+}

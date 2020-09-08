@@ -27,6 +27,11 @@ const routes = [
                 name: 'profile',
                 component: () => import('../views/user/Profile')
             },
+            {
+                path: 'cart',
+                name: 'cart',
+                component: () => import('../views/cart/Products')
+            },
         ]
     },
 
