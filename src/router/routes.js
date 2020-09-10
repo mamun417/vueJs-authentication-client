@@ -30,12 +30,12 @@ const routes = [
             {
                 path: 'cart',
                 name: 'cart',
-                component: () => import('../views/cart/Products')
+                component: () => import('../views/ecommerce/Products')
             },
             {
                 path: 'pdf',
                 name: 'pdf',
-                component: () => import('@/views/pdf/pdf')
+                component: () => import('@/views/pdf/Pdf')
             },
         ]
     },
