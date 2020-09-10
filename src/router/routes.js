@@ -32,6 +32,11 @@ const routes = [
                 name: 'cart',
                 component: () => import('../views/cart/Products')
             },
+            {
+                path: 'pdf',
+                name: 'pdf',
+                component: () => import('@/views/pdf/pdf')
+            },
         ]
     },
 

@@ -51,6 +51,12 @@
                     </router-link>
                 </li>
                 <li>
+                    <router-link :to="{name: 'pdf'}">
+                        <i class="material-icons">book</i>
+                        <span>PDF</span>
+                    </router-link>
+                </li>
+                <li>
                     <router-link :to="{name: 'login'}">
                         <i class="material-icons">donut_large</i>
                         <span>Login</span>
