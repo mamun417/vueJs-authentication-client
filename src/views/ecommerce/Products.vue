@@ -1,8 +1,9 @@
 <template>
     <section class="content">
         <div class="container-fluid">
-
-            <div data-toggle="modal" data-target="#defaultModal" class="cart_button_section">
+            <div data-toggle="modal" data-target="#defaultModal" class="cart_button_section"
+                 :class="{ 'animated bounce': addAnimationClass }">
+                <span class="counter"></span>
                 <button type="button" class="btn btn-primary waves-effect">
                     <i class="material-icons">shopping_cart</i>
                     <span>CART</span> <span class="badge">{{ cartProducts.length }}</span><br>
@@ -54,7 +55,7 @@
                                             </td>
                                             <td>TK {{ cartProduct.price * cartProduct.quantity }}</td>
                                             <td>
-                                                <button @click="removeCart(index)" type="button" class="close"
+                                                <button @click="removeCart(index)" type="button" class="close hover_red"
                                                         aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
@@ -78,7 +79,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
@@ -89,15 +89,7 @@
                         </div>
                         <div class="body">
                             <div class="row">
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <pre>{{ products }}</pre>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <pre>{{ cartProducts }}</pre>
-                                    </div>
-                                </div>
-                                <div v-for="(product, cartProduct) in products" class="col-sm-6 col-md-3">
+                                <div v-for="product in products" class="col-sm-6 col-md-3">
                                     <div class="thumbnail">
                                         <img :src="product.image" style="padding: 10px">
                                         <div class="caption">
@@ -126,7 +118,7 @@ import {mapGetters} from 'vuex'
 export default {
     data() {
         return {
-            cart: {}
+            addAnimationClass: false
         }
     },
 
@@ -149,6 +141,25 @@ export default {
 
         updateQuantity(id, type) {
             this.$store.dispatch('cart/updateQuantity', {id, type})
+        }
+    },
+
+    watch: {
+        cartProducts() {
+            this.addAnimationClass = true
+            let self = this
+
+            setTimeout(function () {
+                self.addAnimationClass = false
+            }, .6 * 1000)
+
+            $('.counter').rollNumber({
+                number: this.cartTotalPrice,
+                fontStyle: {
+                    'color' : 'red',
+                    'font-weight': 'bold'
+                }
+            })
         }
     }
 }

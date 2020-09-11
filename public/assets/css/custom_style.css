@@ -60,14 +60,17 @@ section.content {
 .table > thead > tr > th {
     vertical-align: middle;
 }
+
 .demo-checkbox label, .demo-radio-button label {
-    min-width: auto!important;
+    min-width: auto !important;
 }
+
 table th {
     font-size: 12px;
 }
+
 .sidebar .menu {
-    height: calc(100vh - 200px)!important;
+    height: calc(100vh - 200px) !important;
 }
 
 .cart_button_section {
@@ -76,6 +79,11 @@ table th {
     z-index: 100;
     top: 50%;
 }
+
 .hover_red:hover {
     color: red;
+}
+
+.animated {
+    animation-duration: .6s;
 }

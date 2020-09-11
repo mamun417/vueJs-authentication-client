@@ -44,6 +44,21 @@ export default function () {
                 image: 'https://images-submarino.b2w.io/produtos/01/00/item/133666/1/133666164G1.jpg',
                 details: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s',
             },
+            {
+                name: 'Smartphone Motorola Moto G6 Plus',
+                price: 1699,
+                image: 'https://images-americanas.b2w.io/produtos/01/00/item/133453/1/133453185G1.jpg',
+                stars: 2.9,
+                totalReviews: 42,
+                details: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s',
+            },
+            {
+                id: 5,
+                name: 'Smartphone Motorola Moto Z3 Play',
+                price: 2999,
+                image: 'https://images-submarino.b2w.io/produtos/01/00/item/133666/1/133666164G1.jpg',
+                details: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s',
+            },
         ],
         cartProducts: []
     }
