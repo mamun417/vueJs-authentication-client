@@ -76,3 +76,6 @@ table th {
     z-index: 100;
     top: 50%;
 }
+.hover_red:hover {
+    color: red;
+}
