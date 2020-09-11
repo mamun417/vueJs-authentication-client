@@ -12,3 +12,14 @@ export function cartProducts(state) {
         }
     })
 }
+
+export function cartTotal(state) {
+    let total = 0
+
+    state.cartProducts.forEach(({id, quantity}) => {
+        const product = state.products.find(p => p.id === id)
+        total += product.price * quantity
+    })
+
+    return total
+}

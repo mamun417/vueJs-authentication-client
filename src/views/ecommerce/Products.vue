@@ -6,7 +6,7 @@
                 <button type="button" class="btn btn-primary waves-effect">
                     <i class="material-icons">shopping_cart</i>
                     <span>CART</span> <span class="badge">{{ cartProducts.length }}</span><br>
-                    <b>TK 500</b>
+                    <b>TK {{ cartTotalPrice }}</b>
                 </button>
             </div>
 
@@ -20,51 +20,60 @@
                             </button>
                             <h4 class="modal-title" id="defaultModalLabel">Cart Products</h4>
                         </div>
-                        <div class="modal-body" style="padding-bottom: 0">
-                            <div class="body table-responsive">
-                                <table class="table">
-                                    <tbody>
-                                    <tr v-for="(cartProduct, index) in cartProducts">
-                                        <td>
-                                            <div class="input-group spinner" style="margin-bottom: 0">
-                                                <div class="input-group-addon">
-                                                    <a @click="updateQuantity(cartProduct.id, 'up')"
-                                                       href="javascript:void(0)" class="spin-up" style="width: auto"
-                                                       data-spin="up"><i class="glyphicon glyphicon-chevron-up"></i>
-                                                    </a>
-                                                    <div class="m-t-10 m-b-10" style="color: #999">
-                                                        {{ cartProduct.quantity }}
+                        <div>
+                            <div class="modal-body" style="padding-bottom: 0">
+                                <div class="body table-responsive">
+                                    <table class="table">
+                                        <tbody>
+                                        <tr v-for="(cartProduct, index) in cartProducts">
+                                            <td>
+                                                <div class="input-group spinner" style="margin-bottom: 0">
+                                                    <div class="input-group-addon">
+                                                        <a @click="updateQuantity(cartProduct.id, 'up')"
+                                                           href="javascript:void(0)" class="spin-up" style="width: auto"
+                                                           data-spin="up"><i class="glyphicon glyphicon-chevron-up"></i>
+                                                        </a>
+                                                        <div class="m-t-10 m-b-10" style="color: #999">
+                                                            {{ cartProduct.quantity }}
+                                                        </div>
+                                                        <a @click="updateQuantity(cartProduct.id, 'down')"
+                                                           href="javascript:void(0)" class="spin-down"
+                                                           style="width: auto"
+                                                           data-spin="down"><i
+                                                            class="glyphicon glyphicon-chevron-down"></i>
+                                                        </a>
                                                     </div>
-                                                    <a @click="updateQuantity(cartProduct.id, 'down')"
-                                                       href="javascript:void(0)" class="spin-down" style="width: auto"
-                                                       data-spin="down"><i class="glyphicon glyphicon-chevron-down"></i>
-                                                    </a>
                                                 </div>
-                                            </div>
-                                        </td>
+                                            </td>
 
-                                        <td><img :src="cartProduct.image" style="height: 50px"></td>
+                                            <td><img :src="cartProduct.image" style="height: 50px"></td>
 
-                                        <td>
-                                            {{ cartProduct.name }}<br>
-                                            TK {{ cartProduct.price }}
-                                        </td>
-                                        <td>TK {{ cartProduct.price * cartProduct.quantity }}</td>
-                                        <td>
-                                            <button @click="removeCart(index)" type="button" class="close"
-                                                    aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                </table>
+                                            <td>
+                                                {{ cartProduct.name }}<br>
+                                                TK {{ cartProduct.price }}
+                                            </td>
+                                            <td>TK {{ cartProduct.price * cartProduct.quantity }}</td>
+                                            <td>
+                                                <button @click="removeCart(index)" type="button" class="close"
+                                                        aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div v-if="!cartProducts.length" class="alert alert-info">
+                                    <strong>Heads up!</strong> Your cart is empty.
+                                </div>
                             </div>
-                        </div>
-                        <div class="modal-footer" style="padding-top: 0">
-                            <button type="button" class="btn btn-primary waves-effect">
-                                PLACE ORDER | TK 1200
-                            </button>
+
+                            <div class="modal-footer" style="padding-top: 0">
+                                <button v-if="cartProducts.length" type="button" class="btn btn-primary waves-effect">
+                                    PLACE ORDER | TK {{ cartTotalPrice }}
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -125,6 +134,7 @@ export default {
         ...mapGetters({
             products: 'cart/products',
             cartProducts: 'cart/cartProducts',
+            cartTotalPrice: 'cart/cartTotal',
         })
     },
 
