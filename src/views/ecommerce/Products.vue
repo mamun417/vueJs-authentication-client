@@ -24,7 +24,7 @@
                             <div class="body table-responsive">
                                 <table class="table">
                                     <tbody>
-                                    <tr v-for="cartProduct in cartProducts">
+                                    <tr v-for="(cartProduct, index) in cartProducts">
                                         <td>
                                             <div class="input-group spinner" style="margin-bottom: 0">
                                                 <div class="input-group-addon">
@@ -49,7 +49,7 @@
                                         </td>
                                         <td>TK {{ cartProduct.price * cartProduct.quantity }}</td>
                                         <td>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <button @click="removeCart(index)" type="button" class="close" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
                                         </td>
@@ -67,7 +67,6 @@
                 </div>
             </div>
 
-            <!-- Body Copy -->
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
@@ -129,6 +128,10 @@ export default {
     methods: {
         addToCart(id) {
             this.$store.dispatch('cart/addToCart', id)
+        },
+
+        removeCart(index) {
+            this.$store.dispatch('cart/removeCart', index)
         }
     }
 }
