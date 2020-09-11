@@ -28,13 +28,15 @@
                                         <td>
                                             <div class="input-group spinner" style="margin-bottom: 0">
                                                 <div class="input-group-addon">
-                                                    <a href="javascript:void(0)" class="spin-up" style="width: auto"
+                                                    <a @click="updateQuantity(cartProduct.id, 'up')"
+                                                       href="javascript:void(0)" class="spin-up" style="width: auto"
                                                        data-spin="up"><i class="glyphicon glyphicon-chevron-up"></i>
                                                     </a>
                                                     <div class="m-t-10 m-b-10" style="color: #999">
                                                         {{ cartProduct.quantity }}
                                                     </div>
-                                                    <a href="javascript:void(0)" class="spin-down" style="width: auto"
+                                                    <a @click="updateQuantity(cartProduct.id, 'down')"
+                                                       href="javascript:void(0)" class="spin-down" style="width: auto"
                                                        data-spin="down"><i class="glyphicon glyphicon-chevron-down"></i>
                                                     </a>
                                                 </div>
@@ -49,7 +51,8 @@
                                         </td>
                                         <td>TK {{ cartProduct.price * cartProduct.quantity }}</td>
                                         <td>
-                                            <button @click="removeCart(index)" type="button" class="close" aria-label="Close">
+                                            <button @click="removeCart(index)" type="button" class="close"
+                                                    aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
                                         </td>
@@ -132,6 +135,10 @@ export default {
 
         removeCart(index) {
             this.$store.dispatch('cart/removeCart', index)
+        },
+
+        updateQuantity(id, type) {
+            this.$store.dispatch('cart/updateQuantity', {id, type})
         }
     }
 }
