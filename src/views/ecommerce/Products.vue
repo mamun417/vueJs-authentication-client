@@ -71,14 +71,35 @@
                             </div>
 
                             <div class="modal-footer" style="padding-top: 0">
-                                <button v-if="cartProducts.length" type="button" class="btn btn-primary waves-effect">
-                                    PLACE ORDER | TK {{ cartTotalPrice }}
-                                </button>
+                                <form>
+                                    <div class="row clearfix">
+                                        <div class="col-sm-3">
+                                            <div class="form-group" style="margin-bottom: 0">
+                                                <div class="form-line">
+                                                    <input type="password" placeholder="Promotion code"
+                                                           class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <button type="button" class="btn btn-primary waves-effect">
+                                                APPLY PROMO
+                                            </button>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <button v-if="cartProducts.length" type="button" class="btn btn-primary waves-effect">
+                                                PLACE ORDER | TK {{ cartTotalPrice }}
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
@@ -156,7 +177,7 @@ export default {
             $('.counter').rollNumber({
                 number: this.cartTotalPrice,
                 fontStyle: {
-                    'color' : 'red',
+                    'color': 'red',
                     'font-weight': 'bold'
                 }
             })
