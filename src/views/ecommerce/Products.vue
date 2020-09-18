@@ -166,6 +166,14 @@ export default {
 
         updateQuantity(id, type) {
             this.$store.dispatch('cart/updateQuantity', {id, type})
+        },
+
+        emptyCart() {
+            this.$showConfirmMessage().then(result => {
+                if (result.value) {
+                    this.$store.dispatch('cart/empty')
+                }
+            })
         }
     },
 
