@@ -24,6 +24,10 @@ Vue.prototype.$errorToast = function (title) {
     })
 }
 
+Vue.prototype.$setLocalStorage = function ($key, $value) {
+    localStorage.setItem($key, JSON.stringify($value))
+}
+
 Vue.prototype.$showConfirmMessage = function () {
     return Swal.fire({
         title: 'Are you sure?',
