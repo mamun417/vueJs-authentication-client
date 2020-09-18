@@ -10,3 +10,6 @@ export function updateQuantity(context, payload) {
     context.commit('updateQuantity', payload)
 }
 
+export function empty(context) {
+    context.commit('empty')
+}

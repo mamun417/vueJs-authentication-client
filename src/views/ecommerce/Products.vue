@@ -19,8 +19,13 @@
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
-                            <h4 class="modal-title" id="defaultModalLabel">Cart Products</h4>
+                            <h4 class="modal-title m-r-5" style="display: inline-block" id="defaultModalLabel">Cart
+                                Products</h4>
+                            <button @click="emptyCart" type="button" class="btn btn-xs btn-danger waves-effect">
+                                EMPTY CART
+                            </button>
                         </div>
+
                         <div>
                             <div class="modal-body" style="padding-bottom: 0">
                                 <div class="body table-responsive">
@@ -71,29 +76,28 @@
                             </div>
 
                             <div class="modal-footer" style="padding-top: 0">
-                                <form>
-                                    <div class="row clearfix">
-                                        <div class="col-sm-3">
-                                            <div class="form-group" style="margin-bottom: 0">
-                                                <div class="form-line">
-                                                    <input type="password" placeholder="Promotion code"
-                                                           class="form-control">
-                                                </div>
+                                <div v-if="cartProducts.length"  class="row clearfix">
+                                    <div class="col-sm-3">
+                                        <div class="form-group" style="margin-bottom: 0">
+                                            <div class="form-line">
+                                                <input type="text" placeholder="Promotion code"
+                                                       class="form-control">
                                             </div>
                                         </div>
-                                        <div class="col-sm-3">
-                                            <button type="button" class="btn btn-primary waves-effect">
-                                                APPLY PROMO
-                                            </button>
-                                        </div>
-
-                                        <div class="col-sm-6">
-                                            <button v-if="cartProducts.length" type="button" class="btn btn-primary waves-effect">
-                                                PLACE ORDER | TK {{ cartTotalPrice }}
-                                            </button>
-                                        </div>
                                     </div>
-                                </form>
+                                    <div class="col-sm-3">
+                                        <button type="button" class="btn btn-primary waves-effect">
+                                            APPLY PROMO
+                                        </button>
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        <button type="button"
+                                                class="btn btn-primary waves-effect">
+                                            PLACE ORDER | TK {{ cartTotalPrice }}
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -1,5 +1,6 @@
 export default function () {
     return {
+        cartKey: 'cart',
         products: [
             {
                 id: 1,
@@ -58,6 +59,6 @@ export default function () {
                 details: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s',
             },
         ],
-        cartProducts: []
+        cartProducts: JSON.parse(localStorage.getItem('cart')) || []
     }
 }

@@ -11,10 +11,13 @@ export function addToCart(state, id) {
     } else {
         findProduct.quantity++
     }
+
+    localStorage.setItem(state.cartKey, JSON.stringify(state.cartProducts))
 }
 
 export function removeCart(state, index) {
     Vue.delete(state.cartProducts, index)
+    localStorage.setItem(state.cartKey, JSON.stringify(state.cartProducts))
 }
 
 export function updateQuantity(state, payload) {
@@ -29,4 +32,11 @@ export function updateQuantity(state, payload) {
 
         updateType === 'up' ? findProduct.quantity++ : findProduct.quantity--
     }
+
+    localStorage.setItem(state.cartKey, JSON.stringify(state.cartProducts))
+}
+
+export function empty(state) {
+    state.cartProducts = [];
+    localStorage.setItem(state.cartKey, JSON.stringify(state.cartProducts))
 }
