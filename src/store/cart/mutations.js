@@ -18,6 +18,10 @@ export function addToCart(state, id) {
 export function removeCart(state, index) {
     Vue.delete(state.cartProducts, index)
     this._vm.$setLocalStorage(state.cartKey, state.cartProducts)
+
+    if (!state.cartProducts.length) {
+        this.commit('cart/removePromoCode')
+    }
 }
 
 export function updateQuantity(state, payload) {
@@ -39,4 +43,23 @@ export function updateQuantity(state, payload) {
 export function empty(state) {
     state.cartProducts = [];
     this._vm.$setLocalStorage(state.cartKey, state.cartProducts)
+
+    this.commit('cart/removePromoCode')
+}
+
+export function applyPromoCode(state, payload) {
+    if (state.promotionCode.code) {
+        this._vm.$errorToast('Promotion already applied!');
+        return
+    }
+
+    state.promotionCode.code = payload.promotionCode
+    this._vm.$setLocalStorage('promotionInfo', state.promotionCode)
+
+    this._vm.$successToast('Promotion has been applied!');
+}
+
+export function removePromoCode(state) {
+    state.promotionCode.code = null;
+    this._vm.$setLocalStorage('promotionInfo', state.promotionCode)
 }

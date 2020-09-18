@@ -21,7 +21,7 @@
                             </button>
                             <h4 class="modal-title m-r-5" style="display: inline-block" id="defaultModalLabel">Cart
                                 Products</h4>
-                            <button @click="emptyCart" type="button" class="btn btn-xs btn-danger waves-effect">
+                            <button v-if="cartProducts.length" @click="emptyCart" type="button" class="btn btn-xs btn-danger waves-effect">
                                 EMPTY CART
                             </button>
                         </div>
@@ -68,6 +68,11 @@
                                         </tr>
                                         </tbody>
                                     </table>
+
+                                    <div v-if="cartPromotionInfo.code" class="text-right m-b-40">
+                                       <span>Promo Code: {{ cartPromotionInfo.code }}, {{ cartPromotionInfo.discount }}% Discount.</span>
+                                        <button @click="removePromoCode" type="button" class="btn btn-xs btn-danger m-l-5">Remove</button>
+                                    </div>
                                 </div>
 
                                 <div v-if="!cartProducts.length" class="alert alert-info">
@@ -76,20 +81,23 @@
                             </div>
 
                             <div class="modal-footer" style="padding-top: 0">
-                                <div v-if="cartProducts.length"  class="row clearfix">
-                                    <div class="col-sm-3">
-                                        <div class="form-group" style="margin-bottom: 0">
-                                            <div class="form-line">
-                                                <input type="text" placeholder="Promotion code"
-                                                       class="form-control">
+                                <div v-if="cartProducts.length" class="row clearfix">
+                                    <div v-if="!cartPromotionInfo.code">
+                                        <div class="col-sm-3">
+                                            <div class="form-group" style="margin-bottom: 0">
+                                                <div class="form-line">
+                                                    <input v-model="promotionCode" type="text" placeholder="Promotion code"
+                                                           class="form-control">
+                                                </div>
                                             </div>
                                         </div>
+                                        <div class="col-sm-3">
+                                            <button @click="applyPromotionCode" type="button" class="btn btn-primary waves-effect">
+                                                APPLY PROMO
+                                            </button>
+                                        </div>
                                     </div>
-                                    <div class="col-sm-3">
-                                        <button type="button" class="btn btn-primary waves-effect">
-                                            APPLY PROMO
-                                        </button>
-                                    </div>
+                                    <div v-else class="col-sm-6"></div>
 
                                     <div class="col-sm-6">
                                         <button type="button"
@@ -143,7 +151,8 @@ import {mapGetters} from 'vuex'
 export default {
     data() {
         return {
-            addAnimationClass: false
+            addAnimationClass: false,
+            promotionCode: 'mamun10'
         }
     },
 
@@ -152,28 +161,37 @@ export default {
             products: 'cart/products',
             cartProducts: 'cart/cartProducts',
             cartTotalPrice: 'cart/cartTotal',
+            cartPromotionInfo: 'cart/promotionInfo',
         })
     },
 
     methods: {
         addToCart(id) {
-            this.$store.dispatch('cart/addToCart', id)
+            this.$store.commit('cart/addToCart', id)
         },
 
         removeCart(index) {
-            this.$store.dispatch('cart/removeCart', index)
+            this.$store.commit('cart/removeCart', index)
         },
 
         updateQuantity(id, type) {
-            this.$store.dispatch('cart/updateQuantity', {id, type})
+            this.$store.commit('cart/updateQuantity', {id, type})
         },
 
         emptyCart() {
             this.$showConfirmMessage().then(result => {
                 if (result.value) {
-                    this.$store.dispatch('cart/empty')
+                    this.$store.commit('cart/empty')
                 }
             })
+        },
+
+        applyPromotionCode() {
+            this.$store.commit('cart/applyPromoCode', {promotionCode: this.promotionCode})
+        },
+
+        removePromoCode() {
+            this.$store.commit('cart/removePromoCode')
         }
     },
 

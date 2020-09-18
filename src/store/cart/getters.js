@@ -21,5 +21,13 @@ export function cartTotal(state) {
         total += product.price * quantity
     })
 
-    return total
+    if (state.promotionCode.code) {
+        total = total - total * (10 / 100)
+    }
+
+    return total.toFixed()
+}
+
+export function promotionInfo(state) {
+    return state.promotionCode
 }
