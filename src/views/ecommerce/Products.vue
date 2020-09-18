@@ -127,7 +127,8 @@
                                         <img :src="product.image" style="padding: 10px">
                                         <div class="caption">
                                             <h3>{{ product.name }}</h3>
-                                            <p>{{ product.details }}</p>
+                                            <div class="m-b-5"><b>Price: TK {{ product.price.toFixed() }}</b></div>
+                                            <p>{{ product.details.substring(55) }}</p>
                                             <div style="padding: 5px" class="text-center">
                                                 <a @click="addToCart(product.id)" href="javascript:void(0);"
                                                    class="btn btn-primary waves-effect"
