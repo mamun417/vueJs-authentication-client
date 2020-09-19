@@ -1,5 +1,9 @@
 <template>
     <div>
+        <vue-headful
+            title="DASHBOARD | VUE-AUTH"
+        />
+
         <section class="content">
             <div class="container-fluid">
                 <div class="block-header">

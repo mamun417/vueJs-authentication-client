@@ -1,5 +1,9 @@
 <template>
     <section class="content">
+        <vue-headful
+            title="ECOMMERCE | VUE-AUTH"
+        />
+
         <div class="container-fluid">
             <div data-toggle="modal" data-target="#defaultModal" class="cart_button_section"
                  :class="{ 'animated bounce': addAnimationClass }">

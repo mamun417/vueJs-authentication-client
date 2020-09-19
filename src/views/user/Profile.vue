@@ -1,5 +1,9 @@
 <template>
     <section class="content">
+        <vue-headful
+            title="PROFILE | VUE-AUTH"
+        />
+
         <div class="container-fluid">
             <div class="row clearfix">
                 <div class="col-xs-12 col-sm-3">

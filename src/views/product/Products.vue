@@ -1,5 +1,9 @@
 <template>
     <section class="content">
+        <vue-headful
+            title="PRODUCTS | VUE-AUTH"
+        />
+
         <div class="container-fluid">
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">

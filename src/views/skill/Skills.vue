@@ -1,5 +1,9 @@
 <template>
     <section class="content">
+        <vue-headful
+            title="SKILLS | VUE-AUTH"
+        />
+
         <div class="container-fluid">
             <!-- Body Copy -->
             <div class="row clearfix">
