@@ -71,6 +71,20 @@
                                     </table>
                                 </div>
                             </div>
+
+                            <div v-for="chunkSkills in $_.chunk(skills, 4)" class="row">
+                                <div v-for="skill in chunkSkills" class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                    <div class="info-box bg-cyan hover-expand-effect">
+                                        <div class="icon">
+                                            <i class="material-icons">playlist_add_check</i>
+                                        </div>
+                                        <div class="content">
+                                            <div class="text">{{ skill.name }}</div>
+                                            Date : {{ $dateFormat(skill.created_at) }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
