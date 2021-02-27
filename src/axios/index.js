@@ -4,7 +4,7 @@ import store from '../store'
 
 let tokenRefreshing = false
 
-axios.defaults.baseURL = 'http://127.0.0.1:8000/api';
+axios.defaults.baseURL = `${process.env.VUE_APP_URL}/api`;
 axios.defaults.withCredentials = false;
 
 // handle before req happen

@@ -11,6 +11,8 @@ Vue.config.productionTip = false
 Vue.component('Loader', () => import('@/components/ui/loader'))
 Vue.component('Pagination', () => import('@/components/pagination/Pagination'))
 
+console.log('Admin wwwwww')
+
 new Vue({
     router,
     store,
