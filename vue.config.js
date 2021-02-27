@@ -9,7 +9,7 @@ module.exports = {
             // entry for the page
             entry: 'src/main.js',
             // the source template
-            template: 'public/frontend/index.html',
+            template: 'public/index.html',
             // output as dist/index.html
             filename: 'index.html',
             // when using title option,

@@ -1,15 +1,15 @@
 import Vue from 'vue'
-import App from '@/App.vue'
-import router from '@/router'
-import store from '@/store'
-import '@/plugins'
-import '@/axios'
-import '@/helper'
+import App from '@/admin/App.vue'
+import router from '@/admin/router'
+import store from '@/admin/store'
+import '@/partial/plugins'
+import '@/admin/axios'
+import '@/partial/helper'
 
 Vue.config.productionTip = false
 
-Vue.component('Loader', () => import('@/components/ui/loader'))
-Vue.component('Pagination', () => import('@/components/pagination/Pagination'))
+Vue.component('Loader', () => import('@/admin/components/ui/loader'))
+Vue.component('Pagination', () => import('@/admin/components/pagination/Pagination'))
 
 console.log('Admin wwwwww')
 
