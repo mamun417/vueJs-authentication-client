@@ -25,6 +25,12 @@ router.beforeEach((to, from, next) => {
         }
         return next({name: 'admin.login'})
     } else if (to.matched.some(record => !record.meta.requiresAuth) && login) { // if authenticated and logged-in
+
+        if (to.path === '/') {
+            location.href = to.path;
+            return
+        }
+
         return next({name: 'admin.home'})
     }
     next() // make sure to always call next()!

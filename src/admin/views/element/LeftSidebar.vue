@@ -63,7 +63,7 @@
                     </router-link>
                 </li>
                 <li>
-                    <router-link to="/">
+                    <router-link to="/" target="_blank">
                         <i class="material-icons">donut_large</i>
                         <span>Go to main site</span>
                     </router-link>
