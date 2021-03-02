@@ -2,16 +2,16 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 
 import auth from './auth'
-import product from './product'
 import user from './user'
+import profile from './profile'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
     modules: {
         auth,
-        product,
-        user
+        user,
+        profile
     },
 
     strict: process.env.NODE_ENV !== 'production'

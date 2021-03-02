@@ -80,7 +80,7 @@ export default {
         getUsers() {
             this.loader = true
 
-            this.$store.dispatch('product/getUsers', {
+            this.$store.dispatch('user/getUsers', {
                 paginationMeta: this.paginationMeta
             })
                 .then(res => {
@@ -95,20 +95,10 @@ export default {
                 })
         },
 
-        handleProductUpdate(updatedData) {
-            this.users.map(user => {
-                if (user.id === updatedData.id) {
-                    Object.keys(user).forEach(key => {
-                        user[key] = updatedData[key]
-                    })
-                }
-            })
-        },
-
         deleteUser(id) {
             this.$showConfirmMessage().then(result => {
                 if (result.value) {
-                    this.$store.dispatch('product/deleteUser', {
+                    this.$store.dispatch('user/deleteUser', {
                         id: id
                     })
                         .then(res => {

@@ -1,9 +1,20 @@
-export function getUsers(context, payload) {
+export function getProfile(context, payload) {
     return new Promise((resolve, reject) => {
-        axios.get('admin/users', {
-            params: {
-                page: payload.paginationMeta.current_page,
-            }
+        axios.post('auth/me')
+            .then(res => {
+                context.commit('updateProfile', res.data.user)
+                resolve(res)
+            })
+            .catch(err => {
+                reject(err)
+            })
+    })
+}
+
+export function getSkillList(context, payload) {
+    return new Promise((resolve, reject) => {
+        axios.get('skill-list', {
+            params: payload.inputs
         })
             .then(res => {
                 resolve(res)
@@ -14,9 +25,35 @@ export function getUsers(context, payload) {
     })
 }
 
-export function addUser(context, payload) {
+export function changeProfile(context, payload) {
     return new Promise((resolve, reject) => {
-        axios.post('admin/users', payload.inputs)
+        axios.patch('profile/update', payload.inputs)
+            .then(res => {
+                context.commit('updateProfile', res.data.user)
+                resolve(res)
+            })
+            .catch(err => {
+                reject(err)
+            })
+    })
+}
+
+export function changeImage(context, payload) {
+    return new Promise((resolve, reject) => {
+        axios.post('change/image', payload.inputs)
+            .then(res => {
+                context.commit('updateProfile', res.data.user)
+                resolve(res)
+            })
+            .catch(err => {
+                reject(err)
+            })
+    })
+}
+
+export function checkPassword(context, payload) {
+    return new Promise((resolve, reject) => {
+        axios.post('password/check', payload.inputs)
             .then(res => {
                 resolve(res)
             })
@@ -26,33 +63,9 @@ export function addUser(context, payload) {
     })
 }
 
-export function updateUser(context, payload) {
+export function changePassword(context, payload) {
     return new Promise((resolve, reject) => {
-        axios.post('products/' + payload.inputs.get('id'), payload.inputs)
-            .then(res => {
-                resolve(res)
-            })
-            .catch(err => {
-                reject(err)
-            })
-    })
-}
-
-export function deleteUser(context, payload) {
-    return new Promise((resolve, reject) => {
-        axios.delete('admin/users/' + payload.id)
-            .then(res => {
-                resolve(res)
-            })
-            .catch(err => {
-                reject(err)
-            })
-    })
-}
-
-export function changeStatus(context, payload) {
-    return new Promise((resolve, reject) => {
-        axios.patch('products/change-status/' + payload.inputs.id)
+        axios.patch('password/change', payload.inputs)
             .then(res => {
                 resolve(res)
             })

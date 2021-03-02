@@ -13,24 +13,11 @@
                             <div class="image-area">
                                 <img v-lazy="userInfo.image_url || '/assets/images/user-lg.jpg'" height="128px" width="128px" alt="AdminBSB - Profile Image"/>
                             </div>
-                            <div class="content-area">
+                            <div class="content-area" style="padding-bottom: 90px">
                                 <h4>{{ userInfo.name }}</h4>
-                                <p>Web Software Developer</p>
+                                <p>Software Developer</p>
                                 <p>Administrator</p>
                             </div>
-                        </div>
-                        <div class="profile-footer">
-                            <ul>
-                                <li>
-                                    <span>Followers</span>
-                                    <span>1.234</span>
-                                </li>
-                                <li>
-                                    <span>Friends</span>
-                                    <span>14.252</span>
-                                </li>
-                            </ul>
-                            <button class="btn btn-primary btn-lg waves-effect btn-block">FOLLOW</button>
                         </div>
                     </div>
                 </div>
@@ -99,7 +86,7 @@
 
         computed: {
             ...mapGetters({
-                userInfo: 'user/userInfo'
+                userInfo: 'profile/userInfo'
             })
         },
     }

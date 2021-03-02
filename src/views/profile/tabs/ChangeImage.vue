@@ -1,8 +1,8 @@
 <template>
     <div role="tabpanel" class="tab-pane fade in" id="profile_image">
-        
+
         <loader v-if="loader"/>
-        
+
         <div class="form-horizontal">
             <div class="form-group">
                 <div class="col-sm-10">
@@ -14,7 +14,7 @@
                     </label>
                 </div>
             </div>
-        
+
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                     <button @click="updateProfile" class="btn btn-success">SUBMIT</button>
@@ -39,15 +39,6 @@
             onLoadProfileImage(e) {
                 this.formErrors = {}
                 this.image = e.target.files[0]
-                
-                /* base_64 imag upload
-                let file = e.target.files[0];
-                let reader = new FileReader();
-
-                reader.readAsDataURL(file);
-                reader.onloadend = (file) => {
-                    this.image = reader.result;
-                }*/
             },
 
             updateProfile() {
@@ -56,7 +47,7 @@
                 let fd = new FormData()
                 fd.append('image', this.image)
 
-                this.$store.dispatch('user/changeImage', {
+                this.$store.dispatch('profile/changeImage', {
                     inputs: fd
                 })
                     .then(res => {

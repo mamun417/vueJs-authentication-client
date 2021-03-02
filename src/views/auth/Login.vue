@@ -50,11 +50,8 @@
                                 <button class="btn btn-block bg-pink waves-effect" @click="login">SIGN IN</button>
                             </div>
                         </div>
-                        <div class="row m-t-15 m-b--20">
-                            <div class="col-xs-6">
-                                <router-link :to="{name: 'register'}">Register Now!</router-link>
-                            </div>
-                            <div class="col-xs-6 align-right">
+                        <div class="row m-t-15 m-b--10">
+                            <div class="text-center">
                                 <router-link :to="{name: 'password.email'}">Forgot Password?</router-link>
                             </div>
                         </div>

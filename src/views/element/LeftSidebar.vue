@@ -63,13 +63,13 @@
 
         computed: {
             ...mapGetters({
-                userInfo : 'user/userInfo'
+                userInfo : 'profile/userInfo'
             })
         },
 
         methods: {
             getProfileInfo() {
-                this.$store.dispatch('user/getProfile')
+                this.$store.dispatch('profile/getProfile')
             }
         }
     }

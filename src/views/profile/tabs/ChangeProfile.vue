@@ -37,36 +37,21 @@
             </div>
 
             <div class="form-group">
-                <label for="InputExperience" class="col-sm-2 control-label">Address</label>
+                <label for="Phone" class="col-sm-2 control-label">Phone</label>
                 <div class="col-sm-10">
                     <div class="form-line">
-                        <textarea class="form-control" id="InputExperience"
-                                  rows="3" placeholder="Address"
-                                  v-model="formData.address"
-                                  @input="formErrors.address = ''"
+                        <input type="text" class="form-control" id="Phone"
+                               placeholder="Phone Number"
+                               v-model="formData.phone"
+                               @input="formErrors.phone = ''"
+                               autocomplete="off"
                         >
-                        </textarea>
                     </div>
-                    <label v-if="formErrors.address" class="error">
-                        {{ formErrors.address }}
+                    <label v-if="formErrors.phone" class="error">
+                        {{ formErrors.phone }}
                     </label>
                 </div>
             </div>
-
-            <v-select
-                :loading="skillLoader"
-                multiple
-                v-model="formData.skills"
-                :options="skillList"
-                @search="getSkillsList"
-            >
-                <template v-slot:no-options="{ search, searching }">
-                    <template v-if="searching">
-                        No results found for <em>{{ search }}</em>.
-                    </template>
-                    <em style="opacity: 0.5;" v-else>Start typing to search for a skill.</em>
-                </template>
-            </v-select>
 
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
@@ -89,53 +74,21 @@ export default {
 
     data() {
         return {
-            skillList: [],
             loader: false,
-            skillLoader: false,
             formData: {
                 name: '',
                 email: '',
-                address: '',
-                skills: []
+                phone: '',
             },
             formErrors: {}
         }
     },
 
     methods: {
-        getSkillsList(val) {
-            this.skillLoader = true
-
-            this.$store.dispatch('user/getSkillList', {
-                inputs: {keyword: val}
-            })
-                .then(res => {
-                    let tempSkillList = res.data
-
-                    this.formData.skills.filter(skill => {
-                        tempSkillList.forEach((item, key) => {
-                            if (skill.code === item.code) {
-                                tempSkillList.splice(key, 1);
-                            }
-                        })
-                    })
-
-                    let self = this
-
-                    setTimeout(function (){
-                        self.skillList = tempSkillList
-                        self.skillLoader = false
-                    }, 200)
-                })
-                .catch(err => {
-                    //
-                })
-        },
-
         changeProfile() {
             this.loader = true
 
-            this.$store.dispatch('user/changeProfile', {
+            this.$store.dispatch('profile/changeProfile', {
                 inputs: this.formData
             })
                 .then(res => {

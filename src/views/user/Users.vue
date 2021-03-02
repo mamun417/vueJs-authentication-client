@@ -27,8 +27,8 @@
                             :count-reset-modal="countResetModal"
                             :edit-data="selectedForEdit"
                             :update-modal="updateModal"
-                            @addUser="handleAddUser"
-                            @updateUser="handleProductUpdate"
+                            @addUser="loadUsers"
+                            @updateUser="loadUsers"
                         />
 
                     </div>
@@ -67,7 +67,7 @@ export default {
             this.handleResetModal()
         },
 
-        handleAddUser() {
+        loadUsers() {
             this.$refs.userList.getUsers();
         },
 
@@ -75,10 +75,6 @@ export default {
             this.updateModal = true
             this.handleResetModal()
             this.selectedForEdit = data
-        },
-
-        handleProductUpdate(updatedData) {
-            this.$refs.productList.handleProductUpdate(updatedData)
         }
     }
 }

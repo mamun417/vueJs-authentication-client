@@ -100,7 +100,7 @@ export default {
         addUser() {
             this.loader = true
 
-            this.$store.dispatch('product/addUser', {
+            this.$store.dispatch('user/addUser', {
                 inputs: this.formData
             })
                 .then(res => {
@@ -115,17 +115,16 @@ export default {
         },
 
         updateUser() {
-
             this.loader = true
 
-            this.$store.dispatch('product/updateUser', {
-                inputs: this.appendImage(false)
+            this.$store.dispatch('user/updateUser', {
+                inputs: this.formData
             })
                 .then(res => {
                     this.loader = false
                     this.$successToast('User has been updated Successful!')
                     $('#defaultModal').modal('hide')
-                    this.$emit('updateUser', res.data.product)
+                    this.$emit('updateUser')
                 })
                 .catch(err => {
                     this.handleError(err)

@@ -1,8 +1,8 @@
 <template>
     <div role="tabpanel" class="tab-pane fade in" id="change_password_settings">
-        
+
         <loader v-if="loader"/>
-        
+
         <div v-if="showCheckPasswordForm" class="form-horizontal">
             <div class="form-group">
                 <label for="OldPassword" class="col-sm-3 control-label">
@@ -22,14 +22,14 @@
                     </label>
                 </div>
             </div>
-            
+
             <div class="form-group">
                 <div class="col-sm-offset-3 col-sm-9">
                     <button @click="checkPassword" class="btn btn-success">CHECK</button>
                 </div>
             </div>
         </div>
-        
+
         <div v-else class="form-horizontal">
             <div class="form-group">
                 <label for="NewPassword" class="col-sm-3 control-label">
@@ -49,7 +49,7 @@
                     </label>
                 </div>
             </div>
-            
+
             <div class="form-group">
                 <label for="NewPasswordConfirm" class="col-sm-3 control-label">
                     Confirm Password
@@ -68,7 +68,7 @@
                     </label>
                 </div>
             </div>
-            
+
             <div class="form-group">
                 <div class="col-sm-offset-3 col-sm-9">
                     <button @click="changePassword" class="btn btn-success">CHANGE</button>
@@ -87,7 +87,7 @@
                 default: true
             }
         },
-        
+
         data() {
             return {
                 loader: false,
@@ -100,7 +100,7 @@
             checkPassword() {
                 this.loader = true
 
-                this.$store.dispatch('user/checkPassword', {
+                this.$store.dispatch('profile/checkPassword', {
                     inputs: this.formData
                 })
                     .then(res => {
@@ -116,13 +116,14 @@
             changePassword() {
                 this.loader = true
 
-                this.$store.dispatch('user/changePassword', {
+                this.$store.dispatch('profile/changePassword', {
                     inputs: this.formData
                 })
                     .then(res => {
                         this.loader = false
                         this.$successToast('Password has been changed Successful!')
-                        this.$emit('update:showCheckPasswordForm', false)
+                        this.$emit('update:showCheckPasswordForm', true)
+                        this.formData = {}
                     })
                     .catch(err => {
                         this.handleError(err)
