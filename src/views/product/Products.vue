@@ -18,17 +18,17 @@
                             <h2>Users</h2>
                         </div>
 
-                        <user-list
+                        <product-list
                             ref="userList"
                             @editButtonClick="handleEditButtonClick"
                         />
 
-                        <user-add-edit-modal
+                        <product-add-edit-modal
                             :count-reset-modal="countResetModal"
                             :edit-data="selectedForEdit"
                             :update-modal="updateModal"
-                            @addUser="handleAddUser"
-                            @updateUser="handleProductUpdate"
+                            @addProduct="handleAddProduct"
+                            @updateProduct="handleProductUpdate"
                         />
 
                     </div>
@@ -39,14 +39,14 @@
 </template>
 
 <script>
-import UserList from "@/views/user/UserList";
-import UserAddEditModal from "@/components/modals/UserAddEditModal";
+import ProductList from "@/views/product/ProductList";
+import ProductAddEditModal from "@/components/modals/ProductAddEditModal";
 
 export default {
-    name: 'User',
+    name: 'Product',
     components: {
-        UserAddEditModal,
-        UserList
+        ProductAddEditModal,
+        ProductList
     },
 
     data() {
@@ -67,8 +67,8 @@ export default {
             this.handleResetModal()
         },
 
-        handleAddUser() {
-            this.$refs.userList.getUsers();
+        handleAddProduct() {
+            this.$refs.productList.getProducts();
         },
 
         handleEditButtonClick(data) {

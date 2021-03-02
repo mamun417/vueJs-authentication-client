@@ -4,7 +4,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title" id="defaultModalLabel">
-                        {{ updateModal ? 'Update ' + formData.name : 'Create' }} product
+                        {{ updateModal ? 'Update ' + formData.name : 'Create' }} user
                     </h4>
                 </div>
                 <div class="modal-body">
@@ -12,49 +12,48 @@
                         <div class="form-group">
                             <div class="form-line">
                                 <input type="text" class="form-control"
-                                   v-model="formData.name" autofocus
-                                   @input="formErrors.name = ''"
-                                   placeholder="Name">
+                                       v-model="formData.name" autofocus
+                                       @input="formErrors.name = ''"
+                                       placeholder="Name">
                             </div>
                             <label v-if="formErrors.name" class="error">{{ formErrors.name }}</label>
                         </div>
 
                         <div class="form-group">
                             <div class="form-line">
-                                <textarea class="form-control" id="InputExperience"
-                                    v-model="formData.description"
-                                    @input="formErrors.description = ''"
-                                    rows="3" placeholder="Description"
-                                >
-                                </textarea>
+                                <input type="email" class="form-control"
+                                       v-model="formData.email" autofocus
+                                       @input="formErrors.email = ''"
+                                       placeholder="Email">
                             </div>
-                            <label v-if="formErrors.description" class="error">{{ formErrors.description }}</label>
+                            <label v-if="formErrors.email" class="error">{{ formErrors.email }}</label>
                         </div>
 
                         <div class="form-group">
                             <div class="form-line">
                                 <input type="text" class="form-control"
-                                   v-model="formData.price" autofocus
-                                   @input="formErrors.price = ''"
-                                   placeholder="Price">
+                                       v-model="formData.phone" autofocus
+                                       @input="formErrors.phone = ''"
+                                       placeholder="Phone Number">
                             </div>
-                            <label v-if="formErrors.price" class="error">{{ formErrors.price }}</label>
+                            <label v-if="formErrors.phone" class="error">{{ formErrors.phone }}</label>
                         </div>
 
                         <div class="form-group">
                             <div class="form-line">
-                                <input @change="onLoadProfileImage" type="file" ref="image" class="form-control">
+                                <input type="password" class="form-control"
+                                       v-model="formData.password" autofocus
+                                       @input="formErrors.password = ''"
+                                       placeholder="Password">
                             </div>
-                            <label v-if="formErrors.image" class="error">
-                                {{ formErrors.image }}
-                            </label>
+                            <label v-if="formErrors.password" class="error">{{ formErrors.password }}</label>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">CLOSE</button>
-                    <button @click="updateModal ? updateProduct() : addProduct()" type="button"
-                        class="btn btn-success waves-effect">
+                    <button @click="updateModal ? updateUser() : addUser()" type="button"
+                            class="btn btn-success waves-effect">
                         {{ updateModal ? 'Update' : 'Submit' }}
                     </button>
                 </div>
@@ -88,86 +87,49 @@ export default {
         return {
             formData: {},
             formErrors: {},
-            image: '',
             loader: false
         }
     },
 
     methods: {
-        onLoadProfileImage(e) {
-            this.formErrors.image = ''
-            this.image = e.target.files[0];
-        },
-
         resetModal() {
             this.formData = {}
             this.formErrors = {}
-            this.image = ''
-
-            if (this.$refs.image){
-                this.$refs.image.value = ''
-            }
         },
 
-        addProduct() {
+        addUser() {
             this.loader = true
 
-            this.$store.dispatch('product/createProduct', {
-                inputs: this.appendImage()
+            this.$store.dispatch('product/addUser', {
+                inputs: this.formData
             })
                 .then(res => {
                     this.loader = false
-
-                    this.$successToast('Product has been created Successful!')
-
+                    this.$successToast('User has been created Successful!')
                     $('#defaultModal').modal('hide')
-
-                    this.$emit('addProduct')
-
-                    this.resetModal()
+                    this.$emit('addUser')
                 })
                 .catch(err => {
                     this.handleError(err)
                 })
         },
 
-        updateProduct() {
+        updateUser() {
 
             this.loader = true
 
-            this.$store.dispatch('product/updateProduct', {
+            this.$store.dispatch('product/updateUser', {
                 inputs: this.appendImage(false)
             })
                 .then(res => {
                     this.loader = false
-
-                    this.$successToast('Product has been updated Successful!')
-
+                    this.$successToast('User has been updated Successful!')
                     $('#defaultModal').modal('hide')
-
-                    this.$emit('updateProduct', res.data.product)
-
-                    this.resetModal()
+                    this.$emit('updateUser', res.data.product)
                 })
                 .catch(err => {
                     this.handleError(err)
                 })
-        },
-
-        appendImage(postMethod = true) {
-            let fd = new FormData()
-
-            if (!postMethod) {
-                fd.append('_method', 'put')
-            }
-
-            fd.append('image', this.image)
-
-            for (let key in this.formData) {
-                fd.append(key, this.formData[key]);
-            }
-
-            return fd
         },
 
         handleError(err) {
@@ -190,18 +152,10 @@ export default {
                     let tempData = this.$_.cloneDeep(this.editData)
 
                     Object.keys(tempData).forEach(key => {
-                        if (tempData[key]){
+                        if (tempData[key]) {
                             this.formData[key] = tempData[key]
                         }
                     })
-
-                    delete this.formData.image
-
-                    // let tempFormData = this.$_.cloneDeep(this.editData)
-                    // this.$set(this.formData, 'id', tempFormData.id);
-                    // this.$set(this.formData, 'name', tempFormData.name);
-                    // this.$set(this.formData, 'description', tempFormData.description);
-                    // this.$set(this.formData, 'price', tempFormData.price);
                 }
             },
             deep: true,

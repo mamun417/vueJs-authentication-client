@@ -122,18 +122,6 @@ export default {
             })
         },
 
-        changeStatus(user) {
-            this.$store.dispatch('user/changeStatus', {
-                inputs: user
-            })
-                .then(res => {
-                    this.$successToast('Product status has been changed Successful!')
-                })
-                .catch(err => {
-                    this.$errorToast(err.response.data.message)
-                })
-        },
-
         handleEditButtonClick(data) {
             this.$emit('editButtonClick', data)
         },

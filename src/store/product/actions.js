@@ -6,7 +6,6 @@ export function getUsers(context, payload) {
             }
         })
             .then(res => {
-                console.log(res)
                 resolve(res)
             })
             .catch(err => {
@@ -15,9 +14,9 @@ export function getUsers(context, payload) {
     })
 }
 
-export function createProduct(context, payload) {
+export function addUser(context, payload) {
     return new Promise((resolve, reject) => {
-        axios.post('products', payload.inputs)
+        axios.post('admin/users', payload.inputs)
             .then(res => {
                 resolve(res)
             })
@@ -27,7 +26,7 @@ export function createProduct(context, payload) {
     })
 }
 
-export function updateProduct(context, payload) {
+export function updateUser(context, payload) {
     return new Promise((resolve, reject) => {
         axios.post('products/' + payload.inputs.get('id'), payload.inputs)
             .then(res => {
