@@ -33,15 +33,15 @@
                     </router-link>
                 </li>
                 <li>
-                    <router-link :to="{name: 'product'}">
+                    <router-link :to="{name: 'user'}" v-if="userInfo.role_id === 1">
                         <i class="material-icons">donut_large</i>
-                        <span>Products</span>
+                        <span>Users</span>
                     </router-link>
                 </li>
                 <li>
-                    <router-link :to="{name: 'user'}">
+                    <router-link :to="{name: 'task'}">
                         <i class="material-icons">donut_large</i>
-                        <span>Users</span>
+                        <span>Tasks</span>
                     </router-link>
                 </li>
             </ul>
