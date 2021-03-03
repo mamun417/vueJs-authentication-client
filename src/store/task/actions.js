@@ -1,7 +1,10 @@
 export function getTasks(context, payload) {
     return new Promise((resolve, reject) => {
 
-        let url = 'admin/tasks'
+        let userInfo = localStorage.getItem('user');
+        let role_id = JSON.parse(userInfo).role_id;
+
+        let url = role_id === 1 ? 'admin/tasks' : '/tasks';
 
         axios.get(url, {
             params: {
@@ -41,9 +44,16 @@ export function addTask(context, payload) {
     })
 }
 
-export function updateUser(context, payload) {
+
+export function updateTask(context, payload) {
+
+    let userInfo = localStorage.getItem('user');
+    let role_id = JSON.parse(userInfo).role_id;
+
+    let url = role_id === 1 ? 'admin/tasks/' : 'tasks/update-status/';
+
     return new Promise((resolve, reject) => {
-        axios.put('admin/users/' + payload.inputs.id, payload.inputs)
+        axios.patch(url + payload.inputs.id, payload.inputs)
             .then(res => {
                 resolve(res)
             })

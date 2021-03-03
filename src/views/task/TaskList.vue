@@ -6,10 +6,10 @@
             <table class="table table-bordered">
                 <thead>
                 <tr>
-                    <th>ID</th>
-                    <th style="width: 5%">ASSIGN USER</th>
+                    <th style="width: 2%">ID</th>
+                    <th style="width: 15%">ASSIGN USER</th>
                     <th style="width: 20%">TITLE</th>
-                    <th style="width: 30%">DESCRIPTION</th>
+                    <th style="width: 20%">DESCRIPTION</th>
                     <th style="width: 5%" class="text-center">STATUS</th>
                     <th style="width: 10%">DUE DATE</th>
                     <!--<th style="width: 10%">CREATED AT</th>-->
@@ -27,7 +27,8 @@
                     <td>{{ task.description }}</td>
 
                     <td class="text-center">
-                        <span class="badge bg-black" v-if="task.status === 'pending'">{{ $_.upperFirst(task.status) }}</span>
+                        <span class="badge bg-black" v-if="task.status === 'pending'">{{ $_.upperFirst(task.status)
+                            }}</span>
                         <span class="badge bg-green" v-else>{{ $_.upperFirst(task.status) }}</span>
                     </td>
 
@@ -40,7 +41,7 @@
                                 type="button" class="btn btn-xs btn-primary waves-effect m-r-5">
                             <i class="material-icons">edit</i>
                         </button>
-                        <button @click="deleteUser(task.id)" type="button"
+                        <button v-if="role_id === 1" @click="deleteTask(task.id)" type="button"
                                 class="btn btn-xs btn-danger waves-effect">
                             <i class="material-icons">delete</i>
                         </button>
@@ -62,7 +63,7 @@
             </div>
         </div>
 
-        <div v-else class="text-center p-b-25 m-t-20">No users found</div>
+        <div v-else class="text-center p-b-25 m-t-20">No tasks found</div>
     </div>
 </template>
 
@@ -80,12 +81,16 @@ export default {
             paginationMeta: {
                 last_page: 1,
                 current_page: 1
-            }
+            },
+            role_id: '',
         }
     },
 
     mounted() {
         this.getTasks();
+
+        let userInfo = localStorage.getItem('user');
+        this.role_id = JSON.parse(userInfo).role_id
     },
 
     methods: {
@@ -107,7 +112,7 @@ export default {
                 })
         },
 
-        deleteUser(id) {
+        deleteTask(id) {
             this.$showConfirmMessage().then(result => {
                 if (result.value) {
                     this.$store.dispatch('task/deleteTask', {
@@ -130,7 +135,7 @@ export default {
 
         handlePagination(page) {
             this.paginationMeta.current_page = page
-            this.getUsers()
+            this.getTasks()
         }
     }
 }

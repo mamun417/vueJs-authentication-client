@@ -9,7 +9,7 @@
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
                         <div class="header">
-                            <button @click="handleCreateButtonClick" type="button"
+                            <button v-if="role_id === 1" @click="handleCreateButtonClick" type="button"
                                     data-toggle="modal" data-target="#defaultModal"
                                     class="btn btn-sm btn-success waves-effect pull-right"
                                     style="top: -8px">
@@ -28,7 +28,7 @@
                             :edit-data="selectedForEdit"
                             :update-modal="updateModal"
                             @addTask="loadTasks"
-                            @updateUser="loadTasks"
+                            @updateTask="loadTasks"
                         />
 
                     </div>
@@ -54,7 +54,13 @@ export default {
             countResetModal: 1,
             updateModal: false,
             selectedForEdit: {},
+            role_id: ''
         }
+    },
+
+    mounted() {
+        let userInfo = localStorage.getItem('user');
+        this.role_id = JSON.parse(userInfo).role_id
     },
 
     methods: {
