@@ -1,0 +1,89 @@
+﻿html {
+    font-size: 14px !important;
+}
+
+.router-link-exact-active, .router-link-exact-active span {
+    color: red !important;
+}
+
+.page-loader-wrapper {
+    position: absolute;
+    opacity: 0.60;
+    z-index: 9;
+}
+
+.dropdown-menu {
+    min-width: 175px;
+}
+
+.position-relative {
+    position: relative;
+}
+
+td > .btn {
+    padding: 1px 5px;
+}
+
+table > tbody > tr > td {
+    vertical-align: middle !important;
+}
+
+.sidebar {
+    width: 250px;
+}
+
+section.content {
+    margin: 100px 15px 0 265px;
+}
+
+.vs__selected {
+    background-color: #00b0e4 !important;
+    border-color: #00b0e4 !important;
+    color: #fff !important;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.vs__deselect {
+    fill: #fff !important;
+}
+
+.vs__spinner, .vs__spinner:after {
+    width: 4em !important;
+    height: 4em !important;
+}
+
+.cursor_pointer {
+    cursor: pointer;
+}
+
+.table > thead > tr > th {
+    vertical-align: middle;
+}
+
+.demo-checkbox label, .demo-radio-button label {
+    min-width: auto !important;
+}
+
+table th {
+    font-size: 12px;
+}
+
+.sidebar .menu {
+    height: calc(100vh - 200px) !important;
+}
+
+.cart_button_section {
+    position: fixed;
+    right: 0;
+    z-index: 100;
+    top: 50%;
+}
+
+.hover_red:hover {
+    color: red;
+}
+
+.animated {
+    animation-duration: .6s;
+}
