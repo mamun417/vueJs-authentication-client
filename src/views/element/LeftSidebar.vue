@@ -29,7 +29,7 @@
                 <li>
                     <router-link :to="{name: 'home'}">
                         <i class="material-icons">home</i>
-                        <span>Home</span>
+                        <span>Dashboard</span>
                     </router-link>
                 </li>
                 <li>

@@ -74,3 +74,19 @@ export function deleteTask(context, payload) {
             })
     })
 }
+
+export function getTaskReport(context, payload) {
+    return new Promise((resolve, reject) => {
+        axios.get('admin/tasks/report', {
+            params: {
+                year: payload.year,
+            }
+        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch(err => {
+                reject(err)
+            })
+    })
+}

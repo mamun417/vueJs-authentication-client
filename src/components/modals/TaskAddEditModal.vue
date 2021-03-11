@@ -8,7 +8,7 @@
                     </h4>
                 </div>
                 <div class="modal-body">
-                    <div v-if="!formData.status">
+                    <div v-if="userInfo.role_id === 1">
                         <div>
                             <div class="form-group">
                                 <div class="form-line">
@@ -60,7 +60,7 @@
                         </div>
                     </div>
 
-                    <div v-else class="form-group">
+                    <div class="form-group">
                         <div class="form-line">
                             <select class="form-control show-tick"
                                     v-model="formData.status"
@@ -89,6 +89,8 @@
 </template>
 
 <script>
+import {mapGetters} from "vuex";
+
 export default {
     name: 'User-Add-Edit-Modal',
     props: {
@@ -104,6 +106,12 @@ export default {
             type: Number,
             default: 1
         }
+    },
+
+    computed: {
+        ...mapGetters({
+            userInfo : 'profile/userInfo'
+        })
     },
 
     data() {

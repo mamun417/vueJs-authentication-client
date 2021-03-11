@@ -7,7 +7,7 @@
                 <div class="navbar-header">
                     <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
                     <a @click="barClick" href="javascript:void(0);" class="bars"></a>
-                    <router-link :to="{name: 'home'}" style="color: #fff!important;" class="navbar-brand">VueCli Authentication with laravel API</router-link>
+                    <router-link :to="{name: 'home'}" style="color: #fff!important;" class="navbar-brand">Task Management System</router-link>
                 </div>
                 <div class="collapse navbar-collapse" id="navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
