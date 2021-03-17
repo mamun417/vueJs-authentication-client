@@ -10,6 +10,11 @@ const routes = [
                 component: () => import('../views/Home')
             },
             {
+                path: 'administration/user',
+                name: 'admin.administration.user',
+                component: () => import('@/admin/views/administration/user/Users')
+            },
+            {
                 path: 'products',
                 name: 'product',
                 // route level code-splitting

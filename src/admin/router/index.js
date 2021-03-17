@@ -23,7 +23,8 @@ router.beforeEach((to, from, next) => {
         if (login) {
             return next()
         }
-        return next({name: 'admin.login'})
+
+        return next({name: 'login'})
     } else if (to.matched.some(record => !record.meta.requiresAuth) && login) { // if authenticated and logged-in
 
         if (to.path === '/') {

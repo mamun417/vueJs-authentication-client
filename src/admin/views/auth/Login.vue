@@ -19,12 +19,13 @@
                         </span>
                             <div class="form-line">
                                 <input type="text" class="form-control"
-                                   v-model="formData.email"
-                                   placeholder="Email Address" autofocus
-                                   @input="formErrors.email = ''"
+                                       v-model="formData.email"
+                                       placeholder="Email Address" autofocus
+                                       @input="formErrors.email = ''"
                                 >
                             </div>
-                            <label v-if="formErrors.email" id="username-error" class="error">{{ formErrors.email }}</label>
+                            <label v-if="formErrors.email" id="username-error" class="error">{{ formErrors.email
+                                }}</label>
                         </div>
 
                         <div class="input-group">
@@ -33,12 +34,13 @@
                             </span>
                             <div class="form-line">
                                 <input type="password"
-                                   class="form-control"
-                                   v-model="formData.password"
-                                   placeholder="Password"
-                                   @input="formErrors.password = ''">
+                                       class="form-control"
+                                       v-model="formData.password"
+                                       placeholder="Password"
+                                       @input="formErrors.password = ''">
                             </div>
-                            <label v-if="formErrors.password" id="password-error" class="error">{{ formErrors.password }}</label>
+                            <label v-if="formErrors.password" id="password-error" class="error">{{ formErrors.password
+                                }}</label>
                         </div>
 
                         <div class="row">
@@ -66,72 +68,60 @@
 </template>
 
 <script>
-    import $ from "jquery";
+import $ from "jquery";
 
-    export default {
-        name: 'Login',
-        data(){
-            return {
-                formData : {
-                    email : 'test@gmail.com',
-                    password : '111111'
-                },
-                formErrors : {},
-                loader: false
-            }
-        },
+export default {
+    name: 'Login',
+    data() {
+        return {
+            formData: {
+                email: 'test@gmail.com',
+                password: '111111'
+            },
+            formErrors: {},
+            loader: false
+        }
+    },
 
-        mounted() {
-            $('body').removeClass().addClass('login-page');
-        },
+    mounted() {
+        $('body').removeClass().addClass('login-page');
+    },
 
-        methods: {
-            login(){
-                this.loader = true
+    methods: {
+        login() {
+            this.loader = true
 
-                this.$store.dispatch('auth/login', {
-                    inputs: this.formData
+            this.$store.dispatch('auth/login', {
+                inputs: this.formData
+            })
+                .then(res => {
+                    this.loader = false
+
+                    toast.fire({
+                        icon: 'success',
+                        title: 'Login Successful!'
+                    });
+
+                    this.$router.push({name: 'admin.home'})
                 })
-                    .then(res => {
-                        this.loader = false
+                .catch(err => {
+                    let self = this;
 
-                        toast.fire({
-                            icon: 'success',
-                            title: 'Login Successful!'
-                        });
+                    setTimeout(function () {
+                        self.loader = false
 
-                        this.$router.push({name: 'admin.home'})
-                    })
-                    .catch(err => {
-
-                        /*this.loader = false
-
-                        if (err.response.data.errors){
-                            this.formErrors = err.response.data.errors
-                        }else {
+                        if (err.response.data.errors) {
+                            self.formErrors = err.response.data.errors
+                        } else {
                             toast.fire({
                                 icon: 'error',
                                 title: err.response.data.message
                             })
-                        }*/
+                        }
 
-                        let self = this;
-
-                        setTimeout(function () {
-                            self.loader = false
-
-                            if (err.response.data.errors){
-                                self.formErrors = err.response.data.errors
-                            }else {
-                                toast.fire({
-                                    icon: 'error',
-                                    title: err.response.data.message
-                                })
-                            }
-
-                        }, 3000)
-                    })
-            }
+                    }, 1)
+                })
         }
     }
+}
 </script>

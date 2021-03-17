@@ -20,7 +20,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="14c7a4b0-6ba3-47ed-bebb-ee24cc9488b5" name="Default Changelist" comment="admin to home redirect bug fixed">
+      <change afterPath="$PROJECT_DIR$/src/admin/components/modals/UserAddEditModal.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/admin/views/administration/user/UserList.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/admin/views/administration/user/Users.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/admin/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/router/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/admin/router/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/router/routes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/admin/views/auth/Login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/views/auth/Login.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/admin/views/element/LeftSidebar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/views/element/LeftSidebar.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +76,7 @@
     <property name="TERMINAL_CUSTOM_COMMANDS_GOT_IT" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../laravel-authentication-api" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/admin/components/modals" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -86,19 +93,32 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/admin/components/modals" />
+      <recent name="$PROJECT_DIR$/src/admin/views" />
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/public" />
       <recent name="$PROJECT_DIR$/src/admin" />
-      <recent name="$PROJECT_DIR$/public/frontend" />
-      <recent name="$PROJECT_DIR$/public/admin" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/admin/views/adminstration/user" />
       <recent name="$PROJECT_DIR$/src/admin" />
       <recent name="$PROJECT_DIR$/src/partial" />
       <recent name="$PROJECT_DIR$/public/admin" />
       <recent name="$PROJECT_DIR$/src" />
-      <recent name="$PROJECT_DIR$" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="project-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
@@ -275,6 +295,8 @@
       <workItem from="1614689034649" duration="352000" />
       <workItem from="1614716339298" duration="2112000" />
       <workItem from="1614778608548" duration="744000" />
+      <workItem from="1615484557692" duration="727000" />
+      <workItem from="1615958699044" duration="11892000" />
     </task>
     <task id="LOCAL-00033" summary="find a refresh token temp solution but i am not satisfied">
       <created>1595779826922</created>
