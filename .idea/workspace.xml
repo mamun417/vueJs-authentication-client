@@ -19,15 +19,21 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="14c7a4b0-6ba3-47ed-bebb-ee24cc9488b5" name="Default Changelist" comment="admin to home redirect bug fixed">
-      <change afterPath="$PROJECT_DIR$/src/admin/components/modals/UserAddEditModal.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/admin/views/administration/user/UserList.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/admin/views/administration/user/Users.vue" afterDir="false" />
+    <list default="true" id="14c7a4b0-6ba3-47ed-bebb-ee24cc9488b5" name="Default Changelist" comment="administration part ongoing">
+      <change afterPath="$PROJECT_DIR$/.idea/prettier.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/admin/views/administration/role/Roles.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/admin/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/router/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/admin/axios/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/axios/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/admin/components/modals/UserAddEditModal.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/components/modals/UserAddEditModal.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/admin/router/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/router/routes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/admin/store/auth/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/store/auth/actions.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/admin/views/auth/Login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/views/auth/Login.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/admin/views/auth/passwords/Email.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/views/auth/passwords/Email.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/admin/views/auth/passwords/Reset.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/views/auth/passwords/Reset.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/admin/views/element/LeftSidebar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/views/element/LeftSidebar.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/admin/views/product/Products.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/views/product/Products.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/partial/helper/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/partial/helper/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,6 +45,13 @@
   </component>
   <component name="EditorConfigPreviewManager">
     <editorConfig file="$PROJECT_DIR$/.editorconfig" previewFile="$PROJECT_DIR$/src/App.vue" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Vue Single File Component" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -73,10 +86,11 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="TERMINAL_CUSTOM_COMMANDS_GOT_IT" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/admin/components/modals" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -87,7 +101,8 @@
     <property name="node.js.selected.package.standard" value="" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="yarn" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
+    <property name="settings.editor.selected.configurable" value="settings.javascript.prettier" />
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -106,19 +121,6 @@
       <recent name="$PROJECT_DIR$/public/admin" />
       <recent name="$PROJECT_DIR$/src" />
     </key>
-  </component>
-  <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="project-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
@@ -296,14 +298,17 @@
       <workItem from="1614716339298" duration="2112000" />
       <workItem from="1614778608548" duration="744000" />
       <workItem from="1615484557692" duration="727000" />
-      <workItem from="1615958699044" duration="11892000" />
-    </task>
-    <task id="LOCAL-00033" summary="find a refresh token temp solution but i am not satisfied">
-      <created>1595779826922</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1595779826922</updated>
+      <workItem from="1615958699044" duration="13111000" />
+      <workItem from="1616151542811" duration="629000" />
+      <workItem from="1617774235742" duration="137000" />
+      <workItem from="1617774423566" duration="1112000" />
+      <workItem from="1617778376149" duration="8000" />
+      <workItem from="1617780553175" duration="249000" />
+      <workItem from="1618209728773" duration="354000" />
+      <workItem from="1618218848549" duration="1621000" />
+      <workItem from="1618853243160" duration="5050000" />
+      <workItem from="1619507643460" duration="67000" />
+      <workItem from="1619523576847" duration="3601000" />
     </task>
     <task id="LOCAL-00034" summary="image upload done">
       <created>1595875347288</created>
@@ -641,7 +646,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614530602872</updated>
     </task>
-    <option name="localTasksCounter" value="82" />
+    <task id="LOCAL-00082" summary="administration part ongoing">
+      <created>1615976517226</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1615976517227</updated>
+    </task>
+    <option name="localTasksCounter" value="83" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -685,7 +697,6 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="get skill list" />
     <MESSAGE value="create skill with dynamic input" />
     <MESSAGE value="array validation done" />
     <MESSAGE value="delete skill done" />
@@ -710,6 +721,22 @@
     <MESSAGE value="practice with lodash chunk methods" />
     <MESSAGE value="admin part separated" />
     <MESSAGE value="admin to home redirect bug fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="admin to home redirect bug fixed" />
+    <MESSAGE value="administration part ongoing" />
+    <option name="LAST_COMMIT_MESSAGE" value="administration part ongoing" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/admin/views/administration/user/Users.vue</url>
+          <line>1</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

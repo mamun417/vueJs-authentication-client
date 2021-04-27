@@ -2,7 +2,9 @@ import moment from 'moment'
 import lodash from 'lodash'
 import Vue from "vue";
 
-Vue.prototype.$resetPasswordUrl = process.env.VUE_APP_URL+'/password/reset'
+console.log(process.env.VUE_APP_URL)
+
+Vue.prototype.$resetPasswordUrl = process.env.VUE_APP_URL+'/admin/password/reset'
 Vue.prototype.$moment = moment;
 Vue.prototype.$_ = lodash;
 
