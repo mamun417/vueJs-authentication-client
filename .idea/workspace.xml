@@ -19,21 +19,16 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="14c7a4b0-6ba3-47ed-bebb-ee24cc9488b5" name="Default Changelist" comment="administration part ongoing">
-      <change afterPath="$PROJECT_DIR$/.idea/prettier.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/admin/views/administration/role/Roles.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="14c7a4b0-6ba3-47ed-bebb-ee24cc9488b5" name="Default Changelist" comment="roles ongoing">
+      <change afterPath="$PROJECT_DIR$/.prettierrc.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/.editorconfig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/admin/axios/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/axios/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/admin/components/modals/UserAddEditModal.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/components/modals/UserAddEditModal.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/admin/router/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/router/routes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/admin/store/auth/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/store/auth/actions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/admin/views/auth/Login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/views/auth/Login.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/admin/views/auth/passwords/Email.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/views/auth/passwords/Email.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/admin/views/auth/passwords/Reset.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/views/auth/passwords/Reset.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/admin/views/element/LeftSidebar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/views/element/LeftSidebar.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/admin/views/product/Products.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/views/product/Products.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/admin/components/modals/ProductAddEditModal.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/components/modals/ProductAddEditModal.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/admin/views/administration/role/Roles.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/views/administration/role/Roles.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/admin/views/ecommerce/Products.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/views/ecommerce/Products.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/partial/helper/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/partial/helper/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -309,13 +304,14 @@
       <workItem from="1618853243160" duration="5050000" />
       <workItem from="1619507643460" duration="67000" />
       <workItem from="1619523576847" duration="3601000" />
-    </task>
-    <task id="LOCAL-00034" summary="image upload done">
-      <created>1595875347288</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1595875347288</updated>
+      <workItem from="1619547261391" duration="221000" />
+      <workItem from="1619550711909" duration="37000" />
+      <workItem from="1619591552907" duration="99000" />
+      <workItem from="1619598022674" duration="1038000" />
+      <workItem from="1619676888202" duration="1000000" />
+      <workItem from="1619685898520" duration="18000" />
+      <workItem from="1619805297105" duration="3815000" />
+      <workItem from="1619811495409" duration="795000" />
     </task>
     <task id="LOCAL-00035" summary="vue lazyload used">
       <created>1595881380272</created>
@@ -653,7 +649,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615976517227</updated>
     </task>
-    <option name="localTasksCounter" value="83" />
+    <task id="LOCAL-00083" summary="roles ongoing">
+      <created>1619547471333</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1619547471334</updated>
+    </task>
+    <option name="localTasksCounter" value="84" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -697,7 +700,6 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="create skill with dynamic input" />
     <MESSAGE value="array validation done" />
     <MESSAGE value="delete skill done" />
     <MESSAGE value="add dynamic skill bug fix" />
@@ -722,7 +724,8 @@
     <MESSAGE value="admin part separated" />
     <MESSAGE value="admin to home redirect bug fixed" />
     <MESSAGE value="administration part ongoing" />
-    <option name="LAST_COMMIT_MESSAGE" value="administration part ongoing" />
+    <MESSAGE value="roles ongoing" />
+    <option name="LAST_COMMIT_MESSAGE" value="roles ongoing" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

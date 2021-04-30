@@ -1,64 +1,65 @@
 <template>
     <section class="content">
-        <vue-headful title="USERS | VUE-AUTH" />
+        <vue-headful title="CREATE ROLES | VUE-AUTH" />
 
         <div class="container-fluid">
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
-                        <!--                        <div class="header">-->
-                        <!--                            <button @click="handleCreateButtonClick" type="button"-->
-                        <!--                                    data-toggle="modal" data-target="#defaultModal"-->
-                        <!--                                    class="btn btn-sm btn-success waves-effect pull-right"-->
-                        <!--                                    style="top: -8px">-->
-                        <!--                                <i class="material-icons">add</i><span>CREATE</span>-->
-                        <!--                            </button>-->
-                        <!--                            <h2>Users</h2>-->
-                        <!--                        </div>-->
+                        <div class="header">
+                            <h2>CREATE ROLES</h2>
+                        </div>
 
-                        <!--                        <div class="header m-b&#45;&#45;20" style="border-bottom: none!important;">-->
-                        <!--                            <div class="row clearfix">-->
-                        <!--                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">-->
-                        <!--                                    <div class="form-group form-float">-->
-                        <!--                                        <div class="form-line">-->
-                        <!--                                            <select @change="handlePipeline({per_page:$event.target.value})"-->
-                        <!--                                                    class="form-control show-tick">-->
-                        <!--                                                <option :value="n" v-for="n in [2, 5, 10, 20]">{{ n }}</option>-->
-                        <!--                                            </select>-->
-                        <!--                                        </div>-->
-                        <!--                                    </div>-->
-                        <!--                                </div>-->
+                        <div class="body">
+                            <div class="row">
+                                <div class="clearfix">
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    placeholder="Enter role name Ex. (manager, customer)"
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
-                        <!--                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">-->
-                        <!--                                    <div class="form-group form-float">-->
-                        <!--                                        <div class="form-line">-->
-                        <!--                                            <input @input="handlePipeline({search:$event.target.value})" type="text"-->
-                        <!--                                                   class="form-control" placeholder="Type here...">-->
-                        <!--                                        </div>-->
-                        <!--                                    </div>-->
-                        <!--                                </div>-->
-
-                        <!--                                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">-->
-                        <!--                                    <button type="button" class="btn btn-info btn-lg m-l-15 waves-effect">-->
-                        <!--                                        SEARCH-->
-                        <!--                                    </button>-->
-                        <!--                                </div>-->
-                        <!--                            </div>-->
-                        <!--                        </div>-->
-
-                        <!--                        <user-list-->
-                        <!--                            ref="userList"-->
-                        <!--                            :pipeline="pipeline"-->
-                        <!--                            @editButtonClick="handleEditButtonClick"-->
-                        <!--                        />-->
-
-                        <!--                        <user-add-edit-modal-->
-                        <!--                            :count-reset-modal="countResetModal"-->
-                        <!--                            :edit-data="selectedForEdit"-->
-                        <!--                            :update-modal="updateModal"-->
-                        <!--                            @addProduct="handleAddProduct"-->
-                        <!--                            @updateProduct="handleProductUpdate"-->
-                        <!--                        />-->
+                                <div
+                                    v-for="(module, index) in modules"
+                                    :key="index"
+                                    class="col-lg-3 col-md-3 col-sm-6 col-xs-12"
+                                >
+                                    <div class="card">
+                                        <div class="header">
+                                            <h2>
+                                                {{ $upperFirst(Object.keys(module)[0]) }}
+                                            </h2>
+                                        </div>
+                                        <div class="body">
+                                            <div class="demo-checkbox">
+                                                <div
+                                                    v-for="(permission, key) in module[Object.keys(module)[0]]
+                                                        .permissions"
+                                                    :key="key"
+                                                >
+                                                    <input
+                                                        type="checkbox"
+                                                        :id="`basic_checkbox_${module}_${permission}`"
+                                                        class="filled-in"
+                                                        :checked="key % 2"
+                                                    />
+                                                    <label :for="`basic_checkbox_${module}_${permission}`">
+                                                        {{ $upperFirst(permission) }}
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -69,6 +70,53 @@
 <script>
 export default {
     name: "Roles",
+    data() {
+        return {
+            modules: [
+                {
+                    product: {
+                        permissions: ["Create", "Edit", "Update", "Delete"]
+                    }
+                },
+                {
+                    ecommerce: {
+                        permissions: ["Create", "Edit", "Update", "Delete"]
+                    }
+                },
+                {
+                    product: {
+                        permissions: ["Create", "Edit", "Update", "Delete"]
+                    }
+                },
+                {
+                    ecommerce: {
+                        permissions: ["Create", "Edit", "Update", "Delete"]
+                    }
+                },
+                {
+                    product: {
+                        permissions: ["Create", "Edit", "Update", "Delete"]
+                    }
+                },
+                {
+                    ecommerce: {
+                        permissions: ["Create", "Edit", "Update", "Delete"]
+                    }
+                },
+                {
+                    product: {
+                        permissions: ["Create", "Edit", "Update", "Delete"]
+                    }
+                },
+                {
+                    ecommerce: {
+                        permissions: ["Create", "Edit", "Update", "Delete"]
+                    }
+                }
+            ]
+        };
+    },
+
     mounted() {
         console.log("okkk");
     }

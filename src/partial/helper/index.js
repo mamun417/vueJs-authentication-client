@@ -1,43 +1,48 @@
-import moment from 'moment'
-import lodash from 'lodash'
+import moment from "moment";
+import lodash from "lodash";
 import Vue from "vue";
 
-console.log(process.env.VUE_APP_URL)
+console.log(process.env.VUE_APP_URL);
 
-Vue.prototype.$resetPasswordUrl = process.env.VUE_APP_URL+'/admin/password/reset'
+Vue.prototype.$resetPasswordUrl =
+    process.env.VUE_APP_URL + "/admin/password/reset";
 Vue.prototype.$moment = moment;
 Vue.prototype.$_ = lodash;
 
-Vue.prototype.$dateFormat = function (date, format= 'DD-MM-YYYY') {
-    return moment(date).format(format)
-}
+Vue.prototype.$dateFormat = function(date, format = "DD-MM-YYYY") {
+    return moment(date).format(format);
+};
 
-Vue.prototype.$successToast = function (title) {
+Vue.prototype.$successToast = function(title) {
     return toast.fire({
-        icon: 'success',
+        icon: "success",
         title: title
-    })
-}
+    });
+};
 
-Vue.prototype.$errorToast = function (title) {
+Vue.prototype.$errorToast = function(title) {
     return toast.fire({
-        icon: 'error',
+        icon: "error",
         title: title
-    })
-}
+    });
+};
 
-Vue.prototype.$setLocalStorage = function ($key, $value) {
-    localStorage.setItem($key, JSON.stringify($value))
-}
+Vue.prototype.$setLocalStorage = function($key, $value) {
+    localStorage.setItem($key, JSON.stringify($value));
+};
 
-Vue.prototype.$showConfirmMessage = function () {
+Vue.prototype.$showConfirmMessage = function() {
     return Swal.fire({
-        title: 'Are you sure?',
+        title: "Are you sure?",
         text: "You won't be able to revert this!",
-        icon: 'warning',
+        icon: "warning",
         showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it!'
-    })
-}
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+    });
+};
+
+Vue.prototype.$upperFirst = function(value) {
+    return _.upperFirst(value);
+};
