@@ -1,5 +1,7 @@
 <template>
     <div class="login-page" style="position: relative">
+        <vue-headful title="LOGIN | VUE-AUTH" />
+
         <div class="login-box">
             <div class="logo">
                 <a href="javascript:void(0);">Admin<b>BSB</b></a>
@@ -27,11 +29,7 @@
                                         autofocus
                                     />
                                 </div>
-                                <label
-                                    v-if="formErrors.email"
-                                    id="username-error"
-                                    class="error"
-                                >
+                                <label v-if="formErrors.email" id="username-error" class="error">
                                     {{ formErrors.email }}
                                 </label>
                             </div>
@@ -49,11 +47,7 @@
                                         @input="formErrors.password = ''"
                                     />
                                 </div>
-                                <label
-                                    v-if="formErrors.password"
-                                    id="password-error"
-                                    class="error"
-                                >
+                                <label v-if="formErrors.password" id="password-error" class="error">
                                     {{ formErrors.password }}
                                 </label>
                             </div>
@@ -69,26 +63,48 @@
                                     <label for="rememberme">Remember Me</label>
                                 </div>
                                 <div class="col-xs-4">
-                                    <button
-                                        class="btn btn-block bg-pink waves-effect"
-                                        @click="login"
-                                    >
-                                        SIGN IN
-                                    </button>
+                                    <button class="btn btn-block bg-pink waves-effect" @click="login">SIGN IN</button>
                                 </div>
                             </div>
                         </form>
 
                         <div class="row m-t-15 m-b--20">
+                            <div class="col-sm-12">
+                                <button
+                                    @click="socialLogin('github')"
+                                    type="button"
+                                    class="btn bg-black btn-block btn-sm waves-effect"
+                                >
+                                    <i class="material-icons">account_box</i>
+                                    <span>LOGIN WITH GITHUB</span>
+                                </button>
+
+                                <button
+                                    @click="socialLogin('google')"
+                                    type="button"
+                                    class="btn btn-danger btn-block btn-sm waves-effect"
+                                >
+                                    <i class="material-icons">gmail</i>
+                                    <span>LOGIN WITH GOOGLE</span>
+                                </button>
+
+                                <button
+                                    @click="socialLogin('facebook')"
+                                    type="button"
+                                    class="btn btn-block btn-sm bg-indigo waves-effect"
+                                >
+                                    <i class="material-icons">facebook</i>
+                                    <span>LOGIN WITH FACEBOOK</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="row m-t-15 m-b--20">
                             <div class="col-xs-6">
-                                <router-link :to="{ name: 'register' }">
-                                    Register Now!
-                                </router-link>
+                                <router-link :to="{ name: 'register' }"> Register Now! </router-link>
                             </div>
                             <div class="col-xs-6 align-right">
-                                <router-link :to="{ name: 'password.email' }">
-                                    Forgot Password?
-                                </router-link>
+                                <router-link :to="{ name: 'password.email' }"> Forgot Password? </router-link>
                             </div>
                         </div>
                     </div>
@@ -115,9 +131,7 @@ export default {
     },
 
     mounted() {
-        $("body")
-            .removeClass()
-            .addClass("login-page");
+        $("body").removeClass().addClass("login-page");
     },
 
     methods: {
@@ -128,7 +142,7 @@ export default {
                 .dispatch("auth/login", {
                     inputs: this.formData
                 })
-                .then(res => {
+                .then((res) => {
                     this.loader = false;
 
                     toast.fire({
@@ -138,10 +152,10 @@ export default {
 
                     this.$router.push({ name: "admin.home" });
                 })
-                .catch(err => {
+                .catch((err) => {
                     let self = this;
 
-                    setTimeout(function() {
+                    setTimeout(function () {
                         self.loader = false;
 
                         if (err.response.data.errors) {
@@ -154,6 +168,10 @@ export default {
                         }
                     }, 1);
                 });
+        },
+
+        socialLogin($service) {
+            window.location.href = `http://127.0.0.1:8000/api/auth/login/${$service}`;
         }
     }
 };

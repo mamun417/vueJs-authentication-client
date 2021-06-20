@@ -12,14 +12,12 @@ const routes = [
             {
                 path: "administration/users",
                 name: "admin.administration.user",
-                component: () =>
-                    import("../../admin/views/administration/user/Users")
+                component: () => import("../../admin/views/administration/user/Users")
             },
             {
                 path: "administration/roles",
                 name: "admin.administration.role",
-                component: () =>
-                    import("../../admin/views/administration/role/Roles")
+                component: () => import("../../admin/views/administration/role/Roles")
             },
             {
                 path: "products",
@@ -27,10 +25,7 @@ const routes = [
                 // route level code-splitting
                 // this generates a separate chunk (about.[hash].js) for this route
                 // which is lazy-loaded when the route is visited.
-                component: () =>
-                    import(
-                        /* webpackChunkName: "about" */ "../views/product/Products"
-                    )
+                component: () => import(/* webpackChunkName: "about" */ "../views/product/Products")
             },
             {
                 path: "skills",
@@ -70,6 +65,11 @@ const routes = [
                 path: "login",
                 name: "login",
                 component: () => import("../views/auth/Login")
+            },
+            {
+                path: "login/social",
+                name: "login.social",
+                component: () => import("../views/auth/SocialLoginCallback")
             },
             {
                 path: "password/forgot",
