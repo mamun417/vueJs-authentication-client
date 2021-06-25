@@ -19,13 +19,20 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="14c7a4b0-6ba3-47ed-bebb-ee24cc9488b5" name="Default Changelist" comment="create role form almost done">
-      <change afterPath="$PROJECT_DIR$/src/admin/views/auth/SocialLoginCallback.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+    <list default="true" id="14c7a4b0-6ba3-47ed-bebb-ee24cc9488b5" name="Default Changelist" comment="socialite login done without exception handle">
+      <change afterPath="$PROJECT_DIR$/src/admin/store/role/actions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/admin/store/role/getters.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/admin/store/role/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/admin/store/role/mutations.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/admin/store/role/state.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/admin/views/administration/role/RoleAddEdit.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/admin/router/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/router/routes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/admin/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/store/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/admin/views/administration/role/Roles.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/views/administration/role/Roles.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/admin/views/auth/Login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/views/auth/Login.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/admin/views/element/LeftSidebar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/views/element/LeftSidebar.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/partial/helper/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/partial/helper/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +89,7 @@
     <property name="TERMINAL_CUSTOM_COMMANDS_GOT_IT" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../purple-it/exonchat/exonchat-client" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -94,17 +101,17 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/admin/store/role" />
       <recent name="$PROJECT_DIR$/src/admin/components/modals" />
       <recent name="$PROJECT_DIR$/src/admin/views" />
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/public" />
-      <recent name="$PROJECT_DIR$/src/admin" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/admin/views/adminstration/user" />
@@ -317,14 +324,9 @@
       <workItem from="1624084492051" duration="170000" />
       <workItem from="1624123923478" duration="6846000" />
       <workItem from="1624171262897" duration="33000" />
-      <workItem from="1624213314072" duration="4286000" />
-    </task>
-    <task id="LOCAL-00036" summary="product image upload">
-      <created>1596037797069</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1596037797069</updated>
+      <workItem from="1624213314072" duration="4916000" />
+      <workItem from="1624256946064" duration="29000" />
+      <workItem from="1624599273619" duration="10558000" />
     </task>
     <task id="LOCAL-00037" summary="delete product and splice this product">
       <created>1596039804733</created>
@@ -662,7 +664,14 @@
       <option name="project" value="LOCAL" />
       <updated>1619812596704</updated>
     </task>
-    <option name="localTasksCounter" value="85" />
+    <task id="LOCAL-00085" summary="socialite login done without exception handle">
+      <created>1624218618523</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1624218618523</updated>
+    </task>
+    <option name="localTasksCounter" value="86" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -706,7 +715,6 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="delete skill done" />
     <MESSAGE value="add dynamic skill bug fix" />
     <MESSAGE value="redirect home page to product with params" />
     <MESSAGE value="test pdf generate done" />
@@ -731,7 +739,8 @@
     <MESSAGE value="administration part ongoing" />
     <MESSAGE value="roles ongoing" />
     <MESSAGE value="create role form almost done" />
-    <option name="LAST_COMMIT_MESSAGE" value="create role form almost done" />
+    <MESSAGE value="socialite login done without exception handle" />
+    <option name="LAST_COMMIT_MESSAGE" value="socialite login done without exception handle" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

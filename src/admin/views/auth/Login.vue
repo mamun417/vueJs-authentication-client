@@ -123,7 +123,7 @@ export default {
         return {
             formData: {
                 email: "admin@test.com",
-                password: "12345678"
+                password: "password"
             },
             formErrors: {},
             loader: false

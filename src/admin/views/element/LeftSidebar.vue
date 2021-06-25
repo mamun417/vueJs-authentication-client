@@ -27,25 +27,25 @@
                         data-toggle="dropdown"
                         aria-haspopup="true"
                         aria-expanded="true"
-                        >keyboard_arrow_down</i
+                    >keyboard_arrow_down</i
                     >
                     <ul class="dropdown-menu pull-right">
                         <li>
                             <router-link :to="{ name: 'profile' }"
-                                ><i class="material-icons">person</i>Profile
+                            ><i class="material-icons">person</i>Profile
                             </router-link>
                         </li>
                         <li role="separator" class="divider"></li>
                         <li>
                             <a
-                                ><i class="material-icons">shopping_cart</i
-                                >Change Password</a
+                            ><i class="material-icons">shopping_cart</i
+                            >Change Password</a
                             >
                         </li>
                         <li role="separator" class="divider"></li>
                         <li>
                             <a href="javascript:void(0);"
-                                ><i class="material-icons">input</i>Sign Out</a
+                            ><i class="material-icons">input</i>Sign Out</a
                             >
                         </li>
                     </ul>
@@ -83,6 +83,7 @@
                         <li>
                             <router-link
                                 :to="{ name: 'admin.administration.role' }"
+                                :class="$checkIsRouter('admin.administration.role.create') ? 'router-link-exact-active' : ''"
                             >
                                 <span>Manage Role</span>
                             </router-link>

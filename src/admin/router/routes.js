@@ -20,6 +20,11 @@ const routes = [
                 component: () => import("../../admin/views/administration/role/Roles")
             },
             {
+                path: "administration/roles/create",
+                name: "admin.administration.role.create",
+                component: () => import("../../admin/views/administration/role/RoleAddEdit")
+            },
+            {
                 path: "products",
                 name: "product",
                 // route level code-splitting

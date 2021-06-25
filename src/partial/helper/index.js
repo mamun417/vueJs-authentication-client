@@ -46,3 +46,7 @@ Vue.prototype.$showConfirmMessage = function() {
 Vue.prototype.$upperFirst = function(value) {
     return _.upperFirst(value);
 };
+
+Vue.prototype.$checkIsRouter = function(routeName) {
+    return this.$route.name === routeName;
+};

@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 
 import auth from './auth'
+import role from './role'
 import product from './product'
 import user from './user'
 import skill from './skill'
@@ -12,6 +13,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
     modules: {
         auth,
+        role,
         product,
         user,
         skill,
