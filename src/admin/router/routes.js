@@ -20,6 +20,11 @@ const routes = [
                 component: () => import("../../admin/views/administration/role/Roles")
             },
             {
+                path: "administration/roles/:role",
+                name: "admin.administration.role.show",
+                component: () => import("../../admin/views/administration/role/RoleAddEdit")
+            },
+            {
                 path: "administration/roles/create",
                 name: "admin.administration.role.create",
                 component: () => import("../../admin/views/administration/role/RoleAddEdit")

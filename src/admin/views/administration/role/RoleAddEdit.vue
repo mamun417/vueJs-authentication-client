@@ -17,6 +17,7 @@
                                         <div class="form-group">
                                             <div class="form-line">
                                                 <input
+                                                    v-model="formData.name"
                                                     type="text"
                                                     class="form-control"
                                                     placeholder="Enter role name Ex. (manager, customer)"
@@ -47,6 +48,8 @@
                                                         type="checkbox"
                                                         :id="`basic_checkbox_${permissionModule.name}_${permission.name}`"
                                                         class="filled-in"
+                                                        v-model="formData.permissions"
+                                                        :value="permission.id"
                                                     />
                                                     <label
                                                         :for="`basic_checkbox_${permissionModule.name}_${permission.name}`">
@@ -57,39 +60,20 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div>
 
-                                <!--<div
-                                    v-for="(module, index) in modules1"
-                                    :key="index"
-                                    class="col-lg-3 col-md-3 col-sm-6 col-xs-12"
-                                >
-                                    <div class="card">
-                                        <div class="header">
-                                            <h2>
-                                                {{ $upperFirst(Object.keys(module)[0]) }}
-                                            </h2>
-                                        </div>
-                                        <div class="body">
-                                            <div class="demo-checkbox">
-                                                <div
-                                                    v-for="(permission, key) in module[Object.keys(module)[0]]
-                                                        .permissions"
-                                                    :key="key"
-                                                >
-                                                    <input
-                                                        type="checkbox"
-                                                        :id="`basic_checkbox_${module}_${permission}`"
-                                                        class="filled-in"
-                                                        :checked="key % 2"
-                                                    />
-                                                    <label :for="`basic_checkbox_${module}_${permission}`">
-                                                        {{ $upperFirst(permission) }}
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
+                            <div class="row">
+                                <div class="clearfix">
+                                    <div class="col-sm-12">
+                                        <button
+                                            @click="createRole"
+                                            type="button"
+                                            class="btn btn-success waves-effect"
+                                        >
+                                            Submit
+                                        </button>
                                     </div>
-                                </div>-->
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -104,12 +88,23 @@ export default {
     name: "RoleAddEdit",
     data() {
         return {
+            updateForm: false,
             permissionModules: {},
+            formData: {
+                name: "",
+                permissions: []
+            }
         };
     },
 
     mounted() {
         this.getPermissionModules();
+
+        // check for updateForm
+        if (this.$route.name === "admin.administration.role.show") {
+            this.updateForm = true;
+            this.getRoleInfo();
+        }
     },
 
     methods: {
@@ -117,9 +112,62 @@ export default {
             axios.get("permission/modules").then(res => {
                 this.permissionModules = res.data.permission_modules;
             });
+        },
+
+        createRole() {
+            axios.post("roles", this.formData)
+                .then(res => {
+                    toast.fire({
+                        icon: "success",
+                        title: "Role created Successful!"
+                    });
+
+                    this.$router.push({ name: "admin.administration.role" });
+                })
+                .catch(err => {
+                    console.log(err.response.data);
+                });
+        },
+
+        getRoleInfo() {
+            const role = this.$route.params.role;
+
+            if (role) {
+                axios.get(`roles/${role}`)
+                    .then(res => {
+                        this.formData.name = res.data.role.name;
+                        this.formData.permissions = res.data.role.permissions.map(permission => permission.id);
+                    })
+                    .catch(err => {
+                        console.log(err.response.data);
+                    });
+            }
+
+        },
+
+        // not done
+        updateRole() {
+            const role = this.$route.params.role;
+
+            axios.post(`roles/${role}`, this.formData)
+                .then(res => {
+                    toast.fire({
+                        icon: "success",
+                        title: "Role updated Successful!"
+                    });
+
+                    this.$router.push({ name: "admin.administration.role" });
+                })
+                .catch(err => {
+                    console.log(err.response.data);
+                });
         }
     }
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.card {
+    min-height: 310px;
+}
+</style>

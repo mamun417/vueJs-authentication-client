@@ -69,11 +69,12 @@
 
                                         <td class="text-center" style="width: 50%">
                                             <div v-if="role.name === 'admin'">
-                                                <span class="badge bg-primary m-r-10 m-b-5" style="border-radius: 20px">All </span>
+                                                <span class="badge bg-teal m-r-10 m-b-5"
+                                                      style="border-radius: 20px">All </span>
                                             </div>
                                             <div v-else>
                                                   <span v-for="permission in role.permissions"
-                                                        class="badge bg-primary m-r-10 m-b-5"
+                                                        class="badge bg-teal m-r-10 m-b-5"
                                                         style="border-radius: 20px">
                                                     {{ permission.name }}
                                                 </span>
@@ -84,12 +85,16 @@
                                         <td class="text-center">{{ $dateFormat(role.created_at) }}</td>
 
                                         <td class="text-center" style="width: 18%">
-                                            <button @click="handleEditButtonClick(product)"
-                                                    data-toggle="modal" data-target="#defaultModal"
+                                            <router-link v-if="role.name !== 'admin'"
+                                                         :to="{name: 'admin.administration.role.show', params:{role: role.id}}">
+                                                <button
                                                     type="button" class="btn btn-xs btn-primary waves-effect m-r-5">
-                                                <i class="material-icons">edit</i><span>EDIT</span>
-                                            </button>
-                                            <button @click="deleteProduct(23)" type="button"
+                                                    <i class="material-icons">edit</i><span>EDIT</span>
+                                                </button>
+                                            </router-link>
+
+                                            <button v-if="role.name !== 'admin'" @click="deleteProduct(23)"
+                                                    type="button"
                                                     class="btn btn-xs btn-danger waves-effect">
                                                 <i class="material-icons">delete</i><span>DELETE</span>
                                             </button>
