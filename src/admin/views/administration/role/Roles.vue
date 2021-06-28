@@ -93,7 +93,7 @@
                                                 </button>
                                             </router-link>
 
-                                            <button v-if="role.name !== 'admin'" @click="deleteProduct(23)"
+                                            <button @click="deleteRole(role.id)" v-if="role.name !== 'admin'"
                                                     type="button"
                                                     class="btn btn-xs btn-danger waves-effect">
                                                 <i class="material-icons">delete</i><span>DELETE</span>
@@ -192,22 +192,19 @@ export default {
             });
         },
 
-        deleteProduct(ids) {
+        deleteRole(role) {
             this.$showConfirmMessage().then(result => {
                 if (result.value) {
-                    this.$store.dispatch("product/deleteProduct", {
-                        ids: ids
-                    })
+                    axios.delete(`roles/${role}`)
                         .then(res => {
-                            this.getProducts();
-                            this.$successToast("User has been deleted Successful!");
-                            this.checkAllProducts();
+                            this.getRoles()
+                            this.$successToast('Role has been deleted Successful!');
                         })
                         .catch(err => {
                             //
-                        });
+                        })
                 }
-            });
+            })
         },
 
         handleEditButtonClick(data) {

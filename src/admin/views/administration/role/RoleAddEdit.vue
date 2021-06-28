@@ -21,8 +21,12 @@
                                                     type="text"
                                                     class="form-control"
                                                     placeholder="Enter role name Ex. (manager, customer)"
+                                                    @input="formErrors.name = ''"
                                                 />
                                             </div>
+                                            <label v-if="formErrors.name" class="error">
+                                                {{ formErrors.name }}
+                                            </label>
                                         </div>
                                     </div>
                                 </div>
@@ -50,6 +54,7 @@
                                                         class="filled-in"
                                                         v-model="formData.permissions"
                                                         :value="permission.id"
+                                                        @input="formErrors.permissions = ''"
                                                     />
                                                     <label
                                                         :for="`basic_checkbox_${permissionModule.name}_${permission.name}`">
@@ -65,12 +70,22 @@
                             <div class="row">
                                 <div class="clearfix">
                                     <div class="col-sm-12">
+                                        <span v-if="formErrors.permissions" class="font-12" style="color: #F44336">
+                                            {{ formErrors.permissions }}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="clearfix">
+                                    <div class="col-sm-12">
                                         <button
-                                            @click="createRole"
+                                            @click="updateForm ? updateRole() : createRole()"
                                             type="button"
                                             class="btn btn-success waves-effect"
                                         >
-                                            Submit
+                                            {{ updateForm ? "Update" : "Submit" }}
                                         </button>
                                     </div>
                                 </div>
@@ -93,7 +108,8 @@ export default {
             formData: {
                 name: "",
                 permissions: []
-            }
+            },
+            formErrors: {}
         };
     },
 
@@ -125,7 +141,9 @@ export default {
                     this.$router.push({ name: "admin.administration.role" });
                 })
                 .catch(err => {
-                    console.log(err.response.data);
+                    if (err.response.data.errors) {
+                        this.formErrors = err.response.data.errors;
+                    }
                 });
         },
 
@@ -139,6 +157,7 @@ export default {
                         this.formData.permissions = res.data.role.permissions.map(permission => permission.id);
                     })
                     .catch(err => {
+                        // redirect to 404 page
                         console.log(err.response.data);
                     });
             }
@@ -149,7 +168,7 @@ export default {
         updateRole() {
             const role = this.$route.params.role;
 
-            axios.post(`roles/${role}`, this.formData)
+            axios.put(`roles/${role}`, this.formData)
                 .then(res => {
                     toast.fire({
                         icon: "success",
@@ -159,9 +178,16 @@ export default {
                     this.$router.push({ name: "admin.administration.role" });
                 })
                 .catch(err => {
-                    console.log(err.response.data);
+                    if (err.response.data.errors) {
+                        this.formErrors = err.response.data.errors;
+                    } else {
+                        toast.fire({
+                            icon: "error",
+                            title: err.response.data.message
+                        });
+                    }
                 });
-        }
+        },
     }
 };
 </script>

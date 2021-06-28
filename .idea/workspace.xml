@@ -19,9 +19,8 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="14c7a4b0-6ba3-47ed-bebb-ee24cc9488b5" name="Default Changelist" comment="permission modules loaded from api">
+    <list default="true" id="14c7a4b0-6ba3-47ed-bebb-ee24cc9488b5" name="Default Changelist" comment="role created and show role info (name, permissions)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/admin/router/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/router/routes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/admin/views/administration/role/RoleAddEdit.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/views/administration/role/RoleAddEdit.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/admin/views/administration/role/Roles.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/views/administration/role/Roles.vue" afterDir="false" />
     </list>
@@ -80,7 +79,7 @@
     <property name="TERMINAL_CUSTOM_COMMANDS_GOT_IT" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../Laravel/e-commerce" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -320,13 +319,8 @@
       <workItem from="1624599273619" duration="10829000" />
       <workItem from="1624688088296" duration="17000" />
       <workItem from="1624815360240" duration="451000" />
-    </task>
-    <task id="LOCAL-00038" summary="store/update image problem fixed">
-      <created>1596130985869</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1596130985869</updated>
+      <workItem from="1624856363000" duration="607000" />
+      <workItem from="1624902031878" duration="5366000" />
     </task>
     <task id="LOCAL-00039" summary="change status">
       <created>1596134243362</created>
@@ -664,7 +658,14 @@
       <option name="project" value="LOCAL" />
       <updated>1624647955005</updated>
     </task>
-    <option name="localTasksCounter" value="87" />
+    <task id="LOCAL-00087" summary="role created and show role info (name, permissions)">
+      <created>1624823355439</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1624823355439</updated>
+    </task>
+    <option name="localTasksCounter" value="88" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -708,7 +709,6 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="redirect home page to product with params" />
     <MESSAGE value="test pdf generate done" />
     <MESSAGE value="product list for cart design done" />
     <MESSAGE value="check pdf section separated" />
@@ -733,7 +733,8 @@
     <MESSAGE value="create role form almost done" />
     <MESSAGE value="socialite login done without exception handle" />
     <MESSAGE value="permission modules loaded from api" />
-    <option name="LAST_COMMIT_MESSAGE" value="permission modules loaded from api" />
+    <MESSAGE value="role created and show role info (name, permissions)" />
+    <option name="LAST_COMMIT_MESSAGE" value="role created and show role info (name, permissions)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
