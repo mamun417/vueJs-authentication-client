@@ -38,10 +38,17 @@
                                 >
                                     <div class="card">
                                         <div class="header">
-                                            <h2>
-                                                {{ $upperFirst(permissionModule.name) }}
-                                            </h2>
+                                            <input type="checkbox" :id="permissionModule.id" class="filled-in"
+                                                   @click="toggleModulePermissions(permissionModule)"
+                                                   :checked="isAllPermissionChecked(permissionModule)" />
+
+                                            <label :for="permissionModule.id" class="m-b--5">
+                                                <h2>
+                                                    {{ $upperFirst(permissionModule.name) }}
+                                                </h2>
+                                            </label>
                                         </div>
+
                                         <div class="body">
                                             <div class="demo-checkbox">
                                                 <div
@@ -188,6 +195,33 @@ export default {
                     }
                 });
         },
+
+        toggleModulePermissions(permissionModule) {
+            const permissionIds = this.getPermissionIdsFromModule(permissionModule);
+
+            // if already checked all permission of the permissionsModule, remove all the permissions (toggle)
+            if (this.isAllPermissionChecked(permissionModule)) {
+                this.formData.permissions = this.formData.permissions.filter((id) => !permissionIds.includes(id));
+            } else {
+                this.formData.permissions.push(...permissionIds);
+            }
+        },
+
+        isAllPermissionChecked(permissionModule) {
+            const permissionIds = this.getPermissionIdsFromModule(permissionModule);
+            let checkedPermissions = [];
+
+            // get checked permissions
+            permissionIds.forEach((id) => {
+                this.formData.permissions.includes(id) && checkedPermissions.push(id);
+            });
+
+            return checkedPermissions.length === permissionIds.length;
+        },
+
+        getPermissionIdsFromModule(permissionModule) {
+            return permissionModule.permissions.map((permission) => permission.id);
+        }
     }
 };
 </script>

@@ -63,7 +63,7 @@ const routes = [
     /*Auth routes*/
     {
         path: "/admin",
-        meta: { requiresAuth: false },
+        meta: { requiresAuth: false, redirectDashboard: true },
         component: () => import("../views/layouts/AuthLayout"),
         children: [
             {
