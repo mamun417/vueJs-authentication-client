@@ -1,7 +1,7 @@
-export function getRoles(context, payload) {
+export function getAdmins(context, payload) {
     return new Promise((resolve, reject) => {
         axios
-            .get("roles", {
+            .get("admins", {
                 params: {
                     page: payload.paginationMeta.current_page,
                     per_page: payload.pipeline.per_page,

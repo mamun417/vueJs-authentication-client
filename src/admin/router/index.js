@@ -12,20 +12,20 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
-
     if (to.path !== "/" && to.path.slice(-1) === "/") {
         return next(to.path.substring(0, to.path.length - 1));
     }
 
     let login = store.getters["auth/isLoggedIn"];
 
-    if (to.matched.some(record => record.meta.requiresAuth)) {
+    if (to.matched.some((record) => record.meta.requiresAuth)) {
         if (login) {
             return next();
         }
 
         return next({ name: "login" });
-    } else if (to.matched.some(record => (!record.meta.requiresAuth && record.meta.redirectDashboard)) && login) { // if not require authenticate and logged-in
+    } else if (to.matched.some((record) => !record.meta.requiresAuth && record.meta.redirectDashboard) && login) {
+        // if not require authenticate and logged-in (solve 404 page)
 
         if (to.path === "/") {
             location.href = to.path;

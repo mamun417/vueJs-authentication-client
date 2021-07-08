@@ -1,13 +1,13 @@
 <template>
     <section class="content">
-        <vue-headful title="ROLES | VUE-AUTH" />
+        <vue-headful title="ADMINS | VUE-AUTH" />
 
         <div class="container-fluid">
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
                         <div class="header">
-                            <router-link :to="{ name: 'admin.administration.role.create' }">
+                            <router-link :to="{ name: 'admin.administration.admin.create' }">
                                 <button
                                     type="button"
                                     data-toggle="modal"
@@ -18,7 +18,7 @@
                                     <i class="material-icons">add</i><span>CREATE</span>
                                 </button>
                             </router-link>
-                            <h2>Roles</h2>
+                            <h2>Admins</h2>
                         </div>
 
                         <div class="header m-b--20" style="border-bottom: none !important">
@@ -66,65 +66,68 @@
                         <div>
                             <loader v-if="loader" />
 
-                            <div v-if="roles.length" class="body table-responsive">
+                            <div v-if="admins.length" class="body table-responsive">
                                 <table class="table table-bordered">
                                     <thead>
                                         <tr>
                                             <th>NAME</th>
+                                            <th>Email</th>
+                                            <th class="text-center">ROLES</th>
                                             <th class="text-center">PERMISSIONS</th>
                                             <th class="text-center">CREATED AT</th>
                                             <th class="text-center">ACTION</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr v-for="(role, key) in roles">
-                                            <td>{{ $_.upperFirst(role.name) }}</td>
+                                        <tr v-for="(admin, key) in admins">
+                                            <td>{{ $_.upperFirst(admin.name) }}</td>
+                                            <td>{{ admin.email }}</td>
 
-                                            <td class="text-center" style="width: 50%">
-                                                <div v-if="role.name === 'admin'">
-                                                    <span class="badge bg-teal m-r-10 m-b-5" style="border-radius: 20px"
-                                                        >All
-                                                    </span>
-                                                </div>
-                                                <div v-else>
-                                                    <span
-                                                        v-for="permission in role.permissions"
-                                                        class="badge bg-teal m-r-10 m-b-5"
-                                                        style="border-radius: 20px"
-                                                    >
-                                                        {{ permission.name }}
-                                                    </span>
-                                                </div>
+                                            <td class="text-center">
+                                                <span
+                                                    v-for="role in admin.roles"
+                                                    class="badge bg-teal m-r-10 m-b-5"
+                                                    style="border-radius: 20px"
+                                                >
+                                                    {{ role.name }}
+                                                </span>
                                             </td>
 
-                                            <td class="text-center">{{ $dateFormat(role.created_at) }}</td>
+                                            <td class="text-center">
+                                                <span
+                                                    v-for="permission in admin.permissions"
+                                                    class="badge bg-teal m-r-10 m-b-5"
+                                                    style="border-radius: 20px"
+                                                >
+                                                    {{ permission.name }}
+                                                </span>
+                                            </td>
 
-                                            <td v-if="role.name !== 'admin'" class="text-center" style="width: 18%">
+                                            <td class="text-center">{{ $dateFormat(admin.created_at) }}</td>
+
+                                            <td class="text-center">
                                                 <router-link
-                                                    v-if="role.name !== 'admin'"
                                                     :to="{
                                                         name: 'admin.administration.role.show',
-                                                        params: { role: role.id }
+                                                        params: { admin: admin.id }
                                                     }"
                                                 >
                                                     <button
                                                         type="button"
                                                         class="btn btn-xs btn-primary waves-effect m-r-5"
                                                     >
-                                                        <i class="material-icons">edit</i><span>EDIT</span>
+                                                        <i class="material-icons">edit</i>
                                                     </button>
                                                 </router-link>
 
                                                 <button
-                                                    @click="deleteRole(role.id)"
-                                                    v-if="role.name !== 'admin'"
+                                                    @click="deleteAdmin(admin.id)"
                                                     type="button"
                                                     class="btn btn-xs btn-danger waves-effect"
                                                 >
-                                                    <i class="material-icons">delete</i><span>DELETE</span>
+                                                    <i class="material-icons">delete</i>
                                                 </button>
                                             </td>
-                                            <td class="text-center" v-else>Not Allow</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -152,15 +155,13 @@
 </template>
 
 <script>
-import { getRoles } from "../../../store/role/actions";
-
 export default {
     name: "Roles",
     components: {},
 
     data() {
         return {
-            roles: {},
+            admins: {},
             pipeline: {
                 per_page: "",
                 search: ""
@@ -174,26 +175,26 @@ export default {
     },
 
     mounted() {
-        this.getRoles();
+        this.getAdmins();
     },
 
     methods: {
-        getRoles() {
+        getAdmins() {
             this.loader = true;
 
             this.$store
-                .dispatch("role/getRoles", {
+                .dispatch("admin/getAdmins", {
                     paginationMeta: this.paginationMeta,
                     pipeline: this.pipeline
                 })
                 .then((res) => {
                     this.loader = false;
-                    this.roles = res.data.roles.data;
-                    delete res.data.roles.data;
-                    this.paginationMeta = res.data.roles;
+                    this.admins = res.data.admins.data;
+                    delete res.data.admins.data;
+                    this.paginationMeta = res.data.admins;
 
                     Object.keys(this.pipeline).forEach((key) => {
-                        this.pipeline[key] = res.data.roles[key];
+                        this.pipeline[key] = res.data.admins[key];
                     });
                 })
                 .catch((err) => {
@@ -208,7 +209,7 @@ export default {
                 }
             });
 
-            this.getRoles();
+            this.getAdmins();
         },
 
         handleProductUpdate(updatedData) {
@@ -221,7 +222,7 @@ export default {
             });
         },
 
-        deleteRole(role) {
+        deleteAdmin(role) {
             this.$showConfirmMessage().then((result) => {
                 if (result.value) {
                     axios
@@ -239,7 +240,7 @@ export default {
 
         handlePagination(page) {
             this.paginationMeta.current_page = page;
-            this.getRoles();
+            this.getAdmins();
         }
     }
 };

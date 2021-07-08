@@ -10,9 +10,14 @@ const routes = [
                 component: () => import("../views/Home")
             },
             {
-                path: "administration/users",
-                name: "admin.administration.user",
-                component: () => import("../../admin/views/administration/user/Users")
+                path: "administration/admins",
+                name: "admin.administration.admin",
+                component: () => import("../../admin/views/administration/admin/Admins")
+            },
+            {
+                path: "administration/admins/create",
+                name: "admin.administration.admin.create",
+                component: () => import("../../admin/views/administration/admin/AdminAddEdit")
             },
             {
                 path: "administration/roles",
@@ -20,13 +25,13 @@ const routes = [
                 component: () => import("../../admin/views/administration/role/Roles")
             },
             {
-                path: "administration/roles/:role",
-                name: "admin.administration.role.show",
+                path: "administration/roles/create",
+                name: "admin.administration.role.create",
                 component: () => import("../../admin/views/administration/role/RoleAddEdit")
             },
             {
-                path: "administration/roles/create",
-                name: "admin.administration.role.create",
+                path: "administration/roles/:role",
+                name: "admin.administration.role.show",
                 component: () => import("../../admin/views/administration/role/RoleAddEdit")
             },
             {

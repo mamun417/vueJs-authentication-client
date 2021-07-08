@@ -61,10 +61,6 @@ section.content {
     vertical-align: middle;
 }
 
-.demo-checkbox label, .demo-radio-button label {
-    min-width: auto !important;
-}
-
 table th {
     font-size: 12px;
 }
