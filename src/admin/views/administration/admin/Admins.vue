@@ -74,8 +74,7 @@
                                             <th>Email</th>
                                             <th class="text-center">ROLES</th>
                                             <th class="text-center">PERMISSIONS</th>
-                                            <th class="text-center">CREATED AT</th>
-                                            <th class="text-center">ACTION</th>
+                                            <th class="text-center" width="10%">ACTION</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -103,12 +102,10 @@
                                                 </span>
                                             </td>
 
-                                            <td class="text-center">{{ $dateFormat(admin.created_at) }}</td>
-
                                             <td class="text-center">
                                                 <router-link
                                                     :to="{
-                                                        name: 'admin.administration.role.show',
+                                                        name: 'admin.administration.admin.edit',
                                                         params: { admin: admin.id }
                                                     }"
                                                 >
@@ -222,14 +219,14 @@ export default {
             });
         },
 
-        deleteAdmin(role) {
+        deleteAdmin(admin) {
             this.$showConfirmMessage().then((result) => {
                 if (result.value) {
                     axios
-                        .delete(`roles/${role}`)
+                        .delete(`admins/${admin}`)
                         .then((res) => {
-                            this.getRoles();
-                            this.$successToast("Role has been deleted Successful!");
+                            this.getAdmins();
+                            this.$successToast("Admin has been deleted Successful!");
                         })
                         .catch((err) => {
                             //

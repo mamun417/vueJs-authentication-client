@@ -103,7 +103,7 @@
                                                 <router-link
                                                     v-if="role.name !== 'admin'"
                                                     :to="{
-                                                        name: 'admin.administration.role.show',
+                                                        name: 'admin.administration.role.edit',
                                                         params: { role: role.id }
                                                     }"
                                                 >

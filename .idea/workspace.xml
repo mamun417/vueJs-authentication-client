@@ -19,23 +19,14 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="14c7a4b0-6ba3-47ed-bebb-ee24cc9488b5" name="Default Changelist" comment="module permission toggle and other issue fix">
-      <change afterPath="$PROJECT_DIR$/src/admin/store/admin/actions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/admin/store/admin/getters.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/admin/store/admin/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/admin/store/admin/mutations.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/admin/store/admin/state.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/admin/views/administration/admin/AdminAddEdit.vue" afterDir="false" />
+    <list default="true" id="14c7a4b0-6ba3-47ed-bebb-ee24cc9488b5" name="Default Changelist" comment="admin create form added and list show">
+      <change afterPath="$PROJECT_DIR$/src/admin/views/administration/PermissionModulesComponent.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin/assets/css/custom_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin/assets/css/custom_style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/admin/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/router/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/admin/router/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/router/routes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/admin/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/store/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/admin/store/role/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/store/role/actions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/admin/views/administration/admin/AdminAddEdit.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/views/administration/admin/AdminAddEdit.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/admin/views/administration/admin/Admins.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/views/administration/admin/Admins.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/admin/views/administration/role/RoleAddEdit.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/views/administration/role/RoleAddEdit.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/admin/views/administration/role/Roles.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/views/administration/role/Roles.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/admin/views/administration/user/UserList.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/admin/views/administration/user/Users.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/views/administration/admin/Admins.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/admin/views/element/LeftSidebar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/views/element/LeftSidebar.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,7 +83,7 @@
     <property name="TERMINAL_CUSTOM_COMMANDS_GOT_IT" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../devXHub/spectralbranding" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../laravel-authentication-api" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -104,7 +95,7 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
-    <property name="settings.editor.selected.configurable" value="settings.javascript.prettier" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -341,14 +332,9 @@
       <workItem from="1625307898795" duration="17000" />
       <workItem from="1625337354086" duration="580000" />
       <workItem from="1625512115240" duration="3028000" />
-      <workItem from="1625770335341" duration="4611000" />
-    </task>
-    <task id="LOCAL-00041" summary="pagination added">
-      <created>1596613356334</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1596613356334</updated>
+      <workItem from="1625770335341" duration="4637000" />
+      <workItem from="1626108274147" duration="686000" />
+      <workItem from="1626196641234" duration="9078000" />
     </task>
     <task id="LOCAL-00042" summary="filter added">
       <created>1596641535351</created>
@@ -686,7 +672,14 @@
       <option name="project" value="LOCAL" />
       <updated>1624999001802</updated>
     </task>
-    <option name="localTasksCounter" value="90" />
+    <task id="LOCAL-00090" summary="admin create form added and list show">
+      <created>1625778649935</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1625778649935</updated>
+    </task>
+    <option name="localTasksCounter" value="91" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -718,7 +711,6 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="check pdf section separated" />
     <MESSAGE value="add to cart done" />
     <MESSAGE value="cart modal design modified" />
     <MESSAGE value="remove cart item done" />
@@ -743,7 +735,8 @@
     <MESSAGE value="role created and show role info (name, permissions)" />
     <MESSAGE value="role update and delete done" />
     <MESSAGE value="module permission toggle and other issue fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="module permission toggle and other issue fix" />
+    <MESSAGE value="admin create form added and list show" />
+    <option name="LAST_COMMIT_MESSAGE" value="admin create form added and list show" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
