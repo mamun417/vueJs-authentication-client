@@ -51,7 +51,14 @@
                     </a>
                     <ul class="ml-menu">
                         <li>
-                            <router-link :to="{ name: 'admin.administration.admin' }">
+                            <router-link
+                                :to="{ name: 'admin.administration.admin' }"
+                                :class="
+                                    $checkIsRouter('admin.administration.admin.create')
+                                        ? 'router-link-exact-active'
+                                        : ''
+                                "
+                            >
                                 <i class="material-icons" style="margin-top: 1px">people</i>
                                 <span>Admins</span>
                             </router-link>

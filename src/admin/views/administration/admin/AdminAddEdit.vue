@@ -115,7 +115,8 @@
                                                 <div class="col-sm-12">
                                                     <h5 class="m-l-15 m-b-20">Extra Permissions</h5>
                                                     <permission-modules-component
-                                                        :selectedPermissions="formData.permissions"
+                                                        :disable-permissions="disablePermissions"
+                                                        :selected-permissions="formData.permissions"
                                                         @permissionChange="formData.permissions = $event"
                                                     />
                                                 </div>
@@ -156,7 +157,6 @@ export default {
     data() {
         return {
             updateForm: false,
-            permissionModules: {},
             roleList: {},
             formData: {
                 name: "",
@@ -168,6 +168,21 @@ export default {
             },
             formErrors: {}
         };
+    },
+
+    computed: {
+        disablePermissions: function () {
+            if (this.roleList.length) {
+                let disablePermissions = this.roleList
+                    .filter((role) => this.formData.roles.includes(1) || this.formData.roles.includes(role.id))
+                    .map((selectedRole) => selectedRole.permissions.map((permission) => permission.id))
+                    .flat();
+
+                return [...new Set(disablePermissions)];
+            }
+
+            return [];
+        }
     },
 
     mounted() {

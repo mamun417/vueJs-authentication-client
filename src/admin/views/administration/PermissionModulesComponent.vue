@@ -12,7 +12,8 @@
                         :id="permissionModule.id"
                         class="filled-in"
                         @click="toggleModulePermissions(permissionModule)"
-                        :checked="isAllPermissionChecked(permissionModule)"
+                        :checked="isModuleAllPermissionChecked(permissionModule)"
+                        :disabled="isModuleAllPermissionDisabled(permissionModule)"
                     />
 
                     <label :for="permissionModule.id" class="m-b--5">
@@ -31,6 +32,7 @@
                                 class="filled-in"
                                 v-model="permissions"
                                 :value="permission.id"
+                                :disabled="disablePermissions.includes(permission.id)"
                             />
                             <label :for="`basic_checkbox_${permissionModule.name}_${permission.name}`">
                                 {{ $upperFirst(permission.name) }}
@@ -48,6 +50,11 @@ export default {
     name: "PermissionModulesComponent",
     props: {
         selectedPermissions: {
+            type: Array,
+            default: []
+        },
+        // need for admin manage
+        disablePermissions: {
             type: Array,
             default: []
         }
@@ -75,7 +82,7 @@ export default {
             const permissionIds = this.getPermissionIdsFromModule(permissionModule);
 
             // if already checked all permission of the permissionsModule, remove all the permissions (toggle)
-            if (this.isAllPermissionChecked(permissionModule)) {
+            if (this.isModuleAllPermissionChecked(permissionModule)) {
                 this.permissions = this.permissions.filter((id) => !permissionIds.includes(id));
             } else {
                 this.permissions.push(...permissionIds);
@@ -85,14 +92,21 @@ export default {
             this.permissions = [...new Set(this.permissions)];
         },
 
-        isAllPermissionChecked(permissionModule) {
-            const permissionIds = this.getPermissionIdsFromModule(permissionModule);
-            let checkedPermissions = [];
+        isModuleAllPermissionChecked(permissionModule) {
+            const modulePermissionIds = this.getPermissionIdsFromModule(permissionModule);
 
-            // get checked permissions
-            permissionIds.forEach((id) => this.permissions.includes(id) && checkedPermissions.push(id));
+            const checkedPermissions = modulePermissionIds.filter((id) => this.permissions.includes(id));
 
-            return checkedPermissions.length === permissionIds.length;
+            return checkedPermissions.length === modulePermissionIds.length;
+        },
+
+        // need for admin manage
+        isModuleAllPermissionDisabled(permissionModule) {
+            const modulePermissionIds = this.getPermissionIdsFromModule(permissionModule);
+
+            const disabledPermissions = modulePermissionIds.filter((id) => this.disablePermissions.includes(id));
+
+            return disabledPermissions.length === modulePermissionIds.length;
         },
 
         getPermissionIdsFromModule(permissionModule) {
@@ -111,6 +125,15 @@ export default {
         selectedPermissions: {
             handler() {
                 this.permissions = this.selectedPermissions;
+            },
+            deep: true,
+            immediate: true
+        },
+        // need for admin manage
+        disablePermissions: {
+            handler() {
+                // remove those extra permissions which already connected with role
+                this.permissions = this.permissions.filter((id) => !this.disablePermissions.includes(id));
             },
             deep: true,
             immediate: true

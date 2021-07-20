@@ -19,14 +19,11 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="14c7a4b0-6ba3-47ed-bebb-ee24cc9488b5" name="Default Changelist" comment="admin create form added and list show">
-      <change afterPath="$PROJECT_DIR$/src/admin/views/administration/PermissionModulesComponent.vue" afterDir="false" />
+    <list default="true" id="14c7a4b0-6ba3-47ed-bebb-ee24cc9488b5" name="Default Changelist" comment="admin crud done">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/admin/router/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/router/routes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/admin/views/administration/PermissionModulesComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/views/administration/PermissionModulesComponent.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/admin/views/administration/admin/AdminAddEdit.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/views/administration/admin/AdminAddEdit.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/admin/views/administration/admin/Admins.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/views/administration/admin/Admins.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/admin/views/administration/role/RoleAddEdit.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/views/administration/role/RoleAddEdit.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/admin/views/administration/role/Roles.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/views/administration/role/Roles.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/admin/views/element/LeftSidebar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/views/element/LeftSidebar.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,7 +80,7 @@
     <property name="TERMINAL_CUSTOM_COMMANDS_GOT_IT" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../laravel-authentication-api" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -334,14 +331,17 @@
       <workItem from="1625512115240" duration="3028000" />
       <workItem from="1625770335341" duration="4637000" />
       <workItem from="1626108274147" duration="686000" />
-      <workItem from="1626196641234" duration="9078000" />
-    </task>
-    <task id="LOCAL-00042" summary="filter added">
-      <created>1596641535351</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1596641535351</updated>
+      <workItem from="1626196641234" duration="9115000" />
+      <workItem from="1626289416861" duration="2939000" />
+      <workItem from="1626365664874" duration="3233000" />
+      <workItem from="1626456614119" duration="7274000" />
+      <workItem from="1626499277283" duration="599000" />
+      <workItem from="1626502760611" duration="60000" />
+      <workItem from="1626534890616" duration="4056000" />
+      <workItem from="1626589881668" duration="25000" />
+      <workItem from="1626680117565" duration="103000" />
+      <workItem from="1626690059657" duration="864000" />
+      <workItem from="1626790111021" duration="1261000" />
     </task>
     <task id="LOCAL-00043" summary="ProductList component created">
       <created>1596712501502</created>
@@ -679,7 +679,14 @@
       <option name="project" value="LOCAL" />
       <updated>1625778649935</updated>
     </task>
-    <option name="localTasksCounter" value="91" />
+    <task id="LOCAL-00091" summary="admin crud done">
+      <created>1626205739294</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1626205739295</updated>
+    </task>
+    <option name="localTasksCounter" value="92" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -711,7 +718,6 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="add to cart done" />
     <MESSAGE value="cart modal design modified" />
     <MESSAGE value="remove cart item done" />
     <MESSAGE value="cart product quantity update successful" />
@@ -736,7 +742,8 @@
     <MESSAGE value="role update and delete done" />
     <MESSAGE value="module permission toggle and other issue fix" />
     <MESSAGE value="admin create form added and list show" />
-    <option name="LAST_COMMIT_MESSAGE" value="admin create form added and list show" />
+    <MESSAGE value="admin crud done" />
+    <option name="LAST_COMMIT_MESSAGE" value="admin crud done" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
