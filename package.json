@@ -8,6 +8,8 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@casl/ability": "^5.3.1",
+    "@casl/vue": "1.x",
     "axios": "^0.19.2",
     "bootstrap": "^4.5.2",
     "core-js": "^3.6.5",

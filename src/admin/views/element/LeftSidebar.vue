@@ -36,6 +36,14 @@
         <!-- #User Info -->
         <!-- Menu -->
         <div class="menu">
+            <div @click="test" v-if="$can('read')">
+                <a>Add Post</a>
+            </div>
+
+            <div v-if="$can('view')">
+                <a>View Post</a>
+            </div>
+
             <ul class="list">
                 <li class="header" id="mamun">MAIN NAVIGATION</li>
                 <li>
@@ -122,12 +130,29 @@
 
 <script>
 import { mapGetters } from "vuex";
+// import { Ability, AbilityBuilder } from "@casl/ability";
 
 export default {
     name: "LeftSideBar",
     mounted() {
         this.getProfileInfo();
         this.multilevelMenuHandle();
+
+        // const { can, rules } = new AbilityBuilder(Ability);
+        //
+        // // if (user.role === 'admin') {
+        // // can("manage", "all");
+        // // } else {
+        // can("read", "all");
+        // // }
+        //
+        // rules.push({
+        //     action: "manage",
+        //     subject: "all"
+        // });
+        //
+        // console.log(rules);
+        // this.$ability.update(rules);
     },
 
     computed: {
@@ -137,6 +162,12 @@ export default {
     },
 
     methods: {
+        test() {
+            if (this.$can("read")) {
+                alert("ok");
+            }
+        },
+
         getProfileInfo() {
             this.$store.dispatch("user/getProfile");
         },

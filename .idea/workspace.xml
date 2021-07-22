@@ -19,11 +19,14 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="14c7a4b0-6ba3-47ed-bebb-ee24cc9488b5" name="Default Changelist" comment="admin crud done">
+    <list default="true" id="14c7a4b0-6ba3-47ed-bebb-ee24cc9488b5" name="Default Changelist" comment="disabled permission functionality added">
+      <change afterPath="$PROJECT_DIR$/src/admin/ability.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/admin/views/administration/PermissionModulesComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/views/administration/PermissionModulesComponent.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/admin/views/administration/admin/AdminAddEdit.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/views/administration/admin/AdminAddEdit.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/admin/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/admin/store/user/mutations.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/store/user/mutations.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/admin/views/element/LeftSidebar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/views/element/LeftSidebar.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,6 +43,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Vue Single File Component" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -80,7 +84,7 @@
     <property name="TERMINAL_CUSTOM_COMMANDS_GOT_IT" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../Not Running/masterDHR" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -341,14 +345,9 @@
       <workItem from="1626589881668" duration="25000" />
       <workItem from="1626680117565" duration="103000" />
       <workItem from="1626690059657" duration="864000" />
-      <workItem from="1626790111021" duration="1261000" />
-    </task>
-    <task id="LOCAL-00043" summary="ProductList component created">
-      <created>1596712501502</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1596712501502</updated>
+      <workItem from="1626790111021" duration="1455000" />
+      <workItem from="1626942784918" duration="1967000" />
+      <workItem from="1626965528610" duration="7812000" />
     </task>
     <task id="LOCAL-00044" summary="product add edit modal move to Products.vue file">
       <created>1596743391941</created>
@@ -686,7 +685,14 @@
       <option name="project" value="LOCAL" />
       <updated>1626205739295</updated>
     </task>
-    <option name="localTasksCounter" value="92" />
+    <task id="LOCAL-00092" summary="disabled permission functionality added">
+      <created>1626791533020</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1626791533021</updated>
+    </task>
+    <option name="localTasksCounter" value="93" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -718,7 +724,6 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="cart modal design modified" />
     <MESSAGE value="remove cart item done" />
     <MESSAGE value="cart product quantity update successful" />
     <MESSAGE value="cart total showing done" />
@@ -743,7 +748,8 @@
     <MESSAGE value="module permission toggle and other issue fix" />
     <MESSAGE value="admin create form added and list show" />
     <MESSAGE value="admin crud done" />
-    <option name="LAST_COMMIT_MESSAGE" value="admin crud done" />
+    <MESSAGE value="disabled permission functionality added" />
+    <option name="LAST_COMMIT_MESSAGE" value="disabled permission functionality added" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
