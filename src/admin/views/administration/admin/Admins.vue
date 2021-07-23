@@ -73,7 +73,7 @@
                                             <th>NAME</th>
                                             <th>Email</th>
                                             <th class="text-center">ROLES</th>
-                                            <th class="text-center">PERMISSIONS</th>
+                                            <th class="text-center">EXTRA PERMISSIONS</th>
                                             <th class="text-center" width="10%">ACTION</th>
                                         </tr>
                                     </thead>

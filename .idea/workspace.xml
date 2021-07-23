@@ -19,14 +19,16 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="14c7a4b0-6ba3-47ed-bebb-ee24cc9488b5" name="Default Changelist" comment="disabled permission functionality added">
-      <change afterPath="$PROJECT_DIR$/src/admin/ability.js" afterDir="false" />
+    <list default="true" id="14c7a4b0-6ba3-47ed-bebb-ee24cc9488b5" name="Default Changelist" comment="ability study">
+      <change afterPath="$PROJECT_DIR$/src/partial/plugins/acl/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/admin/ability.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/partial/plugins/acl/ability.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/admin/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/admin/store/user/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/store/user/actions.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/admin/store/user/mutations.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/store/user/mutations.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/admin/views/administration/admin/Admins.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/views/administration/admin/Admins.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/admin/views/element/LeftSidebar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/views/element/LeftSidebar.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/partial/plugins/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/partial/plugins/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +86,7 @@
     <property name="TERMINAL_CUSTOM_COMMANDS_GOT_IT" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../Not Running/masterDHR" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../laravel-authentication-api" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -102,11 +104,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/partial/plugins/acl" />
       <recent name="$PROJECT_DIR$/src/admin/store" />
       <recent name="$PROJECT_DIR$/src/admin/store/role" />
       <recent name="$PROJECT_DIR$/src/admin/components/modals" />
       <recent name="$PROJECT_DIR$/src/admin/views" />
-      <recent name="$PROJECT_DIR$/src" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/admin/views/adminstration/user" />
@@ -347,14 +349,8 @@
       <workItem from="1626690059657" duration="864000" />
       <workItem from="1626790111021" duration="1455000" />
       <workItem from="1626942784918" duration="1967000" />
-      <workItem from="1626965528610" duration="7812000" />
-    </task>
-    <task id="LOCAL-00044" summary="product add edit modal move to Products.vue file">
-      <created>1596743391941</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1596743391941</updated>
+      <workItem from="1626965528610" duration="8049000" />
+      <workItem from="1627052780117" duration="7860000" />
     </task>
     <task id="LOCAL-00045" summary="pagination common component created">
       <created>1596744511229</created>
@@ -692,7 +688,14 @@
       <option name="project" value="LOCAL" />
       <updated>1626791533021</updated>
     </task>
-    <option name="localTasksCounter" value="93" />
+    <task id="LOCAL-00093" summary="ability study">
+      <created>1626976564505</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1626976564506</updated>
+    </task>
+    <option name="localTasksCounter" value="94" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -724,7 +727,6 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="remove cart item done" />
     <MESSAGE value="cart product quantity update successful" />
     <MESSAGE value="cart total showing done" />
     <MESSAGE value="cart total showing more dynamic" />
@@ -749,7 +751,8 @@
     <MESSAGE value="admin create form added and list show" />
     <MESSAGE value="admin crud done" />
     <MESSAGE value="disabled permission functionality added" />
-    <option name="LAST_COMMIT_MESSAGE" value="disabled permission functionality added" />
+    <MESSAGE value="ability study" />
+    <option name="LAST_COMMIT_MESSAGE" value="ability study" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

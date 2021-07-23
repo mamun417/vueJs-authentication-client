@@ -130,29 +130,12 @@
 
 <script>
 import { mapGetters } from "vuex";
-// import { Ability, AbilityBuilder } from "@casl/ability";
 
 export default {
     name: "LeftSideBar",
     mounted() {
         this.getProfileInfo();
         this.multilevelMenuHandle();
-
-        // const { can, rules } = new AbilityBuilder(Ability);
-        //
-        // // if (user.role === 'admin') {
-        // // can("manage", "all");
-        // // } else {
-        // can("read", "all");
-        // // }
-        //
-        // rules.push({
-        //     action: "manage",
-        //     subject: "all"
-        // });
-        //
-        // console.log(rules);
-        // this.$ability.update(rules);
     },
 
     computed: {

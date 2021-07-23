@@ -5,20 +5,6 @@ import store from "@/admin/store";
 import "@/partial/plugins";
 import "@/admin/axios";
 import "@/partial/helper";
-import { abilitiesPlugin } from "@casl/vue";
-import { Ability, AbilityBuilder } from "@casl/ability";
-import ability from "./ability";
-
-Vue.use(
-    abilitiesPlugin,
-    ability
-    /*new Ability(/!*[
-        {
-            action: "read",
-            subject: "all"
-        }
-    ]*!/)*/
-);
 
 Vue.config.productionTip = false;
 
