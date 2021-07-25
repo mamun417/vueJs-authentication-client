@@ -46,13 +46,15 @@
 
             <ul class="list">
                 <li class="header" id="mamun">MAIN NAVIGATION</li>
+
                 <li>
                     <router-link :to="{ name: 'admin.home' }">
                         <i class="material-icons">home</i>
                         <span>Home</span>
                     </router-link>
                 </li>
-                <li>
+
+                <li v-if="$can('manage')">
                     <a href="javascript:void(0);" class="menu-toggle waves-effect waves-block">
                         <i class="material-icons">admin_panel_settings</i>
                         <span>Administrator</span>
@@ -85,6 +87,7 @@
                         </li>
                     </ul>
                 </li>
+
                 <li>
                     <router-link :to="{ name: 'product' }">
                         <i class="material-icons">donut_large</i>
@@ -156,24 +159,26 @@ export default {
         },
 
         multilevelMenuHandle() {
-            $(".menu-toggle").on("click", function (e) {
-                var $this = $(this);
-                var $content = $this.next();
+            setTimeout(() => {
+                $(".menu-toggle").on("click", function (e) {
+                    var $this = $(this);
+                    var $content = $this.next();
 
-                if ($($this.parents("ul")[0]).hasClass("list")) {
-                    var $not = $(e.target).hasClass("menu-toggle") ? e.target : $(e.target).parents(".menu-toggle");
+                    if ($($this.parents("ul")[0]).hasClass("list")) {
+                        var $not = $(e.target).hasClass("menu-toggle") ? e.target : $(e.target).parents(".menu-toggle");
 
-                    $.each($(".menu-toggle.toggled").not($not).next(), function (i, val) {
-                        if ($(val).is(":visible")) {
-                            $(val).prev().toggleClass("toggled");
-                            $(val).slideUp();
-                        }
-                    });
-                }
+                        $.each($(".menu-toggle.toggled").not($not).next(), function (i, val) {
+                            if ($(val).is(":visible")) {
+                                $(val).prev().toggleClass("toggled");
+                                $(val).slideUp();
+                            }
+                        });
+                    }
 
-                $this.toggleClass("toggled");
-                $content.slideToggle(320);
-            });
+                    $this.toggleClass("toggled");
+                    $content.slideToggle(320);
+                });
+            }, 1000);
         }
     }
 };

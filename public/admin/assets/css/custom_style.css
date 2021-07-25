@@ -83,3 +83,7 @@ table th {
 .animated {
     animation-duration: .6s;
 }
+
+.demo-checkbox label, .demo-radio-button label {
+    min-width: auto !important;
+}

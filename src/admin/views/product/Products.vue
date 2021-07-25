@@ -8,6 +8,7 @@
                     <div class="card">
                         <div class="header">
                             <button
+                                v-if="$can('create-product')"
                                 @click="handleCreateButtonClick"
                                 type="button"
                                 data-toggle="modal"
@@ -15,51 +16,37 @@
                                 class="btn btn-sm btn-success waves-effect pull-right"
                                 style="top: -8px"
                             >
-                                <i class="material-icons">add</i
-                                ><span>CREATE</span>
+                                <i class="material-icons">add</i><span>CREATE</span>
                             </button>
                             <h2>Products</h2>
                         </div>
 
-                        <div
-                            class="header m-b--20"
-                            style="border-bottom: none!important;"
-                        >
+                        <div class="header m-b--20" style="border-bottom: none !important">
                             <div class="row clearfix">
-                                <div
-                                    class="col-lg-3 col-md-3 col-sm-3 col-xs-6"
-                                >
+                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                                     <div class="form-group form-float">
                                         <div class="form-line">
                                             <select
                                                 @change="
                                                     handlePipeline({
-                                                        per_page:
-                                                            $event.target.value
+                                                        per_page: $event.target.value
                                                     })
                                                 "
                                                 class="form-control show-tick"
                                             >
-                                                <option
-                                                    :value="n"
-                                                    v-for="n in [2, 5, 10, 20]"
-                                                    >{{ n }}</option
-                                                >
+                                                <option :value="n" v-for="n in [2, 5, 10, 20]">{{ n }}</option>
                                             </select>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div
-                                    class="col-lg-3 col-md-3 col-sm-3 col-xs-6"
-                                >
+                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                                     <div class="form-group form-float">
                                         <div class="form-line">
                                             <input
                                                 @input="
                                                     handlePipeline({
-                                                        search:
-                                                            $event.target.value
+                                                        search: $event.target.value
                                                     })
                                                 "
                                                 type="text"
@@ -70,67 +57,37 @@
                                     </div>
                                 </div>
 
-                                <div
-                                    class="col-lg-3 col-md-3 col-sm-3 col-xs-6"
-                                >
+                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                                     <div class="form-group form-float">
                                         <div class="form-line">
                                             <select
                                                 @change="
                                                     handlePipeline({
-                                                        filter:
-                                                            $event.target.value
+                                                        filter: $event.target.value
                                                     })
                                                 "
                                                 class="form-control show-tick"
                                             >
-                                                <option
-                                                    :selected="
-                                                        handleFilterSelect('')
-                                                    "
-                                                    value=""
-                                                    >All</option
-                                                >
-                                                <option
-                                                    :selected="
-                                                        handleFilterSelect(
-                                                            'active'
-                                                        )
-                                                    "
-                                                    value="active"
-                                                    >Active</option
-                                                >
-                                                <option
-                                                    :selected="
-                                                        handleFilterSelect(
-                                                            'inactive'
-                                                        )
-                                                    "
-                                                    value="inactive"
-                                                    >Inactive</option
-                                                >
+                                                <option :selected="handleFilterSelect('')" value="">All</option>
+                                                <option :selected="handleFilterSelect('active')" value="active">
+                                                    Active
+                                                </option>
+                                                <option :selected="handleFilterSelect('inactive')" value="inactive">
+                                                    Inactive
+                                                </option>
                                             </select>
                                         </div>
                                     </div>
                                 </div>
-                                <div
-                                    class="col-lg-3 col-md-6 col-sm-6 col-xs-12"
-                                >
-                                    <button
-                                        type="button"
-                                        class="btn btn-info btn-lg m-l-15 waves-effect"
-                                    >
+                                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                                    <button type="button" class="btn btn-info btn-lg m-l-15 waves-effect">
                                         SEARCH
                                     </button>
                                 </div>
                             </div>
                         </div>
 
-                        <product-list
-                            ref="productList"
-                            :pipeline="pipeline"
-                            @editButtonClick="handleEditButtonClick"
-                        />
+                        <product-list ref="productList" :pipeline="pipeline" @editButtonClick="handleEditButtonClick" />
 
                         <pre>{{ profileInfo }}</pre>
                         <pre>{{ productCountInfo }}</pre>
@@ -177,11 +134,11 @@ export default {
     },
 
     mounted() {
-        this.$store.dispatch("user/getProfile").then(res => {
+        this.$store.dispatch("user/getProfile").then((res) => {
             this.profileInfo = res.data.user;
         });
 
-        this.$store.dispatch("product/getProductsCountInfo").then(res => {
+        this.$store.dispatch("product/getProductsCountInfo").then((res) => {
             this.productCountInfo = res.data.count_info;
         });
 
@@ -215,7 +172,7 @@ export default {
         },
 
         handlePipeline(pipeline) {
-            Object.keys(this.pipeline).forEach(key => {
+            Object.keys(this.pipeline).forEach((key) => {
                 if (pipeline.hasOwnProperty(key)) {
                     this.pipeline[key] = pipeline[key];
                 }

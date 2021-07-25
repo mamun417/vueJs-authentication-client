@@ -10,9 +10,15 @@ export function updateAbilities(state, userInfo) {
 
     const roleNames = userInfo.roles.map((role) => role.name);
 
-    const permissionNames = userInfo.permissions.map((permission) => permission.name);
+    let rolePermissionNames = userInfo.roles
+        .map((role) => role.permissions.map((permission) => permission.name))
+        .flat();
 
-    can(permissionNames, "all");
+    const extraPermissionNames = userInfo.permissions.map((permission) => permission.name);
+
+    const allPermissions = _.uniq(_.concat(rolePermissionNames, extraPermissionNames));
+
+    can(allPermissions, "all");
 
     if (roleNames.includes("admin")) {
         can("manage", "all");
