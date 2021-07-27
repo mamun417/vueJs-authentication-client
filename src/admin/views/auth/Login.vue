@@ -70,6 +70,15 @@
 
                         <div class="row m-t-15 m-b--20">
                             <div class="col-sm-12">
+                                <div class="m-b-15">
+                                    <select @change="loginFromAdminList" class="form-control" v-model="selectedAdmin">
+                                        <option value="">-- Please select admin --</option>
+                                        <option v-for="admin in admins" :value="admin">
+                                            {{ admin.email }}
+                                        </option>
+                                    </select>
+                                </div>
+
                                 <button
                                     @click="socialLogin('github')"
                                     type="button"
@@ -121,6 +130,8 @@ export default {
     name: "Login",
     data() {
         return {
+            admins: "",
+            selectedAdmin: "",
             formData: {
                 email: "admin@test.com",
                 password: "password"
@@ -132,6 +143,8 @@ export default {
 
     mounted() {
         $("body").removeClass().addClass("login-page");
+
+        this.getAdminList();
     },
 
     methods: {
@@ -172,6 +185,25 @@ export default {
 
         socialLogin($service) {
             window.location.href = `http://127.0.0.1:8000/api/auth/login/${$service}`;
+        },
+
+        getAdminList() {
+            axios.get("auth/admin/list").then((res) => (this.admins = res.data.admins));
+        },
+
+        loginFromAdminList() {
+            const password = "password";
+
+            axios
+                .post(`auth/admins/change-password/before-login/${this.selectedAdmin.id}`, {
+                    password
+                })
+                .then((res) => {
+                    this.formData.email = this.selectedAdmin.email;
+                    this.formData.password = password;
+
+                    this.login();
+                });
         }
     }
 };

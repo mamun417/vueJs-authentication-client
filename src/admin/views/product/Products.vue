@@ -89,8 +89,8 @@
 
                         <product-list ref="productList" :pipeline="pipeline" @editButtonClick="handleEditButtonClick" />
 
-                        <pre>{{ profileInfo }}</pre>
-                        <pre>{{ productCountInfo }}</pre>
+                        <!--<pre>{{ profileInfo }}</pre>
+                        <pre>{{ productCountInfo }}</pre>-->
 
                         <product-add-edit-modal
                             :count-reset-modal="countResetModal"
@@ -134,13 +134,13 @@ export default {
     },
 
     mounted() {
-        this.$store.dispatch("user/getProfile").then((res) => {
-            this.profileInfo = res.data.user;
-        });
-
-        this.$store.dispatch("product/getProductsCountInfo").then((res) => {
-            this.productCountInfo = res.data.count_info;
-        });
+        // this.$store.dispatch("user/getProfile").then((res) => {
+        //     this.profileInfo = res.data.user;
+        // });
+        //
+        // this.$store.dispatch("product/getProductsCountInfo").then((res) => {
+        //     this.productCountInfo = res.data.count_info;
+        // });
 
         if (this.$route.params.pipeline) {
             this.handlePipeline(this.$route.params.pipeline);

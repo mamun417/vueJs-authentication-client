@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import routes from "./routes";
 import store from "../store";
+import ability from "../../partial/plugins/acl/ability";
 
 Vue.use(VueRouter);
 
@@ -15,6 +16,15 @@ router.beforeEach((to, from, next) => {
     if (to.path !== "/" && to.path.slice(-1) === "/") {
         return next(to.path.substring(0, to.path.length - 1));
     }
+
+    const canNavigate = to.matched.some((record) => {
+        console.log({ sss: record.meta.gate });
+        if (!record.meta.gate) return next();
+
+        return ability.can(record.meta.gate);
+    });
+
+    console.log({ canNavigate });
 
     let login = store.getters["auth/isLoggedIn"];
 

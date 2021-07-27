@@ -36,14 +36,6 @@
         <!-- #User Info -->
         <!-- Menu -->
         <div class="menu">
-            <div @click="test" v-if="$can('read')">
-                <a>Add Post</a>
-            </div>
-
-            <div v-if="$can('view')">
-                <a>View Post</a>
-            </div>
-
             <ul class="list">
                 <li class="header" id="mamun">MAIN NAVIGATION</li>
 
@@ -88,7 +80,7 @@
                     </ul>
                 </li>
 
-                <li>
+                <li v-if="$can('list-product')">
                     <router-link :to="{ name: 'product' }">
                         <i class="material-icons">donut_large</i>
                         <span>Products</span>
@@ -148,12 +140,6 @@ export default {
     },
 
     methods: {
-        test() {
-            if (this.$can("read")) {
-                alert("ok");
-            }
-        },
-
         getProfileInfo() {
             this.$store.dispatch("user/getProfile");
         },
