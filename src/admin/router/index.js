@@ -28,23 +28,18 @@ router.beforeEach((to, from, next) => {
 
     let login = store.getters["auth/isLoggedIn"];
 
-    if (to.matched.some((record) => record.meta.requiresAuth)) {
-        if (login) {
-            return next();
+    to.matched.some((record) => {
+        if (record.meta.requiresAuth) {
+            if (login) next();
+            else next({ name: "login" });
+        } else if (!record.meta.requiresAuth && record.meta.redirectDashboard && login) {
+            // if not require authenticate, redirectDashboard and logged-in (solve 404 page)
+            if (to.path === "/") location.href = to.path;
+            else next({ name: "admin.home" });
+        } else {
+            next(); // make sure to always call next()!
         }
-
-        return next({ name: "login" });
-    } else if (to.matched.some((record) => !record.meta.requiresAuth && record.meta.redirectDashboard) && login) {
-        // if not require authenticate and logged-in (solve 404 page)
-
-        if (to.path === "/") {
-            location.href = to.path;
-            return;
-        }
-
-        return next({ name: "admin.home" });
-    }
-    next(); // make sure to always call next()!
+    });
 });
 
 export default router;

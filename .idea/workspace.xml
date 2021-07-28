@@ -19,14 +19,9 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="14c7a4b0-6ba3-47ed-bebb-ee24cc9488b5" name="Default Changelist" comment="permissions tested">
+    <list default="true" id="14c7a4b0-6ba3-47ed-bebb-ee24cc9488b5" name="Default Changelist" comment="product permission check">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/admin/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/router/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/admin/router/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/router/routes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/admin/views/auth/Login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/views/auth/Login.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/admin/views/element/LeftSidebar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/views/element/LeftSidebar.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/admin/views/product/ProductList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/views/product/ProductList.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/admin/views/product/Products.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/views/product/Products.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +79,7 @@
     <property name="TERMINAL_CUSTOM_COMMANDS_GOT_IT" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../Not Running/masterDHR" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -354,14 +349,9 @@
       <workItem from="1627196355468" duration="458000" />
       <workItem from="1627236044915" duration="4858000" />
       <workItem from="1627378391763" duration="2704000" />
-      <workItem from="1627400092765" duration="5668000" />
-    </task>
-    <task id="LOCAL-00047" summary="show user skills using vue-select">
-      <created>1597207163648</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1597207163649</updated>
+      <workItem from="1627400092765" duration="5785000" />
+      <workItem from="1627456825908" duration="9000" />
+      <workItem from="1627487831091" duration="2440000" />
     </task>
     <task id="LOCAL-00048" summary="suer skill search bug fix">
       <created>1597215467015</created>
@@ -699,7 +689,14 @@
       <option name="project" value="LOCAL" />
       <updated>1627242428526</updated>
     </task>
-    <option name="localTasksCounter" value="96" />
+    <task id="LOCAL-00096" summary="product permission check">
+      <created>1627413097804</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1627413097804</updated>
+    </task>
+    <option name="localTasksCounter" value="97" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -731,7 +728,6 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="cart total showing more dynamic" />
     <MESSAGE value="promo form ready" />
     <MESSAGE value="localstorage use for cart" />
     <MESSAGE value="cart empty done" />
@@ -756,7 +752,8 @@
     <MESSAGE value="ability study" />
     <MESSAGE value="need to get permissions list by role_ids from backend" />
     <MESSAGE value="permissions tested" />
-    <option name="LAST_COMMIT_MESSAGE" value="permissions tested" />
+    <MESSAGE value="product permission check" />
+    <option name="LAST_COMMIT_MESSAGE" value="product permission check" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
