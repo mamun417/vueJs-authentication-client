@@ -19,9 +19,12 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="14c7a4b0-6ba3-47ed-bebb-ee24cc9488b5" name="Default Changelist" comment="product permission check">
+    <list default="true" id="14c7a4b0-6ba3-47ed-bebb-ee24cc9488b5" name="Default Changelist" comment="router beforeEach changed">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/admin/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/router/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/admin/store/user/getters.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/store/user/getters.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/admin/store/user/mutations.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/store/user/mutations.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/admin/store/user/state.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/store/user/state.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -351,14 +354,11 @@
       <workItem from="1627378391763" duration="2704000" />
       <workItem from="1627400092765" duration="5785000" />
       <workItem from="1627456825908" duration="9000" />
-      <workItem from="1627487831091" duration="2440000" />
-    </task>
-    <task id="LOCAL-00048" summary="suer skill search bug fix">
-      <created>1597215467015</created>
-      <option name="number" value="00048" />
-      <option name="presentableId" value="LOCAL-00048" />
-      <option name="project" value="LOCAL" />
-      <updated>1597215467015</updated>
+      <workItem from="1627487831091" duration="6255000" />
+      <workItem from="1627898212249" duration="724000" />
+      <workItem from="1628705986802" duration="67000" />
+      <workItem from="1628706997054" duration="320000" />
+      <workItem from="1628707429180" duration="153000" />
     </task>
     <task id="LOCAL-00049" summary="suer skill search loader and custom style added">
       <created>1597216536503</created>
@@ -696,7 +696,14 @@
       <option name="project" value="LOCAL" />
       <updated>1627413097804</updated>
     </task>
-    <option name="localTasksCounter" value="97" />
+    <task id="LOCAL-00097" summary="router beforeEach changed">
+      <created>1627491255797</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1627491255797</updated>
+    </task>
+    <option name="localTasksCounter" value="98" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -728,7 +735,6 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="promo form ready" />
     <MESSAGE value="localstorage use for cart" />
     <MESSAGE value="cart empty done" />
     <MESSAGE value="setLocalstorage function created" />
@@ -753,7 +759,8 @@
     <MESSAGE value="need to get permissions list by role_ids from backend" />
     <MESSAGE value="permissions tested" />
     <MESSAGE value="product permission check" />
-    <option name="LAST_COMMIT_MESSAGE" value="product permission check" />
+    <MESSAGE value="router beforeEach changed" />
+    <option name="LAST_COMMIT_MESSAGE" value="router beforeEach changed" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

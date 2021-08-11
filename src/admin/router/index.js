@@ -12,16 +12,23 @@ const router = new VueRouter({
     routes
 });
 
-router.beforeEach((to, from, next) => {
+router.beforeEach(async (to, from, next) => {
     if (to.path !== "/" && to.path.slice(-1) === "/") {
         return next(to.path.substring(0, to.path.length - 1));
     }
 
+    // no way ?
+    const check = await store.getters["user/getPermissionsStatus"];
+
+    console.log({ check });
+
     const canNavigate = to.matched.some((record) => {
         console.log({ sss: record.meta.gate });
-        if (!record.meta.gate) return next();
+        if (!record.meta.gate) next();
 
-        return ability.can(record.meta.gate);
+        if (check) {
+            return ability.can(record.meta.gate);
+        }
     });
 
     console.log({ canNavigate });

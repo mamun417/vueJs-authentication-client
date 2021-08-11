@@ -27,4 +27,6 @@ export function updateAbilities(state, userInfo) {
     console.log(rules);
 
     ability.update(rules);
+
+    state.getPermissions = true;
 }
